@@ -5,3 +5,12 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
 /* Compact operator details requested for the legal notice */
 .legal-small{font-size:.68rem;line-height:1.35;color:var(--muted);margin-top:.5rem}.legal-small p{font-size:inherit;line-height:inherit;margin:0 0 .15rem}.legal-small a{color:inherit;text-decoration:none}.legal-small a:hover{text-decoration:underline}
+
+/* Image-specific luminous edge accents, matched to each visual palette */
+.hero-image:has(img[src*="SSS"]){border-color:rgba(84,229,243,.58);box-shadow:0 0 0 1px rgba(84,229,243,.12),0 0 18px rgba(84,229,243,.22),0 0 34px rgba(183,138,255,.12),0 18px 42px rgba(0,0,0,.52)}
+.hero-image:has(img[src*="WHITE"]){border-color:rgba(203,211,223,.58);box-shadow:0 0 0 1px rgba(203,211,223,.12),0 0 18px rgba(203,211,223,.20),0 0 32px rgba(201,121,75,.12),0 18px 42px rgba(0,0,0,.52)}
+.hero-image:has(img[src*="Systemdiagnose"]){border-color:rgba(84,229,243,.58);box-shadow:0 0 0 1px rgba(84,229,243,.12),0 0 18px rgba(84,229,243,.24),0 0 34px rgba(84,135,190,.16),0 18px 42px rgba(0,0,0,.52)}
+.hero-image:has(img[src*="Structure"]){border-color:rgba(84,229,243,.55);box-shadow:0 0 0 1px rgba(84,229,243,.10),0 0 18px rgba(84,229,243,.20),0 0 34px rgba(183,138,255,.12),0 18px 42px rgba(0,0,0,.52)}
+.hero-image:has(img[src*="Kristallarchiv"]){border-color:rgba(203,211,223,.62);box-shadow:0 0 0 1px rgba(203,211,223,.12),0 0 18px rgba(203,211,223,.22),0 0 34px rgba(183,138,255,.15),0 18px 42px rgba(0,0,0,.52)}
+.hero-image:has(img[src*="GALVANIC"]){border-color:rgba(84,229,243,.62);box-shadow:0 0 0 1px rgba(84,229,243,.14),0 0 18px rgba(84,229,243,.26),0 0 34px rgba(183,138,255,.20),0 18px 42px rgba(0,0,0,.52)}
+.image-wide,.case-card{border-color:rgba(84,229,243,.34);box-shadow:0 0 0 1px rgba(84,229,243,.06),0 0 18px rgba(84,135,190,.10),0 14px 36px rgba(0,0,0,.42)}

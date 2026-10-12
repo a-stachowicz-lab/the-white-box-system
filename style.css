@@ -14,3 +14,13 @@
 .hero-image:has(img[src*="Kristallarchiv"]){border-color:rgba(203,211,223,.62);box-shadow:0 0 0 1px rgba(203,211,223,.12),0 0 18px rgba(203,211,223,.22),0 0 34px rgba(183,138,255,.15),0 18px 42px rgba(0,0,0,.52)}
 .hero-image:has(img[src*="GALVANIC"]){border-color:rgba(84,229,243,.62);box-shadow:0 0 0 1px rgba(84,229,243,.14),0 0 18px rgba(84,229,243,.26),0 0 34px rgba(183,138,255,.20),0 18px 42px rgba(0,0,0,.52)}
 .image-wide,.case-card{border-color:rgba(84,229,243,.34);box-shadow:0 0 0 1px rgba(84,229,243,.06),0 0 18px rgba(84,135,190,.10),0 14px 36px rgba(0,0,0,.42)}
+
+/* Audience positioning and service transition */
+.audience-grid{align-items:stretch}
+.audience-grid .card{background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.012));border-color:rgba(188,209,235,.16)}
+.audience-grid .card-number{color:var(--gold)}
+.positioning-close{margin-top:clamp(3rem,6vw,5rem);padding:clamp(1.8rem,4vw,3rem);text-align:center;border-top:1px solid rgba(201,121,75,.35);background:radial-gradient(ellipse at 50% 0%,rgba(201,121,75,.07),transparent 65%)}
+.positioning-close .eyebrow{margin-bottom:.8rem}
+.positioning-close h2{max-width:850px;margin:0 auto 1rem}
+.positioning-close>p:not(.eyebrow){max-width:700px;margin:0 auto 1rem}
+.positioning-close .actions{justify-content:center}

@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050912">
+    <meta name="description" content="The White-Box System — architecture for deterministic AI control, conflict mapping and traceable path tracking.">
     <title>The White-Box System | Deterministic AI Control</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@500;700;900&family=Space+Mono&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <!-- NAVIGATION -->
-    <nav>
+    <nav aria-label="Main navigation">
         <div class="nav-container">
-            <a href="index.html" class="logo-link">
-                <!-- Dein SSS Logo -->
-                <img src="SSS%20PARALLEL.png" alt="SSS Logo" class="logo">
+            <a href="index.html" class="logo-link" aria-label="The White-Box System home">
+                <img src="SSS%20PARALLEL.png" alt="The White-Box System — Parallel Space" class="logo">
             </a>
             <ul class="nav-links">
                 <li><a href="#system">System</a></li>
@@ -26,90 +27,87 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION (Dein Poster als Hintergrund) -->
     <header class="hero">
         <div class="hero-content">
-            <!-- Der Text ist bereits im Bild, daher nur der Button -->
+            <img src="WHITE%20BOX%20SYSTEM.png"
+                 alt="Architecture for deterministic AI control: a transparent illuminated cube representing the White-Box System, with the designation Parallel Space."
+                 class="hero-poster" fetchpriority="high" decoding="async">
             <div class="hero-cta">
                 <a href="#positioning" class="btn btn-primary">Explore the System</a>
             </div>
         </div>
     </header>
 
-    <!-- PROBLEM SECTION -->
-    <section id="system" class="section">
-        <div class="container grid-2">
-            <div class="text-block">
-                <h2 class="section-title">The Same Problem.<br>Two Architectures.</h2>
-                <p class="highlight">What can be traced?</p>
-                <p>Traditional systems operate as <strong>Black Boxes</strong>. Input goes in, a result comes out. The path in between is obscured, probabilistic, and untraceable.</p>
-                <p>We build <strong>White Boxes</strong>. Every step, every conflict, and every decision is mapped. The result is not a guess — it is a traceable, deterministic outcome.</p>
-            </div>
-            <div class="image-block">
-                <!-- Dein Black Box vs White Box Bild -->
-                <img src="WHITE%20BLACK%20BOX.png" alt="Black Box vs White Box Architecture">
-            </div>
-        </div>
-    </section>
-
-    <!-- POSITIONING SECTION -->
-    <section id="positioning" class="section bg-darker">
-        <div class="container">
-            <h2 class="section-title text-center">Positioning</h2>
-            
-            <div class="grid-3">
-                <div class="card">
-                    <h3>Category</h3>
-                    <p>Architecture for deterministic AI control in complex systems.</p>
-                </div>
-                <div class="card">
-                    <h3>Utility</h3>
-                    <p>We reconstruct complex systems. We map their conflicts. We deliver deterministic, traceable solutions — and clear paths to conflict resolution where physics allows.</p>
-                </div>
-                <div class="card">
-                    <h3>Distinction</h3>
-                    <p>No probabilities. No Black Boxes. Only precise calculations.</p>
-                </div>
-            </div>
-
-            <div class="grid-2 mt-4">
+    <main>
+        <section id="system" class="section">
+            <div class="container grid-2">
                 <div class="text-block">
-                    <h3>Target Audience</h3>
-                    <ul class="styled-list">
-                        <li>Exploration companies</li>
-                        <li>Supply chain organizations</li>
-                        <li>Infrastructure operators and planners</li>
-                        <li>Manufacturers and developers</li>
-                        <li>Technology companies</li>
-                    </ul>
+                    <h2 class="section-title">The Same Problem.<br>Two Architectures.</h2>
+                    <p class="highlight">What can be traced?</p>
+                    <p>Traditional systems operate as <strong>Black Boxes</strong>. Input goes in, a result comes out. The path in between is obscured, probabilistic, and untraceable.</p>
+                    <p>We build <strong>White Boxes</strong>. Every step, every conflict, and every decision is mapped. The result is not a guess — it is a traceable, deterministic outcome.</p>
                 </div>
-                <div class="text-block">
-                    <h3>What the Client Provides</h3>
-                    <ol class="styled-list">
-                        <li><strong>System:</strong> Company, project, or process.</li>
-                        <li><strong>Core Question:</strong> What needs to be understood or solved.</li>
-                        <li><strong>Available Information:</strong> Reports, data, public sources.</li>
-                    </ol>
-                    <h3 class="mt-2">The Result</h3>
-                    <ul class="styled-list check-list">
-                        <li>Deterministic diagnosis</li>
-                        <li>Conflict resolution: Isolate, Stabilize, Reconstruct</li>
-                        <li>Clear actionable instructions</li>
-                        <li>Traceable paths (E1–E4)</li>
-                        <li>Stop (if physically unresolvable)</li>
-                    </ul>
+                <div class="image-block">
+                    <img src="WHITE%20BLACK%20BOX.png" alt="Comparison of Black Box and White Box architectures: both receive input, but the White Box exposes a traceable result." loading="lazy" decoding="async">
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- FOOTER -->
+        <section id="positioning" class="section bg-darker">
+            <div class="container">
+                <h2 class="section-title text-center">Positioning</h2>
+                <div class="grid-3">
+                    <article class="card">
+                        <h3>Category</h3>
+                        <p>Architecture for deterministic AI control in complex systems.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Utility</h3>
+                        <p>We reconstruct complex systems. We map their conflicts. We deliver deterministic, traceable solutions — and clear paths to conflict resolution where physics allows.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Distinction</h3>
+                        <p>No probabilities. No Black Boxes. Only precise calculations.</p>
+                    </article>
+                </div>
+
+                <div class="grid-2 mt-4">
+                    <div class="text-block">
+                        <h3>Target Audience</h3>
+                        <ul class="styled-list">
+                            <li>Exploration companies</li>
+                            <li>Supply chain organizations</li>
+                            <li>Infrastructure operators and planners</li>
+                            <li>Manufacturers and developers</li>
+                            <li>Technology companies</li>
+                        </ul>
+                    </div>
+                    <div class="text-block">
+                        <h3>What the Client Provides</h3>
+                        <ol class="styled-list">
+                            <li><strong>System:</strong> Company, project, or process.</li>
+                            <li><strong>Core Question:</strong> What needs to be understood or solved.</li>
+                            <li><strong>Available Information:</strong> Reports, data, public sources.</li>
+                        </ol>
+                        <h3 class="mt-2">The Result</h3>
+                        <ul class="styled-list check-list">
+                            <li>Deterministic diagnosis</li>
+                            <li>Conflict resolution: Isolate, Stabilize, Reconstruct</li>
+                            <li>Clear actionable instructions</li>
+                            <li>Traceable paths (E1–E4)</li>
+                            <li>Stop (if physically unresolvable)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <footer>
         <div class="container text-center">
             <p class="kernsatz">"We deliver. We don't ask anymore. We show what we have. Those who need it, come."</p>
             <p class="copyright">&copy; 2026 Second Sun System. All rights reserved.</p>
         </div>
     </footer>
-
 </body>
 </html>

@@ -1,174 +1,224 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        html, body {
-            margin: 0;
-            padding: 0;
-            background:
-                radial-gradient(
-                    circle at 50% 40%,
-                    #071b4a 0%,
-                    #040f2c 30%,
-                    #020817 58%,
-                    #00030a 82%,
-                    #000000 100%
-                );
-            background-attachment: fixed;
-            color: #f2f5f7;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        body {
-            min-height: 100vh;
-        }
-
-        main {
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 60px 40px 80px;
-        }
-
-        header {
-            margin-bottom: 70px;
-        }
-
-        .title {
-            font-size: clamp(32px, 5vw, 72px);
-            font-weight: 700;
-            letter-spacing: -0.04em;
-            line-height: 0.95;
-            margin: 0;
-        }
-
-        .subtitle {
-            font-size: clamp(20px, 2.5vw, 36px);
-            font-weight: 400;
-            letter-spacing: 0.02em;
-            margin-top: 14px;
-        }
-
-        .signature {
-            margin-top: 35px;
-            font-size: 14px;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .images {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin-bottom: 70px;
-            position: relative;
-        }
-
-        .images::before {
-            content: "";
-            position: absolute;
-            inset: 20% 15%;
-            background: rgba(0, 90, 150, 0.035);
-            filter: blur(90px);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .images img {
-            display: block;
-            width: 100%;
-            height: auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            border-top: 1px solid #33423d;
-            padding-top: 22px;
-        }
-
-        nav a {
-            color: #dce7e2;
-            text-decoration: none;
-            font-size: 14px;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 800px) {
-            main {
-                padding: 35px 20px 50px;
-            }
-
-            .images {
-                grid-template-columns: 1fr;
-            }
-
-            header {
-                margin-bottom: 45px;
-            }
-
-            nav {
-                gap: 18px;
-            }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>THE WHITE-BOX SYSTEM — Architecture for Deterministic AI Control</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: #02030a;
+    color: #eef7ff;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .banner {
+    background: #0a0a0a;
+    color: #888;
+    text-align: center;
+    padding: 12px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #1a1a2a;
+  }
+  header {
+    padding: 60px 40px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  h1 {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #7fd8ff, #c9a6ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .subtitle {
+    font-size: 22px;
+    letter-spacing: 4px;
+    color: #b8c8dc;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+  }
+  .tagline {
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: #8ab8dc;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+  }
+  .tagline span { color: #c9a6ff; }
+  .intro {
+    font-size: 19px;
+    color: #d0dae6;
+    max-width: 800px;
+    margin-bottom: 30px;
+  }
+  .intro strong {
+    color: #ffffff;
+    font-weight: 600;
+  }
+  .cta {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 18px 40px;
+    background: linear-gradient(90deg, #1a5a8a, #6a3a9a);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    border: 1px solid #3a7aaa;
+    transition: all 0.3s;
+  }
+  .cta:hover {
+    background: linear-gradient(90deg, #2a6a9a, #7a4aaa);
+    box-shadow: 0 0 20px rgba(120,180,255,0.3);
+  }
+  .images {
+    display: flex;
+    gap: 20px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .images img {
+    flex: 1;
+    min-width: 300px;
+    border-radius: 8px;
+    border: 1px solid #1a2a3a;
+  }
+  .compare {
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .compare div {
+    flex: 1;
+    min-width: 280px;
+    padding: 25px;
+    border: 1px solid #1a2a3a;
+    border-radius: 8px;
+    background: #05080f;
+  }
+  .compare h3 {
+    font-size: 16px;
+    letter-spacing: 3px;
+    color: #7fd8ff;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+  }
+  .compare .white h3 { color: #c9a6ff; }
+  .compare ul { list-style: none; }
+  .compare li {
+    padding: 8px 0;
+    color: #a8b8c8;
+    font-size: 15px;
+    border-bottom: 1px solid #0a1520;
+  }
+  footer {
+    margin-top: auto;
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid #1a2a3a;
+    color: #5a6a7a;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  nav {
+    padding: 30px;
+    text-align: center;
+    border-top: 1px solid #1a2a3a;
+  }
+  nav a {
+    color: #8ab8dc;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  nav a:hover { color: #ffffff; }
+</style>
 </head>
-
 <body>
-  <div style="background:#111; color:#fff; text-align:center; padding:14px; font-family:Arial,sans-serif; font-size:14px; letter-spacing:1px; border-bottom:1px solid #333;">
-    ⚠ THIS SITE IS UNDER CONSTRUCTION ⚠<br>
-    <span style="font-size:12px; color:#aaa;">System · Diagnosis · Galvanic Matrix · Research · Impressum — coming soon</span>
+
+<div class="banner">
+  ⚠ SITE UNDER CONSTRUCTION ⚠ &nbsp;·&nbsp; System · Diagnosis · Galvanic Matrix · Research · Impressum — coming soon
+</div>
+
+<header>
+  <h1>THE WHITE-BOX SYSTEM</h1>
+  <div class="subtitle">PARALLEL SPACE</div>
+  <div class="tagline">
+    AS-IS STATE <span>→</span> CONFLICT MAPPING <span>→</span> TRACEABLE PATH TRACKING
   </div>
 
-<main>
+  <p class="intro">
+    <strong>Architecture for Deterministic AI Control.</strong><br><br>
+    We reconstruct complex systems. We map their conflicts. We deliver deterministic, traceable solutions — and clear paths to resolution where physics allows it.
+  </p>
 
-    <header>
-        <h1 class="title">THE WHITE-BOX SYSTEM</h1>
-        <div class="subtitle">PARALLEL SPACE</div>
+  <p class="intro">
+    <strong>No probabilities. No black boxes. Just precise calculations.</strong>
+  </p>
 
-        <div class="signature">
-            AS-IS STATE → CONFLICT MAPPING → TRACEABLE PATH TRACKING
-        </div>
-    </header>
+  <a href="diagnosis.html" class="cta">Start Your Diagnosis</a>
+</header>
 
-    <section class="images">
+<div class="images">
+  <img src="logo_sss.png" alt="The White-Box System">
+  <img src="blackbox_whitebox.png" alt="Black Box vs White Box">
+</div>
 
-        <img
-            src="SSS%20PARALLEL.png"
-            alt="THE WHITE-BOX SYSTEM — PARALLEL SPACE"
-        >
+<div class="compare">
+  <div>
+    <h3>Black Box</h3>
+    <ul>
+      <li>Probabilistic</li>
+      <li>Guesswork</li>
+      <li>Not traceable</li>
+      <li>Input → Result</li>
+    </ul>
+  </div>
+  <div class="white">
+    <h3>White Box</h3>
+    <ul>
+      <li>Deterministic</li>
+      <li>Traceable</li>
+      <li>Verifiable</li>
+      <li>Input → Traceable Result</li>
+    </ul>
+  </div>
+</div>
 
-        <img
-            src="WHITE%20BLACK%20BOX.png"
-            alt="White Box / Black Box"
-        >
+<nav>
+  <a href="index.html">System</a>
+  <a href="diagnosis.html">Diagnosis</a>
+  <a href="#">Galvanic Matrix</a>
+  <a href="#">Research</a>
+  <a href="#">Impressum</a>
+</nav>
 
-    </section>
-
-    <nav>
-        <a href="system.html">System</a>
-        <a href="diagnosis.html">Diagnosis</a>
-        <a href="galvanic-matrix.html">Galvanic Matrix</a>
-        <a href="research.html">Research</a>
-        <a href="impressum.html">Impressum</a>
-    </nav>
-
-</main>
+<footer>
+  As-is State. Conflict Mapping. Traceable Path Tracking.<br>
+  WHITE-BOX SYSTEM · PARALLEL SPACE · Architecture for Deterministic AI Control.
+</footer>
 
 </body>
 </html>

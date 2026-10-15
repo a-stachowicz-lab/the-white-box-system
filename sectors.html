@@ -78,7 +78,7 @@ body.orbit-page{overflow-x:hidden;background-color:#010204;background-image:repe
  <section class="orbit-heading">
   <p class="eyebrow">ONE ARCHITECTURE. DIFFERENT DOMAINS.</p>
   <h1>Explore the <span>system orbit.</span></h1>
-  <p class="lead">Choose the sector closest to your challenge. Open a domain to explore how system diagnosis can make relevant relationships, constraints and dependencies visible.</p>
+  <p class="lead">Every sector faces complex challenges. Systems interact, dependencies accumulate, and problems do not always have a single, obvious cause.</p><p>THE WHITE-BOX SYSTEM approaches these situations through a structured system diagnosis — making relevant relationships, conflicts and dependencies visible.</p>
  </section>
  <section class="orbit-stage" id="orbitStage" aria-label="Interactive orbit of six economic sectors">
   <div class="orbit-core" aria-hidden="true"><img src="Kristallkern.png" alt=""></div>
@@ -94,8 +94,8 @@ body.orbit-page{overflow-x:hidden;background-color:#010204;background-image:repe
   <div class="detail-visual" id="detailVisual" hidden><img id="detailImage" src="Kristallkern.png" alt=""></div>
   <p class="eyebrow" id="detailEyebrow">SYSTEM DIAGNOSIS</p>
   <h2 id="detailTitle">Where is your system under pressure?</h2>
-  <p id="detailText">Select a sector to see how a system diagnosis can approach the challenges behind it. Start with the situation you need to understand.</p>
-  <div class="actions"><a class="button button-primary" id="diagnosisLink" href="diagnosis.html">Explore system diagnosis</a><a class="button button-secondary" href="contact.html">Discuss your challenge</a><button class="orbit-control" id="returnOrbit" type="button" hidden>Back to sectors</button></div>
+  <p id="detailText">Your challenge does not need to fit neatly into a predefined category. Describe the situation you are facing and the question you need to resolve. I examine the relevant system relationships and conflicts to develop a traceable path towards a reasoned assessment.</p>
+  <div class="actions"><a class="button button-primary" id="diagnosisLink" href="diagnosis.html">Discuss a system diagnosis</a><a class="button button-secondary" href="contact.html">Discuss your challenge</a><button class="orbit-control" id="returnOrbit" type="button" hidden>Back to sectors</button></div>
  </section>
  <p class="orbit-footer">AS-IS STATE · CONFLICT MAPPING · TRACEABLE PATH TRACKING</p>
 </main>
@@ -115,12 +115,12 @@ body.orbit-page{overflow-x:hidden;background-color:#010204;background-image:repe
  const backButton = document.getElementById('backButton');
  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  const sectors = {
-  finance: {name:'Finance & Investment', image:'Finanzwelt.png', intro:'Financial decisions depend on connected risks, resources, market conditions and real-world constraints. When the overall situation is difficult to assess, a system diagnosis helps make relevant relationships and dependencies visible.', cta:'Explore the relationships behind a complex financial or investment system.'},
-  industry: {name:'Industry & Manufacturing', image:'Fabrik.png', intro:'Materials, machinery, production processes and operating conditions must work together. When a product or process behaves differently than expected, a diagnosis examines the interactions shaping the current state.', cta:'Explore the relationships behind a production or engineering challenge.'},
-  resources: {name:'Resources & Project Development', image:'Ressourcen-Kreislauf.png', intro:'Technical potential connects with capital, infrastructure, environmental conditions and implementation requirements. A diagnosis helps structure the dependencies that shape a project’s development path.', cta:'Explore the dependencies shaping a resource or development project.'},
-  technology: {name:'Technology, Robotics & Aerospace', image:'Technologie-Ökosystem.png', intro:'Complex engineered systems combine materials, geometry, mechanics, control and operating conditions. When system behaviour is unexpected, a diagnosis makes relevant interactions and constraints easier to examine.', cta:'Explore the relationships behind a complex technical system.'},
-  energy: {name:'Energy & Critical Infrastructure', image:'Smart-Grid leuchtenden.png', intro:'Energy networks, storage, water systems and essential infrastructure operate under connected technical and environmental conditions. A diagnosis helps map the dependencies relevant to current system behaviour.', cta:'Explore the relationships affecting an infrastructure system.'},
-  logistics: {name:'Logistics & Supply Chains', image:'Globales Logistik-Ökosystem.png', intro:'Transport, suppliers, ports, warehouses and production depend on one another. A diagnosis helps reveal the relationships and constraints that shape the behaviour of a connected supply chain.', cta:'Explore the dependencies across a logistics or supply-chain system.'}
+  finance: {name:'Finance & Investment', image:'Finanzwelt.png', intro:"Banks, financial markets, investment decisions and interconnected financial systems operate through multiple dependencies.\n\nWhat happens when an opportunity looks promising, but the relationships between risk, resources, external conditions and long-term viability remain unclear?"},
+  industry: {name:'Industry & Manufacturing', image:'Fabrik.png', intro:"Materials, production processes, machinery and automation must work together under real operating conditions.\n\nWhat happens when a product fails, a process becomes unstable or a prototype behaves differently than expected — and the cause cannot be isolated to one component?"},
+  logistics: {name:'Logistics & Supply Chains', image:'Globales Logistik-Ökosystem.png', intro:"Transport networks, warehouses, suppliers, infrastructure and resource availability are interconnected.\n\nWhat happens when a disruption in one part of the chain affects operations elsewhere? Where are the dependencies that determine how far the consequences can spread?"},
+  energy: {name:'Energy & Critical Infrastructure', image:'Smart-Grid leuchtenden.png', intro:"Power grids, energy storage, water systems and essential infrastructure depend on technical performance, environmental conditions and reliable operation.\n\nWhat happens when several influences interact and the condition of the overall system cannot be understood by examining its components separately?"},
+  technology: {name:'Technology, Robotics & Aerospace', image:'Technologie-Ökosystem.png', intro:"Advanced engineering systems combine mechanical, electrical, material, control and environmental requirements.\n\nWhat happens when a design meets its individual specifications, yet the complete system develops unexpected behaviour under operating conditions?"},
+  resources: {name:'Resources & Project Development', image:'Ressourcen-Kreislauf.png', intro:"Exploration, raw materials and major development projects connect technical potential with investment, infrastructure, environmental conditions and implementation.\n\nWhat happens when the potential is visible, but the dependencies that determine whether a project can progress remain difficult to assess?"}
  };
  let rotation = -Math.PI / 2, last = 0, paused = reducedMotion, selected = null, raf = 0;
  const isMobile = () => window.matchMedia('(max-width:760px)').matches;
@@ -147,7 +147,8 @@ body.orbit-page{overflow-x:hidden;background-color:#010204;background-image:repe
    if (!s) return;
    selected = key; paused = true; page.classList.add('is-detail');
    image.src = s.image; image.alt = s.name + ' sector illustration'; visual.hidden = false;
-   title.textContent = s.name; text.textContent = s.intro + ' ' + s.cta;
+   text.style.whiteSpace = 'pre-line';
+   title.textContent = s.name; text.textContent = s.intro;
    eyebrow.textContent = 'SECTOR PERSPECTIVE';
    link.href = 'diagnosis.html?sector=' + encodeURIComponent(key);
    link.textContent = 'Explore this diagnosis';

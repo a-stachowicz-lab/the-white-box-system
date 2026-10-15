@@ -116,6 +116,7 @@ Describe the situation you are facing and the question you need to resolve. I ex
  const visual = document.getElementById('detailVisual');
  const returnButton = document.getElementById('returnOrbit');
  const backButton = document.getElementById('backButton');
+ const challengeLink = document.querySelector('.sector-detail .button-secondary');
  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  const sectors = {
   finance: {name:'Finance & Investment', image:'Finanzwelt.png', intro:"Banks, financial markets, investment decisions and interconnected financial systems operate through multiple dependencies.\n\nWhat happens when an opportunity looks promising, but the relationships between risk, resources, external conditions and long-term viability remain unclear?"},
@@ -155,6 +156,7 @@ Describe the situation you are facing and the question you need to resolve. I ex
    eyebrow.textContent = 'SECTOR PERSPECTIVE';
    link.href = 'diagnosis.html?sector=' + encodeURIComponent(key);
    link.textContent = 'Explore this diagnosis';
+   challengeLink.href = 'contact.html?sector=' + encodeURIComponent(key);
    returnButton.hidden = false;
    toggle.textContent = 'Resume orbit'; toggle.setAttribute('aria-pressed','true');
    backButton.textContent = '← Back to sectors'; backButton.href = '#sectors';

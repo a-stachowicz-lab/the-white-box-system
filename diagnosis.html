@@ -6,7 +6,7 @@
  const params = new URLSearchParams(window.location.search);
  const key = params.get('sector');
  const back = document.getElementById('backToSectors');
- if (key) back.href = 'sectors.html#sector-' + encodeURIComponent(key);
+ if (key) if (back) back.href = 'sectors.html#sector-' + encodeURIComponent(key);
  const domains = {
   finance: ['Finance & Investment', 'The diagnostic perspective focuses on the relationships between risks, resources, market conditions and the constraints relevant to the system being examined.'],
   industry: ['Industry & Manufacturing', 'The diagnostic perspective focuses on interactions between materials, machinery, production processes and operating conditions.'],

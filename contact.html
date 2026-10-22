@@ -7,7 +7,7 @@
  const names = {finance:'Finance & Investment',industry:'Industry & Manufacturing',resources:'Resources & Project Development',technology:'Technology, Robotics & Aerospace',energy:'Energy & Critical Infrastructure',logistics:'Logistics & Supply Chains'};
  const back = document.getElementById('backToSectors');
  if (sector && names[sector]) {
-   back.href = 'sectors.html#sector-' + encodeURIComponent(sector);
+   if (back) back.href = 'sectors.html#sector-' + encodeURIComponent(sector);
    const heading = document.querySelector('.page-hero-copy .lead');
    if (heading) heading.textContent = 'Contact me to discuss your ' + names[sector] + ' challenge and the conflict or uncertainty you need to understand.';
  }

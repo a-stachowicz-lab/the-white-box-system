@@ -23,3 +23,22 @@ h1{font-weight:450;letter-spacing:.015em}h2{font-weight:450;letter-spacing:.01em
 
 /* System page: metallic copper headline */
 .copper-metallic{background:linear-gradient(105deg,#8f4828 0%,#c8794b 16%,#f7d0ad 32%,#b86b42 47%,#f0bb91 61%,#a75a35 77%,#e9b48c 91%,#8f4828 100%);background-size:180% 100%;background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;color:#c8794b;text-shadow:none;filter:drop-shadow(0 1px 0 rgba(255,220,190,.12)) drop-shadow(0 0 10px rgba(201,121,75,.16));}
+
+/* Site-wide heading system: all primary page headlines use the same metallic copper treatment. */
+h1,
+.welcome-hero h1,
+.page-hero h1,
+.legal-hero h1,
+.orbit-heading h1 {
+  background: linear-gradient(105deg,#8f4828 0%,#c8794b 16%,#f7d0ad 32%,#b86b42 47%,#f0bb91 61%,#a75a35 77%,#e9b48c 91%,#8f4828 100%);
+  background-size: 180% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #c8794b;
+  text-shadow: none;
+  filter: drop-shadow(0 1px 0 rgba(255,220,190,.12)) drop-shadow(0 0 10px rgba(201,121,75,.16));
+}
+.site-end-cta { margin-top: 0; }
+.site-end-cta .actions { justify-content: center; }
+.orbit-end-cta { background: rgba(5,7,11,.72); }

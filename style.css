@@ -42,3 +42,12 @@ h1,
 .site-end-cta { margin-top: 0; }
 .site-end-cta .actions { justify-content: center; }
 .orbit-end-cta { background: rgba(5,7,11,.72); }
+
+/* Homepage AI review offer spacing */
+.offer-section .offer-details {
+  max-width: 46rem;
+  margin: 1.4rem 0 1.8rem;
+}
+.offer-section .offer-details p {
+  margin: .45rem 0;
+}

@@ -161,7 +161,6 @@ Describe the situation you are facing and the question you need to resolve. I ex
    challengeLink.href = 'contact.html?sector=' + encodeURIComponent(key);
    returnButton.hidden = false;
    toggle.textContent = 'Resume orbit'; toggle.setAttribute('aria-pressed','true');
-   backButton.textContent = '← Back to sectors'; backButton.href = '#sectors';
    document.querySelector('.orbit-heading').setAttribute('aria-hidden','true');
    window.scrollTo({top:0,behavior:reducedMotion?'auto':'smooth'});
    history.replaceState(null,'','#sector-'+key);
@@ -173,7 +172,6 @@ Describe the situation you are facing and the question you need to resolve. I ex
    title.textContent = 'Where is your system under pressure?';
    text.textContent = 'Select a sector to see how a system diagnosis can approach the challenges behind it. Start with the situation you need to understand.';
    link.href = 'diagnosis.html'; link.textContent = 'Explore system diagnosis';
-   backButton.textContent = '← Back'; backButton.href = 'index.html';
    toggle.textContent = reducedMotion ? 'Start orbit' : 'Pause orbit';
    toggle.setAttribute('aria-pressed',String(reducedMotion));
    document.querySelector('.orbit-heading').removeAttribute('aria-hidden');
@@ -182,7 +180,7 @@ Describe the situation you are facing and the question you need to resolve. I ex
  }
  items.forEach(item => item.querySelector('button').addEventListener('click',() => openSector(item)));
  returnButton.addEventListener('click',closeSector);
- backButton.addEventListener('click',e=>{if(selected){e.preventDefault();closeSector();}});
+ if(backButton) backButton.addEventListener('click',e=>{if(selected){e.preventDefault();closeSector();}});
  toggle.addEventListener('click',() => {
    if(selected) { closeSector(); return; }
    paused=!paused;

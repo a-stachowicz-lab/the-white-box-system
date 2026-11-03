@@ -7,6 +7,22 @@
 <meta name="description" content="A practical half-day workshop for small and medium-sized businesses. Build confidence in evaluating AI outputs, using AI consciously and understanding its wider impact.">
 <title>Workshop — Make AI Outputs Checkable | THE WHITE-BOX SYSTEM</title>
 <link rel="stylesheet" href="style.css">
+<style>
+.resource-check{position:relative;overflow:hidden}
+.resource-check .resource-intro{max-width:760px}
+.resource-check .resource-hook{font-size:clamp(1.2rem,2.2vw,1.65rem);line-height:1.4;color:#e6edf5;max-width:720px;margin:1.4rem 0}
+.resource-pack{display:grid;grid-template-columns:minmax(220px,.8fr) minmax(0,1.2fr);gap:2rem;align-items:center;margin-top:2rem;padding:clamp(1.25rem,3vw,2.25rem);border:1px solid rgba(205,117,66,.35);background:linear-gradient(135deg,rgba(18,24,34,.96),rgba(7,10,18,.94));box-shadow:0 0 34px rgba(196,105,57,.08)}
+.backpack-visual{display:flex;justify-content:center;align-items:center;min-height:230px}
+.backpack-visual svg{width:min(100%,260px);height:auto;filter:drop-shadow(0 12px 25px rgba(0,0,0,.45))}
+.resource-items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.resource-item{padding:1rem .85rem;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.025);text-align:center}
+.resource-item .symbol{font-size:2rem;line-height:1.3;margin-bottom:.55rem}
+.resource-item h3{font-size:1rem;margin:.25rem 0 .45rem;color:#e7edf5}
+.resource-item p{font-size:.88rem;line-height:1.5;color:#aeb8c6;margin:0}
+.resource-teaser{margin:1.5rem 0 0;color:#d88755;font-weight:600;letter-spacing:.02em}
+.resource-note{font-size:.82rem;color:#8f9aaa;margin-top:1rem;max-width:850px}
+@media(max-width:700px){.resource-pack{grid-template-columns:1fr;gap:1rem}.backpack-visual{min-height:170px}.backpack-visual svg{width:190px}.resource-items{grid-template-columns:1fr}.resource-item{display:grid;grid-template-columns:52px 1fr;column-gap:.7rem;text-align:left;align-items:center}.resource-item .symbol{grid-row:span 2;margin:0;font-size:1.8rem}.resource-item h3{margin:0 0 .2rem}.resource-item p{font-size:.84rem}}
+</style>
 </head>
 <body>
 <header class="site-header">
@@ -105,6 +121,42 @@
 <p>Strengthen your ability to question, assess and use AI outputs independently — at work and beyond.</p>
 </article>
 </div>
+</div>
+</section>
+
+<section class="section section-muted resource-check" id="resource-check">
+<div class="section-inner">
+<div class="section-heading resource-intro">
+<p class="eyebrow">RESOURCE AWARENESS · A CLOSER LOOK</p>
+<h2>What AI carries in its backpack.</h2>
+<p class="resource-hook">Every prompt requires more than the electricity from your socket.</p>
+<p>In the workshop, we unpack it.</p>
+</div>
+<div class="resource-pack">
+<div class="backpack-visual" role="img" aria-label="An open backpack containing symbols for energy, water and raw materials.">
+<svg viewBox="0 0 280 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<defs>
+<linearGradient id="bag" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#293748"/><stop offset="1" stop-color="#101722"/></linearGradient>
+<linearGradient id="trim" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a94f2d"/><stop offset="1" stop-color="#e49a63"/></linearGradient>
+</defs>
+<path d="M91 82c0-35 19-57 49-57s49 22 49 57" fill="none" stroke="#d58a58" stroke-width="11" stroke-linecap="round"/>
+<path d="M75 91c-19 11-31 31-34 57l-9 72c-2 14 8 25 23 25h170c15 0 25-11 23-25l-9-72c-3-26-15-46-34-57l-20-10H95z" fill="url(#bag)" stroke="url(#trim)" stroke-width="3"/>
+<path d="M77 127c12-11 30-16 63-16s51 5 63 16l12 85H65z" fill="#182432" stroke="#d58a58" stroke-width="2"/>
+<path d="M95 91c7-12 22-19 45-19s38 7 45 19l-11 40h-68z" fill="#0b111a" stroke="#d58a58" stroke-width="2"/>
+<path d="M113 151h54l9 51h-72z" fill="#0b111a" stroke="#bd7044" stroke-width="2"/>
+<path d="M140 158l-13 23h12l-5 17 20-27h-13l5-13z" fill="#e8a264"/>
+<path d="M83 115l-15 20m129-20 15 20" stroke="#728397" stroke-width="4" stroke-linecap="round"/>
+<circle cx="140" cy="226" r="5" fill="#d58a58"/>
+</svg>
+</div>
+<div class="resource-items">
+<article class="resource-item"><div class="symbol" aria-hidden="true">🔋</div><h3>Energy</h3><p>Electricity to power computing and infrastructure.</p></article>
+<article class="resource-item"><div class="symbol" aria-hidden="true">💧</div><h3>Water</h3><p>Water used in parts of data-centre operations and cooling.</p></article>
+<article class="resource-item"><div class="symbol" aria-hidden="true">🪨</div><h3>Raw materials</h3><p>Materials and metals used to build the infrastructure behind digital services.</p></article>
+</div>
+</div>
+<p class="resource-teaser">In the workshop, we unpack it.</p>
+<p class="resource-note">The objects are symbols of the wider infrastructure behind AI. They do not represent a fixed amount of resources consumed by each individual prompt.</p>
 </div>
 </section>
 

@@ -86,17 +86,11 @@
 <p>Nutzen Sie die Grafik als Gesprächs- und Lernimpuls: Wählen Sie eine Aussage oder ein Thema aus und entwickeln Sie daraus eine eigene Unterrichtseinheit. Schülerinnen und Schüler können Zusammenhänge entdecken, Fragen stellen und Informationen kritisch einordnen.</p>
 </div>
 <figure class="school-poster" style="max-width:440px;margin:2rem auto;text-align:center">
-<button type="button" id="poster-open" aria-label="Unterrichtsplakat vergrößern" style="display:block;width:100%;padding:0;border:0;background:transparent;cursor:zoom-in">
-<img src="file_00000000a9d081f488295a6f1baa287e.png" alt="Unterrichtsplakat: Was steckt eigentlich hinter einer KI-Antwort? Ressourcencheck zu Energie, Stromversorgung, Rechenzentren, Wasser und Rohstoffen. Anklicken, um das Plakat zu vergrößern." loading="lazy" style="display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--border,rgba(255,255,255,.15))">
-</button>
+<a href="lernimpuls.html" aria-label="Unterrichtsplakat in voller Größe mit Rücknavigation öffnen">
+<img src="file_00000000a9d081f488295a6f1baa287e.png" alt="Unterrichtsplakat: Was steckt eigentlich hinter einer KI-Antwort? Anklicken, um das Plakat mit Rücknavigation in voller Größe zu öffnen." loading="lazy" style="display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--border,rgba(255,255,255,.15));cursor:zoom-in">
+</a>
 <figcaption class="small" style="margin-top:.7rem">Lernimpuls: Ressourcencheck – Energie und Stromversorgung · Zum Vergrößern anklicken</figcaption>
 </figure>
-<dialog id="poster-dialog" aria-label="Vergrößertes Unterrichtsplakat" style="width:min(94vw,1100px);max-width:1100px;max-height:94vh;padding:1rem;border:1px solid rgba(201,121,75,.65);border-radius:12px;background:#070a12;color:#fff">
-<div style="display:flex;justify-content:flex-end;margin-bottom:.6rem">
-<button type="button" id="poster-close" class="button button-primary">Schließen ✕</button>
-</div>
-<img src="file_00000000a9d081f488295a6f1baa287e.png" alt="Unterrichtsplakat in vergrößerter Ansicht" style="display:block;max-width:100%;max-height:calc(94vh - 5rem);width:auto;height:auto;margin:0 auto;object-fit:contain">
-</dialog>
 <div class="section-heading school-intro" style="margin:0 auto 1.25rem">
 <p>Das Ziel ist nicht, Verbote auszusprechen, sondern Verständnis zu schaffen und einen bewussten, informierten und verantwortungsvollen Umgang mit KI zu fördern.</p>
 </div>
@@ -146,18 +140,6 @@
 </div>
 <p class="footer-note">THE WHITE-BOX SYSTEM · SCHULPROJEKTE · HAMBURG</p>
 </footer>
-<script>
-(() => {
-  const openButton = document.getElementById('poster-open');
-  const dialog = document.getElementById('poster-dialog');
-  const closeButton = document.getElementById('poster-close');
-  if (!openButton || !dialog || !closeButton) return;
-  openButton.addEventListener('click', () => dialog.showModal());
-  closeButton.addEventListener('click', () => dialog.close());
-  dialog.addEventListener('click', event => {
-    if (event.target === dialog) dialog.close();
-  });
-})();
-</script>
+
 </body>
 </html>

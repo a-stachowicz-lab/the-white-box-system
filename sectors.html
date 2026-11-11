@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="style.css">
 <style>
 :root{--orbit-blue:#7bcaff;--orbit-gold:#c8794b;--orbit-copper-light:#f2c09a}
-body.orbit-page{overflow-x:hidden;background-color:#020305;background-image:repeating-linear-gradient(115deg,rgba(185,205,220,.004) 0px,rgba(185,205,220,.004) 1px,transparent 1px,transparent 7px),radial-gradient(ellipse at 50% 40%,rgba(10,24,37,.18) 0%,rgba(4,10,17,.10) 30%,transparent 66%),radial-gradient(ellipse at 50% 100%,rgba(8,16,25,.16) 0%,transparent 58%);min-height:100vh}
+body.orbit-page{overflow-x:hidden;background-color:#000000;background-image:repeating-linear-gradient(115deg,rgba(185,205,220,.004) 0px,rgba(185,205,220,.004) 1px,transparent 1px,transparent 7px),radial-gradient(ellipse at 50% 40%,rgba(10,24,37,.18) 0%,rgba(4,10,17,.10) 30%,transparent 66%),radial-gradient(ellipse at 50% 100%,rgba(8,16,25,.16) 0%,transparent 58%);min-height:100vh}
 .orbit-main{max-width:1600px;margin:0 auto;padding:clamp(1rem,3vw,2.6rem) clamp(.75rem,2.8vw,2.5rem) 4rem}
 .orbit-topline{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem}
 .orbit-back{color:#d8e9f7;text-decoration:none;border:1px solid rgba(201,121,75,.52);padding:.65rem .95rem;border-radius:3px;background:rgba(4,6,10,.78);box-shadow:0 0 12px rgba(201,121,75,.08)}
@@ -34,8 +34,8 @@ body.orbit-page{overflow-x:hidden;background-color:#020305;background-image:repe
 
 /* Finance sector: original glass cube geometry with the domain scene mounted inside its front pane */
 .orbit-item[data-sector="finance"]{
- width:clamp(162px,19vw,258px);
- aspect-ratio:288/263;
+ width:clamp(280px,31vw,420px);
+ aspect-ratio:3/2;
  filter:drop-shadow(0 14px 22px rgba(0,0,0,.45));
 }
 .orbit-item[data-sector="finance"] button{
@@ -53,6 +53,8 @@ body.orbit-page{overflow-x:hidden;background-color:#020305;background-image:repe
  display:block;width:100%;height:100%;object-fit:contain;
  border:0;filter:none;
 }
+.orbit-item[data-sector="finance"] .orbit-label{display:none!important}
+/* Label is already integrated into the replacement cube artwork. */
 .orbit-item[data-sector="finance"] .orbit-label{
  z-index:3;left:17%;right:17%;top:63%;bottom:auto;
  padding:0;background:none;text-align:center;
@@ -65,7 +67,7 @@ body.orbit-page{overflow-x:hidden;background-color:#020305;background-image:repe
  filter:brightness(1.06) drop-shadow(0 0 12px rgba(106,190,255,.18));
 }
 @media(max-width:760px){
- .orbit-item[data-sector="finance"]{width:clamp(130px,34vw,190px)}
+ .orbit-item[data-sector="finance"]{width:clamp(220px,68vw,340px);aspect-ratio:3/2}
  .orbit-item[data-sector="finance"] .orbit-label{font-size:.52rem}
 }
 .orbit-bottom{display:flex;justify-content:center;align-items:center;gap:.8rem;flex-wrap:wrap;margin-top:-.15rem;position:relative;z-index:8;transition:opacity .25s ease}
@@ -121,7 +123,7 @@ body.orbit-page{overflow-x:hidden;background-color:#020305;background-image:repe
  </section>
  <section class="orbit-stage" id="orbitStage" aria-label="Interactive orbit of six economic sectors">
   <div class="orbit-core" aria-hidden="true"><img src="Kristallkern.png" alt=""></div>
-  <div class="orbit-item" data-sector="finance" data-angle="0"><button type="button" aria-label="Explore Finance and Investment"><span class="cube-domain"><img src="assets/finance-glass-cube.webp" alt="Finance and Investment scene mounted inside a transparent glass cube"></span><span class="orbit-label">Finance &amp; Investment</span></button></div>
+  <div class="orbit-item" data-sector="finance" data-angle="0"><button type="button" aria-label="Explore Finance and Investment"><span class="cube-domain"><img src="file_00000000405481f488f8ad4f3bf7ece0.png" alt="Finance and Investment in a transparent glass cube on a black background"></span></button></div>
   <div class="orbit-item" data-sector="industry" data-angle="60"><button type="button" aria-label="Explore Industry and Manufacturing"><img src="Fabrik.png" alt=""><span class="orbit-label">Industry &amp; Manufacturing</span></button></div>
   <div class="orbit-item" data-sector="resources" data-angle="120"><button type="button" aria-label="Explore Resources and Project Development"><img src="Ressourcen-Kreislauf.png" alt=""><span class="orbit-label">Resources &amp; Project Development</span></button></div>
   <div class="orbit-item" data-sector="technology" data-angle="180"><button type="button" aria-label="Explore Technology, Robotics and Aerospace"><img src="Technologie-Ökosystem.png" alt=""><span class="orbit-label">Technology, Robotics &amp; Aerospace</span></button></div>

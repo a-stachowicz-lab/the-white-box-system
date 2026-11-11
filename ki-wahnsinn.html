@@ -26,14 +26,15 @@
 .editorial-principle p{margin:0}
 @media(max-width:700px){.editorial-grid{grid-template-columns:1fr}.editorial-hero{padding:2.8rem 1rem 2rem}}
 
-.editorial-about{display:flex;align-items:center;gap:1rem;max-width:850px;margin:1.6rem 0 0;padding:1rem 0;border-top:1px solid rgba(188,209,235,.14);border-bottom:1px solid rgba(188,209,235,.14)}
-.editorial-about-photo{width:92px;height:92px;flex:0 0 92px;object-fit:cover;object-position:42% 42%;border-radius:3px;border:1px solid rgba(201,121,75,.48);box-shadow:0 0 14px rgba(201,121,75,.13)}
+.editorial-signature{border-top:1px solid rgba(188,209,235,.12)}
+.editorial-about{display:grid;grid-template-columns:160px minmax(0,1fr);align-items:center;gap:1.4rem;max-width:900px;margin:0 auto;padding:1.5rem;border:1px solid rgba(201,121,75,.28);background:linear-gradient(115deg,rgba(201,121,75,.055),rgba(255,255,255,.012));border-radius:4px}
+.editorial-about-photo{display:block;width:160px;height:160px;object-fit:contain;object-position:center;border-radius:3px;border:1px solid rgba(201,121,75,.42);background:rgba(0,0,0,.18);box-shadow:0 0 14px rgba(201,121,75,.10)}
 .editorial-about-copy{min-width:0}
-.editorial-about-label{font-size:.63rem;letter-spacing:.17em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:0 0 .25rem}
+.editorial-about-label{font-size:.63rem;letter-spacing:.17em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:0 0 .3rem}
 .editorial-about-copy h2{font-size:1.08rem;line-height:1.3;margin:0 0 .3rem;color:#e7edf5}
-.editorial-about-role{font-size:.82rem;line-height:1.45;color:var(--copper-light);margin:0 0 .45rem}
-.editorial-about-copy p:last-child{font-size:.84rem;line-height:1.55;margin:0;color:var(--muted)}
-@media(max-width:540px){.editorial-about{gap:.8rem}.editorial-about-photo{width:82px;height:82px;flex-basis:82px}.editorial-about-copy h2{font-size:1rem}}
+.editorial-about-role{font-size:.82rem;line-height:1.45;color:var(--copper-light);margin:0 0 .55rem}
+.editorial-about-copy p:last-child{font-size:.84rem;line-height:1.6;margin:0;color:var(--muted)}
+@media(max-width:540px){.editorial-about{grid-template-columns:112px minmax(0,1fr);gap:1rem;padding:1rem}.editorial-about-photo{width:112px;height:112px}.editorial-about-copy h2{font-size:1rem}.editorial-about-role{font-size:.76rem}}
 </style>
 </head>
 <body>
@@ -52,15 +53,7 @@
 <p>KI ist längst Teil unseres Alltags. Sie kann unterstützen, beschleunigen und neue Möglichkeiten eröffnen. Gleichzeitig entstehen neue Abhängigkeiten, falsche Erwartungen und Fragen, die nicht verschwinden, nur weil eine Antwort überzeugend klingt.</p>
 <p>Hier sammle ich Gedanken, eigene Erfahrungen, Beobachtungen und Analysen rund um künstliche Intelligenz – kritisch, neugierig und ohne den Anspruch, auf jede Frage schon eine fertige Antwort zu haben.</p>
 
-<aside class="editorial-about" aria-label="Über die Autorin">
-<img class="editorial-about-photo" src="assets/agnieszka-portrait.webp" alt="Porträt von Agnieszka" width="92" height="92" loading="lazy">
-<div class="editorial-about-copy">
-<p class="editorial-about-label">Wer hier schreibt</p>
-<h2>Agnieszka</h2>
-<p class="editorial-about-role">Praktikerin · Entwicklerin von THE WHITE-BOX SYSTEM – Systemdiagnose</p>
-<p>Mich interessieren die Zusammenhänge hinter den Dingen: wie Menschen, Technologien und Systeme miteinander wirken. KI nutze ich als gezielt geführtes Arbeitsinstrument – mit eigenen Fragen, kritischer Prüfung und menschlicher Entscheidung.</p>
-</div>
-</aside>
+
 
 </div>
 <figure class="hero-image editorial-hero-image">
@@ -160,6 +153,20 @@
 <a class="button button-secondary" href="pruefung.html">KI-Ausgaben prüfen</a>
 </div>
 </div>
+</div>
+</section>
+
+<section class="section editorial-signature">
+<div class="section-inner">
+<aside class="editorial-about" aria-label="Wer hier schreibt">
+<img class="editorial-about-photo" src="assets/agnieszka-portrait.webp" alt="Porträt von Agnieszka" width="160" height="160" loading="lazy">
+<div class="editorial-about-copy">
+<p class="editorial-about-label">Wer hier schreibt</p>
+<h2>Agnieszka</h2>
+<p class="editorial-about-role">Praktikerin und Entwicklerin von THE WHITE-BOX SYSTEM – Systemdiagnose</p>
+<p>Mein fachlicher Hintergrund liegt in der Oberflächentechnik und Oberflächenbeschichtung. Aus einem konkreten Materialproblem heraus begann ich, Wechselwirkungen zwischen Materialien, Prozessen und Umgebungsbedingungen genauer zu untersuchen. Diese praktische Perspektive prägt bis heute meine Arbeit.</p>
+</div>
+</aside>
 </div>
 </section>
 </main>

@@ -32,89 +32,68 @@ body.orbit-page{overflow-x:hidden;background-color:#010204;background-image:repe
 .orbit-item button:hover,.orbit-item button:focus-visible{border-color:var(--orbit-copper-light);box-shadow:0 0 0 1px rgba(242,192,154,.3),0 0 24px rgba(201,121,75,.24),0 18px 44px rgba(0,0,0,.68);outline:none}
 .orbit-item button:hover{transform:translateY(-3px)}
 
-/* 3D transparent glass-cube prototype: Finance sector only */
+/* Integrated glass-cube prototype: Finance sector only */
 .orbit-item[data-sector="finance"]{
  width:clamp(162px,19vw,258px);
- filter:drop-shadow(0 14px 22px rgba(0,0,0,.42));
+ filter:drop-shadow(0 16px 24px rgba(0,0,0,.48));
 }
 .orbit-item[data-sector="finance"] button{
- width:88%;height:88%;margin:6% auto 0;
- overflow:visible;
- position:relative;
- border:1px solid rgba(184,222,255,.78);
- border-radius:2px;
- background:linear-gradient(145deg,rgba(130,205,255,.13),rgba(4,13,25,.26) 48%,rgba(201,121,75,.12));
+ width:84%;height:84%;margin:8% auto 0;
+ position:relative;overflow:visible;
+ border:1px solid rgba(177,220,255,.82);
+ border-radius:1px;
+ background:linear-gradient(145deg,rgba(100,177,224,.13),rgba(4,12,22,.3) 55%,rgba(201,121,75,.12));
+ transform:rotateY(-5deg) rotateX(2deg);
  transform-style:preserve-3d;
- transform:rotateY(-5deg) rotateX(3deg);
  box-shadow:
-  inset 0 0 0 1px rgba(255,255,255,.2),
-  inset 0 0 32px rgba(106,190,255,.2),
-  0 0 0 1px rgba(201,121,75,.42),
-  0 0 24px rgba(95,177,255,.2),
-  0 18px 35px rgba(0,0,0,.62);
+  inset 0 0 0 1px rgba(255,255,255,.18),
+  inset 0 0 30px rgba(110,190,255,.2),
+  0 0 0 1px rgba(201,121,75,.35),
+  0 14px 30px rgba(0,0,0,.6);
 }
+/* Image is the front face; the two adjoining planes form one continuous body. */
 .orbit-item[data-sector="finance"] button:before{
  content:"";
- position:absolute;inset:0;z-index:2;
- background:
-  linear-gradient(118deg,rgba(226,246,255,.28),transparent 20%,transparent 72%,rgba(201,121,75,.2)),
-  linear-gradient(0deg,rgba(3,10,18,.18),transparent 45%);
- border:1px solid rgba(210,237,255,.42);
- box-shadow:inset 0 0 24px rgba(152,211,255,.18);
+ position:absolute;z-index:0;
+ left:0;right:0;top:-15%;height:15%;
+ border:1px solid rgba(190,226,255,.82);
+ border-bottom:1px solid rgba(190,226,255,.65);
+ background:linear-gradient(155deg,rgba(208,239,255,.42),rgba(65,133,177,.24) 48%,rgba(8,25,41,.76));
+ clip-path:polygon(0 100%,15% 0,100% 0,85% 100%);
+ box-shadow:inset 0 0 18px rgba(175,224,255,.22);
  pointer-events:none;
 }
 .orbit-item[data-sector="finance"] button:after{
  content:"";
  position:absolute;z-index:0;
- top:5%;bottom:-1px;right:-13%;
- width:13%;
- background:
-  linear-gradient(180deg,rgba(177,224,255,.42),rgba(21,58,86,.68) 45%,rgba(5,15,25,.94) 82%,rgba(201,121,75,.48));
- border:1px solid rgba(184,222,255,.72);
+ top:0;bottom:0;right:-15%;width:15%;
+ border:1px solid rgba(190,226,255,.82);
  border-left:0;
- clip-path:polygon(0 0,100% 8%,100% 100%,0 92%);
- box-shadow:inset -7px 0 14px rgba(0,0,0,.35);
+ background:linear-gradient(90deg,rgba(83,157,203,.38),rgba(12,35,54,.88) 65%,rgba(201,121,75,.34));
+ clip-path:polygon(0 0,100% 13%,100% 87%,0 100%);
+ box-shadow:inset -7px 0 14px rgba(0,0,0,.32);
  pointer-events:none;
 }
 .orbit-item[data-sector="finance"] img{
  position:relative;z-index:1;
  display:block;width:100%;height:100%;object-fit:cover;
- border:1px solid rgba(190,225,255,.24);
- filter:saturate(.88) contrast(1.08) brightness(.88);
+ border:0;
+ filter:saturate(.9) contrast(1.08) brightness(.9);
 }
 .orbit-item[data-sector="finance"] .orbit-label{
- z-index:3;
+ z-index:2;
  background:linear-gradient(transparent,rgba(1,2,4,.96));
  text-shadow:0 1px 8px rgba(0,0,0,.95);
 }
-.orbit-item[data-sector="finance"]::before{
- content:"";
- position:absolute;z-index:4;
- top:-1%;left:6%;width:88%;height:12%;
- background:linear-gradient(180deg,rgba(213,239,255,.34),rgba(77,147,193,.16) 60%,rgba(201,121,75,.2));
- border:1px solid rgba(196,228,255,.78);
- clip-path:polygon(8% 100%,100% 0,100% 72%,8% 100%);
- transform:skewY(-0.5deg);
- filter:drop-shadow(0 -2px 5px rgba(100,190,255,.28));
- pointer-events:none;
-}
-.orbit-item[data-sector="finance"]::after{
- content:"";
- position:absolute;z-index:4;
- top:4%;right:-7%;width:13%;height:84%;
- background:linear-gradient(90deg,rgba(86,163,211,.22),rgba(201,121,75,.28));
- border-right:1px solid rgba(201,121,75,.72);
- transform:skewY(-5deg);
- pointer-events:none;
-}
 .orbit-item[data-sector="finance"] button:hover{
- transform:translateY(-5px) rotateY(-7deg) rotateX(4deg);
- box-shadow:inset 0 0 34px rgba(125,202,255,.24),0 0 30px rgba(100,190,255,.24),0 20px 40px rgba(0,0,0,.68);
+ transform:translateY(-4px) rotateY(-7deg) rotateX(3deg);
+ box-shadow:inset 0 0 32px rgba(125,202,255,.24),0 0 26px rgba(100,190,255,.22),0 18px 38px rgba(0,0,0,.68);
 }
 @media(max-width:760px){
  .orbit-item[data-sector="finance"]{width:clamp(130px,34vw,190px)}
- .orbit-item[data-sector="finance"] button{width:88%;height:88%}
- .orbit-item[data-sector="finance"] button:after{right:-13%;width:13%}
+ .orbit-item[data-sector="finance"] button{width:84%;height:84%;margin-top:8%}
+ .orbit-item[data-sector="finance"] button:before{top:-15%;height:15%}
+ .orbit-item[data-sector="finance"] button:after{right:-15%;width:15%}
 }
 .orbit-bottom{display:flex;justify-content:center;align-items:center;gap:.8rem;flex-wrap:wrap;margin-top:-.15rem;position:relative;z-index:8;transition:opacity .25s ease}
 .orbit-control{border:1px solid rgba(201,121,75,.48);background:rgba(4,6,10,.88);color:#ead8cc;border-radius:3px;padding:.65rem 1rem;cursor:pointer;font:inherit;font-size:.85rem}

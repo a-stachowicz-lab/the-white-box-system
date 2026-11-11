@@ -31,6 +31,56 @@ body.orbit-page{overflow-x:hidden;background-color:#010204;background-image:repe
 .orbit-item .orbit-label{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:2.6rem .9rem .85rem;text-align:left;color:#f3f8ff;font-size:.84rem;font-weight:600;letter-spacing:.015em;line-height:1.25;background:linear-gradient(transparent,rgba(1,2,4,.98))}
 .orbit-item button:hover,.orbit-item button:focus-visible{border-color:var(--orbit-copper-light);box-shadow:0 0 0 1px rgba(242,192,154,.3),0 0 24px rgba(201,121,75,.24),0 18px 44px rgba(0,0,0,.68);outline:none}
 .orbit-item button:hover{transform:translateY(-3px)}
+
+/* Single 3D glass-cube prototype: Finance sector only */
+.orbit-item[data-sector="finance"]{width:clamp(162px,19vw,258px)}
+.orbit-item[data-sector="finance"] button{
+ width:88%;height:88%;margin:0 auto;overflow:visible;
+ border:1px solid rgba(201,121,75,.72);
+ border-radius:2px;
+ background:linear-gradient(145deg,rgba(116,190,235,.18),rgba(5,10,18,.94) 58%,rgba(201,121,75,.12));
+ transform-style:preserve-3d;
+ perspective:900px;
+ box-shadow:inset 0 0 24px rgba(125,202,255,.12),0 10px 25px rgba(0,0,0,.58),0 0 18px rgba(201,121,75,.14);
+}
+.orbit-item[data-sector="finance"] button:before{
+ inset:0;
+ background:linear-gradient(135deg,rgba(180,224,255,.22),rgba(100,170,220,.04) 35%,transparent 62%,rgba(201,121,75,.18));
+ border:1px solid rgba(190,225,255,.24);
+ box-shadow:inset 0 0 18px rgba(160,210,255,.13);
+}
+.orbit-item[data-sector="finance"] button:after{
+ content:"";
+ position:absolute;
+ z-index:0;
+ top:7px;bottom:-1px;right:-13px;width:13px;
+ background:linear-gradient(180deg,rgba(115,177,215,.24),rgba(9,22,35,.92) 58%,rgba(201,121,75,.28));
+ border:1px solid rgba(201,121,75,.58);
+ border-left:0;
+ transform:skewY(-38deg);
+ transform-origin:left center;
+ box-shadow:5px 7px 12px rgba(0,0,0,.35);
+ pointer-events:none;
+}
+.orbit-item[data-sector="finance"] img{
+ position:relative;z-index:0;
+ width:100%;height:100%;object-fit:cover;
+ border:1px solid rgba(190,225,255,.16);
+ filter:saturate(.9) contrast(1.04);
+}
+.orbit-item[data-sector="finance"] .orbit-label{
+ background:linear-gradient(transparent,rgba(1,2,4,.97));
+ text-shadow:0 1px 8px rgba(0,0,0,.9);
+}
+.orbit-item[data-sector="finance"] button:hover{
+ transform:translateY(-5px) rotateY(-3deg) rotateX(2deg);
+ box-shadow:inset 0 0 26px rgba(125,202,255,.18),0 16px 32px rgba(0,0,0,.65),0 0 25px rgba(201,121,75,.22);
+}
+@media(max-width:760px){
+ .orbit-item[data-sector="finance"]{width:clamp(130px,34vw,190px)}
+ .orbit-item[data-sector="finance"] button{width:88%;height:88%}
+ .orbit-item[data-sector="finance"] button:after{right:-10px;width:10px}
+}
 .orbit-bottom{display:flex;justify-content:center;align-items:center;gap:.8rem;flex-wrap:wrap;margin-top:-.15rem;position:relative;z-index:8;transition:opacity .25s ease}
 .orbit-control{border:1px solid rgba(201,121,75,.48);background:rgba(4,6,10,.88);color:#ead8cc;border-radius:3px;padding:.65rem 1rem;cursor:pointer;font:inherit;font-size:.85rem}
 .orbit-control:hover,.orbit-control:focus-visible{border-color:var(--orbit-copper-light);outline:none;box-shadow:0 0 14px rgba(201,121,75,.12)}

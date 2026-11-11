@@ -25,6 +25,14 @@
 .editorial-principle h3{margin-bottom:.4rem}
 .editorial-principle p{margin:0}
 @media(max-width:700px){.editorial-grid{grid-template-columns:1fr}.editorial-hero{padding:2.8rem 1rem 2rem}}
+
+.editorial-about{display:flex;align-items:flex-start;gap:.85rem;max-width:850px;margin:1.45rem 0 0;padding-top:1.1rem;border-top:1px solid rgba(188,209,235,.14)}
+.editorial-about-photo{width:48px;height:48px;flex:0 0 48px;object-fit:cover;object-position:center;border-radius:50%;border:1px solid rgba(201,121,75,.55);box-shadow:0 0 9px rgba(201,121,75,.12)}
+.editorial-about-copy{min-width:0}
+.editorial-about-label{font-size:.63rem;letter-spacing:.17em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:0 0 .35rem}
+.editorial-about-copy p{font-size:.86rem;line-height:1.6;margin:0 0 .55rem}
+.editorial-about-copy p:last-child{margin-bottom:0}
+
 </style>
 </head>
 <body>
@@ -42,6 +50,17 @@
 <p class="lead">Zwischen großen Versprechen, brauchbaren Werkzeugen und unbequemen Fragen.</p>
 <p>KI ist längst Teil unseres Alltags. Sie kann unterstützen, beschleunigen und neue Möglichkeiten eröffnen. Gleichzeitig entstehen neue Abhängigkeiten, falsche Erwartungen und Fragen, die nicht verschwinden, nur weil eine Antwort überzeugend klingt.</p>
 <p>Hier sammle ich Gedanken, eigene Erfahrungen, Beobachtungen und Analysen rund um künstliche Intelligenz – kritisch, neugierig und ohne den Anspruch, auf jede Frage schon eine fertige Antwort zu haben.</p>
+
+<aside class="editorial-about" aria-label="Über die Autorin">
+<img class="editorial-about-photo" src="assets/agnieszka-portrait.webp" alt="Porträt von Agnieszka" width="48" height="48" loading="lazy">
+<div class="editorial-about-copy">
+<p class="editorial-about-label">Wer hier schreibt</p>
+<p><strong>Ich bin Agnieszka – Praktikerin und Entwicklerin von THE WHITE-BOX SYSTEM – Systemdiagnose.</strong></p>
+<p>Mein fachlicher Zugang entstand aus der praktischen Arbeit in der Oberflächentechnik und Oberflächenbeschichtung. Aus einem konkreten Materialproblem heraus begann ich, Wechselwirkungen zwischen Materialien, Prozessen, Grenzflächen und Umgebungsbedingungen systematisch zu untersuchen. Daraus entwickelte sich THE WHITE-BOX SYSTEM.</p>
+<p>KI nutze ich als gezielt geführtes Arbeitsinstrument: Ich formuliere Fragestellungen, prüfe Ergebnisse, hinterfrage Aussagen und überarbeite sie. Die fachliche Einordnung und die Entscheidungen bleiben bei mir. Diese Website macht einen Teil dieses Entwicklungsprozesses sichtbar.</p>
+</div>
+</aside>
+
 </div>
 <figure class="hero-image editorial-hero-image">
 <img src="assets/ki-wahnsinn-hero-q84.webp" alt="Eine Person betrachtet eine große digitale KI-Gesichtsprojektion und vielfältige Themenbilder – Mensch und künstliche Intelligenz im Dialog." loading="eager" fetchpriority="high">

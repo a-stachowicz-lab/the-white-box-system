@@ -26,13 +26,14 @@
 .editorial-principle p{margin:0}
 @media(max-width:700px){.editorial-grid{grid-template-columns:1fr}.editorial-hero{padding:2.8rem 1rem 2rem}}
 
-.editorial-about{display:flex;align-items:flex-start;gap:.85rem;max-width:850px;margin:1.45rem 0 0;padding-top:1.1rem;border-top:1px solid rgba(188,209,235,.14)}
-.editorial-about-photo{width:48px;height:48px;flex:0 0 48px;object-fit:cover;object-position:center;border-radius:50%;border:1px solid rgba(201,121,75,.55);box-shadow:0 0 9px rgba(201,121,75,.12)}
+.editorial-about{display:flex;align-items:center;gap:1rem;max-width:850px;margin:1.6rem 0 0;padding:1rem 0;border-top:1px solid rgba(188,209,235,.14);border-bottom:1px solid rgba(188,209,235,.14)}
+.editorial-about-photo{width:92px;height:92px;flex:0 0 92px;object-fit:cover;object-position:42% 42%;border-radius:3px;border:1px solid rgba(201,121,75,.48);box-shadow:0 0 14px rgba(201,121,75,.13)}
 .editorial-about-copy{min-width:0}
-.editorial-about-label{font-size:.63rem;letter-spacing:.17em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:0 0 .35rem}
-.editorial-about-copy p{font-size:.86rem;line-height:1.6;margin:0 0 .55rem}
-.editorial-about-copy p:last-child{margin-bottom:0}
-
+.editorial-about-label{font-size:.63rem;letter-spacing:.17em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:0 0 .25rem}
+.editorial-about-copy h2{font-size:1.08rem;line-height:1.3;margin:0 0 .3rem;color:#e7edf5}
+.editorial-about-role{font-size:.82rem;line-height:1.45;color:var(--copper-light);margin:0 0 .45rem}
+.editorial-about-copy p:last-child{font-size:.84rem;line-height:1.55;margin:0;color:var(--muted)}
+@media(max-width:540px){.editorial-about{gap:.8rem}.editorial-about-photo{width:82px;height:82px;flex-basis:82px}.editorial-about-copy h2{font-size:1rem}}
 </style>
 </head>
 <body>
@@ -52,12 +53,12 @@
 <p>Hier sammle ich Gedanken, eigene Erfahrungen, Beobachtungen und Analysen rund um künstliche Intelligenz – kritisch, neugierig und ohne den Anspruch, auf jede Frage schon eine fertige Antwort zu haben.</p>
 
 <aside class="editorial-about" aria-label="Über die Autorin">
-<img class="editorial-about-photo" src="assets/agnieszka-portrait.webp" alt="Porträt von Agnieszka" width="48" height="48" loading="lazy">
+<img class="editorial-about-photo" src="assets/agnieszka-portrait.webp" alt="Porträt von Agnieszka" width="92" height="92" loading="lazy">
 <div class="editorial-about-copy">
 <p class="editorial-about-label">Wer hier schreibt</p>
-<p><strong>Ich bin Agnieszka – Praktikerin und Entwicklerin von THE WHITE-BOX SYSTEM – Systemdiagnose.</strong></p>
-<p>Mein fachlicher Zugang entstand aus der praktischen Arbeit in der Oberflächentechnik und Oberflächenbeschichtung. Aus einem konkreten Materialproblem heraus begann ich, Wechselwirkungen zwischen Materialien, Prozessen, Grenzflächen und Umgebungsbedingungen systematisch zu untersuchen. Daraus entwickelte sich THE WHITE-BOX SYSTEM.</p>
-<p>KI nutze ich als gezielt geführtes Arbeitsinstrument: Ich formuliere Fragestellungen, prüfe Ergebnisse, hinterfrage Aussagen und überarbeite sie. Die fachliche Einordnung und die Entscheidungen bleiben bei mir. Diese Website macht einen Teil dieses Entwicklungsprozesses sichtbar.</p>
+<h2>Agnieszka</h2>
+<p class="editorial-about-role">Praktikerin · Entwicklerin von THE WHITE-BOX SYSTEM – Systemdiagnose</p>
+<p>Mich interessieren die Zusammenhänge hinter den Dingen: wie Menschen, Technologien und Systeme miteinander wirken. KI nutze ich als gezielt geführtes Arbeitsinstrument – mit eigenen Fragen, kritischer Prüfung und menschlicher Entscheidung.</p>
 </div>
 </aside>
 

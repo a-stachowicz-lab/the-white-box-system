@@ -47,6 +47,11 @@ body.orbit-page{overflow-x:hidden;background-color:#000000;background-image:repe
 .cube-discharge path{fill:none;stroke:#7bdcff;stroke-width:.42;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1 18;opacity:0;filter:drop-shadow(0 0 2px rgba(82,190,255,.95))}
 .cube-discharge path:nth-child(2n){stroke:#f2bd83;stroke-width:.36;filter:drop-shadow(0 0 2px rgba(255,181,112,.85))}
 .cube-discharge .spark-run{animation:cube-spark 5.6s ease-in-out infinite}
+.plasma-touch{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:4;opacity:0;transition:opacity .12s ease}
+.plasma-touch.is-active{opacity:1}
+.plasma-touch path{fill:none;stroke:#80dcff;stroke-width:.58;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 2px rgba(82,190,255,.95)) drop-shadow(0 0 5px rgba(82,190,255,.42));stroke-dasharray:1 3}
+.plasma-touch path:nth-child(2n){stroke:#f2bd83;stroke-width:.46;filter:drop-shadow(0 0 2px rgba(255,181,112,.9))}
+.plasma-touch .plasma-core{fill:#b9efff;stroke:#f2bd83;stroke-width:.45;filter:drop-shadow(0 0 4px rgba(105,214,255,.95))}
 .cube-discharge path:nth-child(2){animation-delay:1.1s}
 .cube-discharge path:nth-child(3){animation-delay:2.4s}
 .cube-discharge path:nth-child(4){animation-delay:3.7s}
@@ -162,6 +167,70 @@ Describe the situation you are facing and the question you need to resolve. I ex
      svg.appendChild(path);
    });
    item.appendChild(svg);
+
+   // Touch-reactive plasma filaments: converge on the active pointer position.
+   const plasma=document.createElementNS(ns,'svg');
+   plasma.setAttribute('class','plasma-touch');
+   plasma.setAttribute('viewBox','0 0 100 100');
+   plasma.setAttribute('preserveAspectRatio','none');
+   const plasmaPaths=[];
+   for(let ray=0;ray<9;ray++){
+     const path=document.createElementNS(ns,'path');
+     plasma.appendChild(path);
+     plasmaPaths.push(path);
+   }
+   const plasmaCore=document.createElementNS(ns,'circle');
+   plasmaCore.setAttribute('class','plasma-core');
+   plasmaCore.setAttribute('r','1.05');
+   plasma.appendChild(plasmaCore);
+   item.appendChild(plasma);
+
+   const button=item.querySelector('button');
+   let plasmaActive=false, plasmaTimer=0;
+   const drawPlasma=(event)=>{
+     const rect=button.getBoundingClientRect();
+     const tx=Math.max(8,Math.min(92,(event.clientX-rect.left)/rect.width*100));
+     const ty=Math.max(8,Math.min(92,(event.clientY-rect.top)/rect.height*100));
+     plasmaCore.setAttribute('cx',tx.toFixed(1));
+     plasmaCore.setAttribute('cy',ty.toFixed(1));
+     plasmaPaths.forEach((path,ray)=>{
+       const angle=(Math.PI*2*ray/9)+(i*.37);
+       const sx=50+Math.cos(angle)*49, sy=50+Math.sin(angle)*49;
+       const dx=tx-sx, dy=ty-sy, length=Math.hypot(dx,dy)||1;
+       const nx=-dy/length, ny=dx/length;
+       const bend=((ray%2)?1:-1)*(3.2+(ray%3)*1.5);
+       const p1x=sx+dx*.32+nx*bend, p1y=sy+dy*.32+ny*bend;
+       const p2x=sx+dx*.67-nx*bend*.55, p2y=sy+dy*.67-ny*bend*.55;
+       const jitter=(ray%3-1)*1.15;
+       path.setAttribute('d','M '+sx.toFixed(1)+' '+sy.toFixed(1)+' L '+(p1x+jitter).toFixed(1)+' '+(p1y-jitter).toFixed(1)+' L '+p2x.toFixed(1)+' '+p2y.toFixed(1)+' L '+tx.toFixed(1)+' '+ty.toFixed(1));
+     });
+   };
+   const activate=(event)=>{
+     plasmaActive=true;
+     window.clearTimeout(plasmaTimer);
+     plasma.classList.add('is-active');
+     drawPlasma(event);
+   };
+   button.addEventListener('pointerenter',(event)=>{
+     if(event.pointerType==='mouse') activate(event);
+   });
+   button.addEventListener('pointermove',(event)=>{
+     if(plasmaActive || event.pointerType==='mouse') activate(event);
+   });
+   button.addEventListener('pointerdown',activate);
+   const releasePlasma=(event)=>{
+     if(event.pointerType==='mouse') return;
+     plasmaActive=false;
+     plasmaTimer=window.setTimeout(()=>plasma.classList.remove('is-active'),420);
+   };
+   button.addEventListener('pointerup',releasePlasma);
+   button.addEventListener('pointercancel',releasePlasma);
+   button.addEventListener('pointerleave',(event)=>{
+     if(event.pointerType==='mouse'){
+       plasmaActive=false;
+       plasma.classList.remove('is-active');
+     }
+   });
  });
  const energySvg = document.getElementById('energyLinks');
  const energyPaths = items.map((item,i) => {

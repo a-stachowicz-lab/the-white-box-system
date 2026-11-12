@@ -25,16 +25,16 @@ body.orbit-page{overflow-x:hidden;background-color:#000000;background-image:repe
 .orbit-core img{display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:screen}
 .orbit-core{animation:core-float 9s ease-in-out infinite}
 /* Continuous, gentle 3D double-lemniscate motion: crossed infinity paths. */
-.orbit-core{transform-style:preserve-3d;will-change:transform;animation:core-double-lemniscate 24s linear infinite}
+.orbit-core{transform-style:preserve-3d;will-change:transform;animation:core-double-lemniscate 18s linear infinite}
 @keyframes core-double-lemniscate{
   0%{transform:translate(-50%,-50%) translate3d(0,0,0) rotateX(0deg) rotateY(0deg) rotateZ(0deg)}
-  12.5%{transform:translate(-50%,-50%) translate3d(18px,14px,10px) rotateX(24deg) rotateY(23deg) rotateZ(18deg)}
-  25%{transform:translate(-50%,-50%) translate3d(0,0,0) rotateX(0deg) rotateY(32deg) rotateZ(0deg)}
-  37.5%{transform:translate(-50%,-50%) translate3d(-18px,-14px,-10px) rotateX(-24deg) rotateY(23deg) rotateZ(-18deg)}
+  12.5%{transform:translate(-50%,-50%) translate3d(34px,26px,20px) rotateX(38deg) rotateY(42deg) rotateZ(28deg)}
+  25%{transform:translate(-50%,-50%) translate3d(0,0,0) rotateX(0deg) rotateY(55deg) rotateZ(0deg)}
+  37.5%{transform:translate(-50%,-50%) translate3d(-34px,-26px,-20px) rotateX(-38deg) rotateY(42deg) rotateZ(-28deg)}
   50%{transform:translate(-50%,-50%) translate3d(0,0,0) rotateX(0deg) rotateY(0deg) rotateZ(0deg)}
-  62.5%{transform:translate(-50%,-50%) translate3d(18px,-14px,-10px) rotateX(-24deg) rotateY(-23deg) rotateZ(18deg)}
-  75%{transform:translate(-50%,-50%) translate3d(0,0,0) rotateX(0deg) rotateY(-32deg) rotateZ(0deg)}
-  87.5%{transform:translate(-50%,-50%) translate3d(-18px,14px,10px) rotateX(24deg) rotateY(-23deg) rotateZ(-18deg)}
+  62.5%{transform:translate(-50%,-50%) translate3d(34px,-26px,-20px) rotateX(-38deg) rotateY(-42deg) rotateZ(28deg)}
+  75%{transform:translate(-50%,-50%) translate3d(0,0,0) rotateX(0deg) rotateY(-55deg) rotateZ(0deg)}
+  87.5%{transform:translate(-50%,-50%) translate3d(-34px,26px,20px) rotateX(38deg) rotateY(-42deg) rotateZ(-28deg)}
   100%{transform:translate(-50%,-50%) translate3d(0,0,0) rotateX(0deg) rotateY(0deg) rotateZ(0deg)}
 }
 @media(prefers-reduced-motion:reduce){.orbit-core{animation:none!important}}

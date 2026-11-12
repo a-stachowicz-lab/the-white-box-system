@@ -21,6 +21,13 @@ body.orbit-page{overflow-x:hidden;background-color:#000000;background-image:repe
 .orbit-heading .lead{max-width:620px;margin:0 auto;color:#c1d2e2;font-size:clamp(.95rem,1.5vw,1.12rem)}
 .orbit-stage{height:clamp(650px,65vw,900px);min-height:650px;position:relative;isolation:isolate;margin:0 auto;overflow:hidden;perspective:1450px;background:#000000;transition:height .5s ease,opacity .35s ease}
 .orbit-stage:before,.orbit-stage:after{content:none!important;display:none!important}
+.energy-links{position:absolute;inset:0;width:100%;height:100%;z-index:1;overflow:visible;pointer-events:none}
+.energy-links .energy-base{fill:none;stroke:rgba(61,177,255,.34);stroke-width:1.15;stroke-linecap:round;filter:drop-shadow(0 0 3px rgba(45,165,255,.45))}
+.energy-links .energy-gold{fill:none;stroke:rgba(238,177,105,.42);stroke-width:.7;stroke-linecap:round;stroke-dasharray:2 15;animation:energy-flow 4.8s linear infinite;filter:drop-shadow(0 0 3px rgba(255,178,94,.55))}
+.energy-links .energy-pulse{fill:none;stroke:rgba(124,218,255,.92);stroke-width:1.8;stroke-linecap:round;stroke-dasharray:2 100;animation:energy-pulse 3.8s ease-in-out infinite;filter:drop-shadow(0 0 5px rgba(82,190,255,.9))}
+.energy-links .energy-node{fill:#f3c18b;opacity:.75;filter:drop-shadow(0 0 4px rgba(255,184,112,.85))}
+@keyframes energy-flow{to{stroke-dashoffset:-68}}
+@keyframes energy-pulse{0%,100%{stroke-dasharray:1 120;opacity:.08}18%{opacity:.95}55%{stroke-dasharray:34 120;opacity:.9}82%{opacity:.12}}
 .orbit-core{position:absolute;z-index:5;left:50%;top:51%;width:clamp(230px,31vw,430px);aspect-ratio:1.78;transform:translate(-50%,-50%);pointer-events:none;filter:none;transition:opacity .3s ease,transform .45s ease}
 .orbit-core img{display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:screen;mask-image:radial-gradient(ellipse 52% 66% at 50% 50%,#000 72%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 52% 66% at 50% 50%,#000 72%,transparent 100%)}
 .orbit-core{animation:core-float 12s ease-in-out infinite}
@@ -33,6 +40,7 @@ body.orbit-page{overflow-x:hidden;background-color:#000000;background-image:repe
   75%{transform:translate(-50%,-50%) translate3d(0,7px,-2px) rotateX(-2deg) rotateY(2deg) rotateZ(1deg) scale(1.005)}
 }
 @media(prefers-reduced-motion:reduce){.orbit-core{animation:none!important}}
+@media(prefers-reduced-motion:reduce){.energy-links .energy-gold,.energy-links .energy-pulse{animation:none!important;opacity:.24}}
 .orbit-item{position:absolute;left:50%;top:51%;width:clamp(190px,22vw,300px);aspect-ratio:1/1;transform:translate3d(-50%,-50%,0);transform-origin:center;opacity:.95;transition:opacity .35s ease,filter .3s ease,width .45s ease;will-change:transform;z-index:2}
 .orbit-item button{appearance:none;display:block;width:100%;height:100%;padding:0;border:0;border-radius:0;overflow:visible;background:transparent;cursor:pointer;box-shadow:none;position:relative;transition:filter .25s ease,transform .25s ease}
 .orbit-item button:before{content:none!important}
@@ -98,6 +106,7 @@ body.orbit-page{overflow-x:hidden;background-color:#000000;background-image:repe
   <p>THE WHITE-BOX SYSTEM approaches these situations through a structured system diagnosis — making relevant relationships, conflicts and dependencies visible.</p>
  </section>
  <section class="orbit-stage" id="orbitStage" aria-label="Interactive orbit of seven domains">
+  <svg class="energy-links" id="energyLinks" aria-hidden="true" focusable="false"></svg>
   <div class="orbit-core" aria-hidden="true"><img src="file_00000000e2dc8210bdefc7fe7b9ae5ff.png" alt=""></div>
   <div class="orbit-item" data-sector="finance" data-angle="0"><button type="button" aria-label="Explore Finance and Investment"><img src="file_00000000c77081f4916b07d8d5a9ddd0.png" alt="Finance and Investment glass cube"></button></div>
   <div class="orbit-item" data-sector="industry" data-angle="51.43"><button type="button" aria-label="Explore Industry and Manufacturing"><img src="file_000000007d8c82109ba440224afed03d.png" alt="Industry and Manufacturing glass cube"></button></div>
@@ -125,6 +134,17 @@ Describe the situation you are facing and the question you need to resolve. I ex
  const page = document.body;
  const stage = document.getElementById('orbitStage');
  const items = [...stage.querySelectorAll('.orbit-item')];
+ const energySvg = document.getElementById('energyLinks');
+ const energyPaths = items.map((item,i) => {
+   const ns='http://www.w3.org/2000/svg';
+   const group=document.createElementNS(ns,'g');
+   const base=document.createElementNS(ns,'path'); base.setAttribute('class','energy-base');
+   const gold=document.createElementNS(ns,'path'); gold.setAttribute('class','energy-gold'); gold.style.animationDelay=(i*.43)+'s';
+   const pulse=document.createElementNS(ns,'path'); pulse.setAttribute('class','energy-pulse'); pulse.style.animationDelay=(i*.57)+'s';
+   const node=document.createElementNS(ns,'circle'); node.setAttribute('class','energy-node'); node.setAttribute('r','1.8');
+   group.append(base,gold,pulse,node); energySvg.appendChild(group);
+   return {item,base,gold,pulse,node,index:i};
+ });
  const toggle = document.getElementById('motionToggle');
  const title = document.getElementById('detailTitle');
  const text = document.getElementById('detailText');
@@ -155,6 +175,7 @@ Describe the situation you are facing and the question you need to resolve. I ex
    const rx = Math.min(stage.clientWidth * (mobile ? .48 : .43), mobile ? 330 : 600);
    const ry = Math.min(stage.clientHeight * (mobile ? .40 : .31), mobile ? 285 : 280);
    const depth = mobile ? 72 : 190;
+   const points=[];
    items.forEach(item => {
      const angle = rotation + Number(item.dataset.angle) * Math.PI / 180;
      const x = Math.cos(angle) * rx, y = Math.sin(angle) * ry, z = Math.sin(angle) * depth;
@@ -162,6 +183,20 @@ Describe the situation you are facing and the question you need to resolve. I ex
      item.style.transform = 'translate3d(calc(-50% + '+x.toFixed(2)+'px),calc(-50% + '+y.toFixed(2)+'px),'+z.toFixed(2)+'px) scale('+scale.toFixed(3)+')';
      item.style.zIndex = String(Math.round(z + depth + (selected === item.dataset.sector ? 1000 : 0)));
      item.style.opacity = selected && selected !== item.dataset.sector ? '.2' : String(.72 + (z+depth)/(2*depth)*.28);
+     points.push({x:stage.clientWidth/2+x,y:stage.clientHeight*.51+y});
+   });
+   energyPaths.forEach(({item,base,gold,pulse,node,index})=>{
+     const p=points[index], cx=stage.clientWidth/2, cy=stage.clientHeight*.51;
+     const dx=p.x-cx,dy=p.y-cy,len=Math.max(1,Math.hypot(dx,dy)),ux=dx/len,uy=dy/len;
+     const start=mobile?56:76, end=Math.min(item.offsetWidth*.39, mobile?54:72);
+     const sx=cx+ux*start, sy=cy+uy*start, ex=p.x-ux*end, ey=p.y-uy*end;
+     const bend=(index%2?1:-1)*(mobile?10:17);
+     const mx=(sx+ex)/2-uy*bend, my=(sy+ey)/2+ux*bend;
+     const d='M '+sx.toFixed(1)+' '+sy.toFixed(1)+' Q '+mx.toFixed(1)+' '+my.toFixed(1)+' '+ex.toFixed(1)+' '+ey.toFixed(1);
+     [base,gold,pulse].forEach(path=>path.setAttribute('d',d));
+     node.setAttribute('cx',ex.toFixed(1)); node.setAttribute('cy',ey.toFixed(1));
+     const active=selected===item.dataset.sector;
+     [base,gold,pulse,node].forEach(el=>el.style.opacity=selected?(active?'1':'.08'):'');
    });
    raf = requestAnimationFrame(layout);
  }

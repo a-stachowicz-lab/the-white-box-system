@@ -161,7 +161,8 @@ Describe the situation you are facing and the question you need to resolve. I ex
    const key = item.dataset.sector, s = sectors[key];
    if (!s) return;
    selected = key; paused = true; page.classList.add('is-detail');
-   image.src = s.image + '?sector=' + encodeURIComponent(key); image.alt = s.name + ' sector illustration'; visual.hidden = false;
+   const tileImage = item.querySelector('img');
+   image.src = tileImage.currentSrc || tileImage.src; image.alt = s.name + ' sector illustration'; visual.hidden = false;
    text.style.whiteSpace = 'pre-line';
    title.textContent = s.name; text.textContent = s.intro;
    eyebrow.textContent = 'SECTOR PERSPECTIVE';

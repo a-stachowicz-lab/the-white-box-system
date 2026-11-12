@@ -27,15 +27,14 @@ body.orbit-page{overflow-x:hidden;background-color:#000000;background-image:repe
 .orbit-item button{appearance:none;display:block;width:100%;height:100%;padding:0;border:0;border-radius:0;overflow:visible;background:transparent;cursor:pointer;box-shadow:none;position:relative;transition:filter .25s ease,transform .25s ease}
 .orbit-item button:before{content:none!important}
 .orbit-item img{display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:screen;filter:drop-shadow(0 0 16px rgba(55,157,230,.12))}
-.orbit-item .orbit-label{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:2.6rem .9rem .85rem;text-align:left;color:#f3f8ff;font-size:.84rem;font-weight:600;letter-spacing:.015em;line-height:1.25;background:linear-gradient(transparent,rgba(1,2,4,.98))}
 .orbit-item button:hover,.orbit-item button:focus-visible{filter:brightness(1.12) drop-shadow(0 0 18px rgba(80,190,255,.22));outline:none}
 .orbit-item button:hover{transform:translateY(-3px)}
 
 /* Unified dimensions for all seven domain cubes. */
-.orbit-item[data-sector]{width:clamp(180px,20.2vw,275px);aspect-ratio:1/1}
+.orbit-item[data-sector]{width:clamp(207px,23.2vw,316px);aspect-ratio:1/1}
 .orbit-item[data-sector] img{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 5px rgba(85,160,210,.045))}
 .orbit-item .orbit-label{left:0;right:0;bottom:2%;padding:2.1rem .55rem .55rem;text-align:center;font-size:clamp(.62rem,.8vw,.78rem);line-height:1.18;background:linear-gradient(transparent,rgba(0,0,0,.82))}
-@media(max-width:760px){.orbit-item[data-sector]{width:clamp(145px,32.5vw,220px)}}
+@media(max-width:760px){.orbit-item[data-sector]{width:clamp(167px,37.4vw,253px)}}
 .orbit-bottom{display:flex;justify-content:center;align-items:center;gap:.8rem;flex-wrap:wrap;margin-top:-.15rem;position:relative;z-index:8;transition:opacity .25s ease}
 .orbit-control{border:1px solid rgba(201,121,75,.48);background:rgba(4,6,10,.88);color:#ead8cc;border-radius:3px;padding:.65rem 1rem;cursor:pointer;font:inherit;font-size:.85rem}
 .orbit-control:hover,.orbit-control:focus-visible{border-color:var(--orbit-copper-light);outline:none;box-shadow:0 0 14px rgba(201,121,75,.12)}
@@ -89,13 +88,13 @@ body.orbit-page{overflow-x:hidden;background-color:#000000;background-image:repe
  </section>
  <section class="orbit-stage" id="orbitStage" aria-label="Interactive orbit of seven domains">
   <div class="orbit-core" aria-hidden="true"><img src="file_000000009de081f49320555cfb515a66.png" alt=""></div>
-  <div class="orbit-item" data-sector="finance" data-angle="0"><button type="button" aria-label="Explore Finance and Investment"><img src="file_00000000c77081f4916b07d8d5a9ddd0.png" alt="Finance and Investment glass cube"><span class="orbit-label">Finance &amp; Investment</span></button></div>
-  <div class="orbit-item" data-sector="industry" data-angle="51.43"><button type="button" aria-label="Explore Industry and Manufacturing"><img src="file_00000000d95482108999cdd9eeac2470.png" alt="Industry and Manufacturing glass cube"><span class="orbit-label">Industry &amp; Manufacturing</span></button></div>
-  <div class="orbit-item" data-sector="resources" data-angle="102.86"><button type="button" aria-label="Explore Resources and Project Development"><img src="file_000000007d8c82109ba440224afed03d.png" alt="Resources and Project Development glass cube"><span class="orbit-label">Resources &amp; Project Development</span></button></div>
-  <div class="orbit-item" data-sector="technology" data-angle="154.29"><button type="button" aria-label="Explore Technology and Digital Infrastructure"><img src="file_0000000016d081f48ac7919335616957.png" alt="Technology and Digital Infrastructure glass cube"><span class="orbit-label">Technology &amp; Digital Infrastructure</span></button></div>
-  <div class="orbit-item" data-sector="robotics" data-angle="205.71"><button type="button" aria-label="Explore Robotics and Aerospace"><img src="file_00000000e4fc81f4a7f29946b354ab95.png" alt="Robotics and Aerospace glass cube"><span class="orbit-label">Robotics &amp; Aerospace</span></button></div>
-  <div class="orbit-item" data-sector="energy" data-angle="257.14"><button type="button" aria-label="Explore Energy and Critical Infrastructure"><img src="file_000000005cf081f4b914fceccd1b0f8f.png" alt="Energy and Critical Infrastructure glass cube"><span class="orbit-label">Energy &amp; Critical Infrastructure</span></button></div>
-  <div class="orbit-item" data-sector="logistics" data-angle="308.57"><button type="button" aria-label="Explore Logistics and Supply Chains"><img src="file_00000000f76881f4bc0eb52b55591ee3.png" alt="Logistics and Supply Chains glass cube"><span class="orbit-label">Logistics &amp; Supply Chains</span></button></div>
+  <div class="orbit-item" data-sector="finance" data-angle="0"><button type="button" aria-label="Explore Finance and Investment"><img src="file_00000000c77081f4916b07d8d5a9ddd0.png" alt="Finance and Investment glass cube"></button></div>
+  <div class="orbit-item" data-sector="industry" data-angle="51.43"><button type="button" aria-label="Explore Industry and Manufacturing"><img src="file_00000000d95482108999cdd9eeac2470.png" alt="Industry and Manufacturing glass cube"></button></div>
+  <div class="orbit-item" data-sector="resources" data-angle="102.86"><button type="button" aria-label="Explore Resources and Project Development"><img src="file_000000007d8c82109ba440224afed03d.png" alt="Resources and Project Development glass cube"></button></div>
+  <div class="orbit-item" data-sector="technology" data-angle="154.29"><button type="button" aria-label="Explore Technology and Digital Infrastructure"><img src="file_0000000016d081f48ac7919335616957.png" alt="Technology and Digital Infrastructure glass cube"></button></div>
+  <div class="orbit-item" data-sector="robotics" data-angle="205.71"><button type="button" aria-label="Explore Robotics and Aerospace"><img src="file_00000000e4fc81f4a7f29946b354ab95.png" alt="Robotics and Aerospace glass cube"></button></div>
+  <div class="orbit-item" data-sector="energy" data-angle="257.14"><button type="button" aria-label="Explore Energy and Critical Infrastructure"><img src="file_000000005cf081f4b914fceccd1b0f8f.png" alt="Energy and Critical Infrastructure glass cube"></button></div>
+  <div class="orbit-item" data-sector="logistics" data-angle="308.57"><button type="button" aria-label="Explore Logistics and Supply Chains"><img src="file_00000000f76881f4bc0eb52b55591ee3.png" alt="Logistics and Supply Chains glass cube"></button></div>
   </section>
  <div class="orbit-bottom" id="orbitControls"><button class="orbit-control" id="motionToggle" type="button" aria-pressed="false">Pause orbit</button><span class="orbit-hint">Select a sector to explore its diagnostic perspective</span></div>
  <section class="sector-detail" id="sectorDetail" aria-live="polite">

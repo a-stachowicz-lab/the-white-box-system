@@ -19,10 +19,10 @@ body.orbit-page{overflow-x:hidden;background-color:#000000;background-image:repe
 .orbit-heading h1{margin:.5rem 0 .75rem;font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;color:#dce5ef;font-weight:450;letter-spacing:.005em;text-shadow:0 0 12px rgba(84,229,243,.045)}
 .orbit-heading h1 span{color:var(--copper-light);background:linear-gradient(105deg,#a95f38 0%,#f2c09a 24%,#c8794b 48%,#f4d1b3 68%,#a95f38 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none;filter:drop-shadow(0 0 8px rgba(201,121,75,.18))}
 .orbit-heading .lead{max-width:620px;margin:0 auto;color:#c1d2e2;font-size:clamp(.95rem,1.5vw,1.12rem)}
-.orbit-stage{height:clamp(650px,65vw,900px);min-height:650px;position:relative;isolation:isolate;margin:0 auto;overflow:hidden;perspective:1450px;background:radial-gradient(ellipse at 50% 52%,rgba(10,32,49,.16) 0%,rgba(5,15,25,.09) 28%,rgba(2,5,9,.035) 52%,transparent 72%);transition:height .5s ease,opacity .35s ease}
+.orbit-stage{height:clamp(650px,65vw,900px);min-height:650px;position:relative;isolation:isolate;margin:0 auto;overflow:hidden;perspective:1450px;background:#000000;transition:height .5s ease,opacity .35s ease}
 .orbit-stage:before,.orbit-stage:after{content:none!important;display:none!important}
-.orbit-core{position:absolute;z-index:5;left:50%;top:51%;width:clamp(230px,31vw,430px);aspect-ratio:1.78;transform:translate(-50%,-50%);pointer-events:none;filter:drop-shadow(0 0 26px rgba(201,121,75,.12)) drop-shadow(0 0 20px rgba(65,164,255,.1));transition:opacity .3s ease,transform .45s ease}
-.orbit-core img{display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:screen}
+.orbit-core{position:absolute;z-index:5;left:50%;top:51%;width:clamp(230px,31vw,430px);aspect-ratio:1.78;transform:translate(-50%,-50%);pointer-events:none;filter:none;transition:opacity .3s ease,transform .45s ease}
+.orbit-core img{display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:screen;mask-image:radial-gradient(ellipse 52% 66% at 50% 50%,#000 72%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 52% 66% at 50% 50%,#000 72%,transparent 100%)}
 .orbit-core{animation:core-float 12s ease-in-out infinite}
 /* Continuous, gentle 3D double-lemniscate motion: crossed infinity paths. */
 .orbit-core{transform-style:preserve-3d;will-change:transform;animation:core-double-lemniscate 18s linear infinite}

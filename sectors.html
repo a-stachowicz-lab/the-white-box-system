@@ -24,7 +24,16 @@ body.orbit-page{overflow-x:hidden;background-color:#000000;background-image:repe
 .orbit-core{position:absolute;z-index:5;left:50%;top:51%;width:clamp(230px,31vw,430px);aspect-ratio:1.5;transform:translate(-50%,-50%);pointer-events:none;filter:drop-shadow(0 0 26px rgba(201,121,75,.12)) drop-shadow(0 0 20px rgba(65,164,255,.1));transition:opacity .3s ease,transform .45s ease}
 .orbit-core img{display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:screen}
 .orbit-core{animation:core-float 9s ease-in-out infinite}
-@keyframes core-float{0%,100%{transform:translate(-50%,-50%) translate3d(0,0,0) rotateZ(0deg)}50%{transform:translate(-50%,-50%) translate3d(0,-12px,0) rotateZ(2deg)}}
+/* Calm, independent 3D motion for the central polyhedron. */
+.orbit-core{transform-style:preserve-3d;will-change:transform;animation:core-float-spin 18s ease-in-out infinite}
+@keyframes core-float-spin{
+  0%{transform:translate(-50%,-50%) translate3d(0,0,0) rotateX(-3deg) rotateY(-7deg) rotateZ(-1deg)}
+  25%{transform:translate(-50%,-50%) translate3d(0,-8px,0) rotateX(4deg) rotateY(3deg) rotateZ(1deg)}
+  50%{transform:translate(-50%,-50%) translate3d(0,0,0) rotateX(1deg) rotateY(9deg) rotateZ(2deg)}
+  75%{transform:translate(-50%,-50%) translate3d(0,8px,0) rotateX(-4deg) rotateY(-3deg) rotateZ(-1deg)}
+  100%{transform:translate(-50%,-50%) translate3d(0,0,0) rotateX(-3deg) rotateY(-7deg) rotateZ(-1deg)}
+}
+@media(prefers-reduced-motion:reduce){.orbit-core{animation:none!important}}
 .orbit-item{position:absolute;left:50%;top:51%;width:clamp(190px,22vw,300px);aspect-ratio:1/1;transform:translate3d(-50%,-50%,0);transform-origin:center;opacity:.95;transition:opacity .35s ease,filter .3s ease,width .45s ease;will-change:transform;z-index:2}
 .orbit-item button{appearance:none;display:block;width:100%;height:100%;padding:0;border:0;border-radius:0;overflow:visible;background:transparent;cursor:pointer;box-shadow:none;position:relative;transition:filter .25s ease,transform .25s ease}
 .orbit-item button:before{content:none!important}

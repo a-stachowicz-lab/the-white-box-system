@@ -31,68 +31,11 @@ body.orbit-page{overflow-x:hidden;background-color:#000000;background-image:repe
 .orbit-item button:hover,.orbit-item button:focus-visible{filter:brightness(1.12) drop-shadow(0 0 18px rgba(80,190,255,.22));outline:none}
 .orbit-item button:hover{transform:translateY(-3px)}
 
-/* Shared cube sizing: Industry is the reference model for every domain cube. */
-.orbit-item[data-sector="industry"],
-.orbit-item[data-sector="resources"],
-.orbit-item[data-sector="technology"],
-.orbit-item[data-sector="energy"],
-.orbit-item[data-sector="logistics"]{
- width:clamp(250px,27vw,360px);
- aspect-ratio:1/1;
-}
-.orbit-item[data-sector="industry"] img,
-.orbit-item[data-sector="resources"] img,
-.orbit-item[data-sector="technology"] img,
-.orbit-item[data-sector="energy"] img,
-.orbit-item[data-sector="logistics"] img{
- object-fit:contain;
- filter:drop-shadow(0 0 5px rgba(85,160,210,.045));
-}
-.orbit-item[data-sector="resources"] .orbit-label{display:none!important}
-
-/* Finance sector: original glass cube geometry with the domain scene mounted inside its front pane */
-.orbit-item[data-sector="finance"]{
- width:clamp(320px,34vw,470px);
- aspect-ratio:400/347;
- filter:drop-shadow(0 0 18px rgba(30,125,195,.12));
-}
-.orbit-item[data-sector="finance"] button{
- width:100%;height:100%;margin:0;padding:0;
- overflow:visible;border:0;border-radius:0;
- background:transparent;box-shadow:none;
-}
-.orbit-item[data-sector="finance"] button:before,
-.orbit-item[data-sector="finance"] button:after{display:none!important}
-.orbit-item[data-sector="finance"] .cube-domain{
- position:absolute;inset:0;display:block;overflow:visible;
- border:0;background:transparent;box-shadow:none;
-}
-.orbit-item[data-sector="finance"] .cube-domain img{
- display:block;width:100%;height:100%;object-fit:contain;
- border:0;filter:none;
-}
-.orbit-item[data-sector="finance"] .orbit-label{display:none!important}
-/* Label is already integrated into the replacement cube artwork. */
-.orbit-item[data-sector="finance"] .orbit-label{
- z-index:3;left:17%;right:17%;top:63%;bottom:auto;
- padding:0;background:none;text-align:center;
- color:#f4f8ff;font-size:clamp(.52rem,.7vw,.66rem);
- line-height:1.15;letter-spacing:.01em;white-space:nowrap;
- text-shadow:0 1px 7px rgba(0,0,0,.98),0 0 5px rgba(107,190,255,.35);
-}
-.orbit-item[data-sector="finance"] button:hover{
- transform:translateY(-4px);
- filter:brightness(1.06) drop-shadow(0 0 12px rgba(106,190,255,.18));
-}
-@media(max-width:760px){
- .orbit-item[data-sector="finance"]{width:clamp(210px,58vw,300px);aspect-ratio:400/347}
- .orbit-item[data-sector="industry"],
- .orbit-item[data-sector="resources"],
- .orbit-item[data-sector="technology"],
- .orbit-item[data-sector="energy"],
- .orbit-item[data-sector="logistics"]{width:clamp(190px,48vw,270px);aspect-ratio:1/1}
- .orbit-item[data-sector="finance"] .orbit-label{font-size:.52rem}
-}
+/* Unified dimensions for all seven domain cubes. */
+.orbit-item[data-sector]{width:clamp(160px,18vw,245px);aspect-ratio:1/1}
+.orbit-item[data-sector] img{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 5px rgba(85,160,210,.045))}
+.orbit-item .orbit-label{left:0;right:0;bottom:2%;padding:2.1rem .55rem .55rem;text-align:center;font-size:clamp(.62rem,.8vw,.78rem);line-height:1.18;background:linear-gradient(transparent,rgba(0,0,0,.82))}
+@media(max-width:760px){.orbit-item[data-sector]{width:clamp(128px,29vw,198px)}}
 .orbit-bottom{display:flex;justify-content:center;align-items:center;gap:.8rem;flex-wrap:wrap;margin-top:-.15rem;position:relative;z-index:8;transition:opacity .25s ease}
 .orbit-control{border:1px solid rgba(201,121,75,.48);background:rgba(4,6,10,.88);color:#ead8cc;border-radius:3px;padding:.65rem 1rem;cursor:pointer;font:inherit;font-size:.85rem}
 .orbit-control:hover,.orbit-control:focus-visible{border-color:var(--orbit-copper-light);outline:none;box-shadow:0 0 14px rgba(201,121,75,.12)}
@@ -144,15 +87,16 @@ body.orbit-page{overflow-x:hidden;background-color:#000000;background-image:repe
   <p class="lead">Every sector faces complex challenges. Systems interact, dependencies accumulate, and problems do not always have a single, obvious cause.</p>
   <p>THE WHITE-BOX SYSTEM approaches these situations through a structured system diagnosis — making relevant relationships, conflicts and dependencies visible.</p>
  </section>
- <section class="orbit-stage" id="orbitStage" aria-label="Interactive orbit of six economic sectors">
+ <section class="orbit-stage" id="orbitStage" aria-label="Interactive orbit of seven domains">
   <div class="orbit-core" aria-hidden="true"><img src="file_000000009de081f49320555cfb515a66.png" alt=""></div>
-  <div class="orbit-item" data-sector="finance" data-angle="0"><button type="button" aria-label="Explore Finance and Investment"><span class="cube-domain"><img src="file_00000000ec208210acbbfea40eabe6c2.png" alt="Finance and Investment in a transparent glass cube on a black background"></span></button></div>
-  <div class="orbit-item" data-sector="industry" data-angle="60"><button type="button" aria-label="Explore Industry and Manufacturing"><img src="file_00000000c08881f4ad1a46d828e27df6.png" alt="Industry and Manufacturing in a transparent glass cube on a black background"></button></div>
-  <div class="orbit-item" data-sector="resources" data-angle="120"><button type="button" aria-label="Explore Resources and Project Development"><img src="file_000000007db88210a9e2dc30d334c1bd.png" alt="Resources and Project Development in a transparent glass cube"></button></div>
-  <div class="orbit-item" data-sector="technology" data-angle="180"><button type="button" aria-label="Explore Technology, Robotics and Aerospace"><img src="Technologie-Ökosystem.png" alt=""><span class="orbit-label">Technology, Robotics &amp; Aerospace</span></button></div>
-  <div class="orbit-item" data-sector="energy" data-angle="240"><button type="button" aria-label="Explore Energy and Critical Infrastructure"><img src="Smart-Grid leuchtenden.png" alt=""><span class="orbit-label">Energy &amp; Critical Infrastructure</span></button></div>
-  <div class="orbit-item" data-sector="logistics" data-angle="300"><button type="button" aria-label="Explore Logistics and Supply Chains"><img src="Globales Logistik-Ökosystem.png" alt=""><span class="orbit-label">Logistics &amp; Supply Chains</span></button></div>
- </section>
+  <div class="orbit-item" data-sector="finance" data-angle="0"><button type="button" aria-label="Explore Finance and Investment"><img src="file_00000000c77081f4916b07d8d5a9ddd0.png" alt="Finance and Investment glass cube"><span class="orbit-label">Finance &amp; Investment</span></button></div>
+  <div class="orbit-item" data-sector="industry" data-angle="51.43"><button type="button" aria-label="Explore Industry and Manufacturing"><img src="file_00000000d95482108999cdd9eeac2470.png" alt="Industry and Manufacturing glass cube"><span class="orbit-label">Industry &amp; Manufacturing</span></button></div>
+  <div class="orbit-item" data-sector="resources" data-angle="102.86"><button type="button" aria-label="Explore Resources and Project Development"><img src="file_000000007d8c82109ba440224afed03d.png" alt="Resources and Project Development glass cube"><span class="orbit-label">Resources &amp; Project Development</span></button></div>
+  <div class="orbit-item" data-sector="technology" data-angle="154.29"><button type="button" aria-label="Explore Technology and Digital Infrastructure"><img src="file_0000000016d081f48ac7919335616957.png" alt="Technology and Digital Infrastructure glass cube"><span class="orbit-label">Technology &amp; Digital Infrastructure</span></button></div>
+  <div class="orbit-item" data-sector="robotics" data-angle="205.71"><button type="button" aria-label="Explore Robotics and Aerospace"><img src="file_00000000e4fc81f4a7f29946b354ab95.png" alt="Robotics and Aerospace glass cube"><span class="orbit-label">Robotics &amp; Aerospace</span></button></div>
+  <div class="orbit-item" data-sector="energy" data-angle="257.14"><button type="button" aria-label="Explore Energy and Critical Infrastructure"><img src="file_000000005cf081f4b914fceccd1b0f8f.png" alt="Energy and Critical Infrastructure glass cube"><span class="orbit-label">Energy &amp; Critical Infrastructure</span></button></div>
+  <div class="orbit-item" data-sector="logistics" data-angle="308.57"><button type="button" aria-label="Explore Logistics and Supply Chains"><img src="file_00000000f76881f4bc0eb52b55591ee3.png" alt="Logistics and Supply Chains glass cube"><span class="orbit-label">Logistics &amp; Supply Chains</span></button></div>
+  </section>
  <div class="orbit-bottom" id="orbitControls"><button class="orbit-control" id="motionToggle" type="button" aria-pressed="false">Pause orbit</button><span class="orbit-hint">Select a sector to explore its diagnostic perspective</span></div>
  <section class="sector-detail" id="sectorDetail" aria-live="polite">
   <div class="detail-visual" id="detailVisual" hidden><img id="detailImage" src="Kristallkern.png" alt=""></div>
@@ -183,13 +127,14 @@ Describe the situation you are facing and the question you need to resolve. I ex
  const challengeLink = document.querySelector('.sector-detail .button-secondary');
  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  const sectors = {
-  finance: {name:'Finance & Investment', image:'Finanzwelt.png', intro:"Banks, financial markets, investment decisions and interconnected financial systems operate through multiple dependencies.\n\nWhat happens when an opportunity looks promising, but the relationships between risk, resources, external conditions and long-term viability remain unclear?"},
-  industry: {name:'Industry & Manufacturing', image:'file_00000000c08881f4ad1a46d828e27df6.png', intro:"Materials, production processes, machinery and automation must work together under real operating conditions.\n\nWhat happens when a product fails, a process becomes unstable or a prototype behaves differently than expected — and the cause cannot be isolated to one component?"},
-  logistics: {name:'Logistics & Supply Chains', image:'Globales Logistik-Ökosystem.png', intro:"Transport networks, warehouses, suppliers, infrastructure and resource availability are interconnected.\n\nWhat happens when a disruption in one part of the chain affects operations elsewhere? Where are the dependencies that determine how far the consequences can spread?"},
-  energy: {name:'Energy & Critical Infrastructure', image:'Smart-Grid leuchtenden.png', intro:"Power grids, energy storage, water systems and essential infrastructure depend on technical performance, environmental conditions and reliable operation.\n\nWhat happens when several influences interact and the condition of the overall system cannot be understood by examining its components separately?"},
-  technology: {name:'Technology, Robotics & Aerospace', image:'Technologie-Ökosystem.png', intro:"Advanced engineering systems combine mechanical, electrical, material, control and environmental requirements.\n\nWhat happens when a design meets its individual specifications, yet the complete system develops unexpected behaviour under operating conditions?"},
-  resources: {name:'Resources & Project Development', image:'file_000000007db88210a9e2dc30d334c1bd.png', intro:"Exploration, raw materials and major development projects connect technical potential with investment, infrastructure, environmental conditions and implementation.\n\nWhat happens when the potential is visible, but the dependencies that determine whether a project can progress remain difficult to assess?"}
- };
+  finance: {name:'Finance & Investment', image:'file_00000000c77081f4916b07d8d5a9ddd0.png', intro:"Banks, financial markets, investment decisions and interconnected financial systems operate through multiple dependencies.\n\nWhat happens when an opportunity looks promising, but the relationships between risk, resources, external conditions and long-term viability remain unclear?"},
+  industry: {name:'Industry & Manufacturing', image:'file_00000000d95482108999cdd9eeac2470.png', intro:"Materials, production processes, machinery and automation must work together under real operating conditions.\n\nWhat happens when a product fails, a process becomes unstable or a prototype behaves differently than expected — and the cause cannot be isolated to one component?"},
+  resources: {name:'Resources & Project Development', image:'file_000000007d8c82109ba440224afed03d.png', intro:"Exploration, raw materials and major development projects connect technical potential with investment, infrastructure, environmental conditions and implementation.\n\nWhat happens when the potential is visible, but the dependencies that determine whether a project can progress remain difficult to assess?"},
+  technology: {name:'Technology & Digital Infrastructure', image:'file_0000000016d081f48ac7919335616957.png', intro:"Semiconductors, computing infrastructure, data centres and communication networks form the physical foundations of digital systems.\n\nWhat happens when dependencies between hardware, connectivity, power, cooling and data processing affect the reliability of the overall system?"},
+  robotics: {name:'Robotics & Aerospace', image:'file_00000000e4fc81f4a7f29946b354ab95.png', intro:"Robotic systems, autonomous platforms, aircraft and space technologies combine mechanical, electrical, software, control and environmental requirements.\n\nWhat happens when individually functioning components interact under dynamic operating conditions and the complete system behaves unexpectedly?"},
+  energy: {name:'Energy & Critical Infrastructure', image:'file_000000005cf081f4b914fceccd1b0f8f.png', intro:"Power grids, energy storage, water systems and essential infrastructure depend on technical performance, environmental conditions and reliable operation.\n\nWhat happens when several influences interact and the condition of the overall system cannot be understood by examining its components separately?"},
+  logistics: {name:'Logistics & Supply Chains', image:'file_00000000f76881f4bc0eb52b55591ee3.png', intro:"Transport networks, warehouses, suppliers, infrastructure and resource availability are interconnected.\n\nWhat happens when a disruption in one part of the chain affects operations elsewhere? Where are the dependencies that determine how far the consequences can spread?"}
+ };;
  let rotation = -Math.PI / 2, last = 0, paused = reducedMotion, selected = null, raf = 0;
  const isMobile = () => window.matchMedia('(max-width:760px)').matches;
  function layout(now) {
@@ -197,13 +142,13 @@ Describe the situation you are facing and the question you need to resolve. I ex
    const dt = Math.min((now-last)/1000, .05); last=now;
    if (!paused && !selected) rotation += dt * .095;
    const mobile = isMobile();
-   const rx = Math.min(stage.clientWidth * (mobile ? .39 : .405), mobile ? 245 : 600);
-   const ry = Math.min(stage.clientHeight * (mobile ? .32 : .31), mobile ? 235 : 268);
-   const depth = mobile ? 88 : 205;
+   const rx = Math.min(stage.clientWidth * .43, mobile ? 300 : 600);
+   const ry = Math.min(stage.clientHeight * (mobile ? .35 : .31), mobile ? 245 : 280);
+   const depth = mobile ? 72 : 190;
    items.forEach(item => {
      const angle = rotation + Number(item.dataset.angle) * Math.PI / 180;
      const x = Math.cos(angle) * rx, y = Math.sin(angle) * ry, z = Math.sin(angle) * depth;
-     const scale = .76 + (z + depth) / (2*depth) * (mobile ? .2 : .25);
+     const scale = .84 + (z + depth) / (2*depth) * .13;
      item.style.transform = 'translate3d(calc(-50% + '+x.toFixed(2)+'px),calc(-50% + '+y.toFixed(2)+'px),'+z.toFixed(2)+'px) scale('+scale.toFixed(3)+')';
      item.style.zIndex = String(Math.round(z + depth + (selected === item.dataset.sector ? 1000 : 0)));
      item.style.opacity = selected && selected !== item.dataset.sector ? '.2' : String(.72 + (z+depth)/(2*depth)*.28);

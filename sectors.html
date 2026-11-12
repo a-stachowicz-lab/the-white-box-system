@@ -21,21 +21,16 @@ body.orbit-page{overflow-x:hidden;background-color:#000000;background-image:repe
 .orbit-heading .lead{max-width:620px;margin:0 auto;color:#c1d2e2;font-size:clamp(.95rem,1.5vw,1.12rem)}
 .orbit-stage{height:clamp(650px,65vw,900px);min-height:650px;position:relative;isolation:isolate;margin:0 auto;overflow:hidden;perspective:1450px;background:radial-gradient(ellipse at 50% 52%,rgba(10,32,49,.16) 0%,rgba(5,15,25,.09) 28%,rgba(2,5,9,.035) 52%,transparent 72%);transition:height .5s ease,opacity .35s ease}
 .orbit-stage:before,.orbit-stage:after{content:none!important;display:none!important}
-.orbit-core{position:absolute;z-index:5;left:50%;top:51%;width:clamp(230px,31vw,430px);aspect-ratio:1.5;transform:translate(-50%,-50%);pointer-events:none;filter:drop-shadow(0 0 26px rgba(201,121,75,.12)) drop-shadow(0 0 20px rgba(65,164,255,.1));transition:opacity .3s ease,transform .45s ease}
+.orbit-core{position:absolute;z-index:5;left:50%;top:51%;width:clamp(230px,31vw,430px);aspect-ratio:1.78;transform:translate(-50%,-50%);pointer-events:none;filter:drop-shadow(0 0 26px rgba(201,121,75,.12)) drop-shadow(0 0 20px rgba(65,164,255,.1));transition:opacity .3s ease,transform .45s ease}
 .orbit-core img{display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:screen}
-.orbit-core{animation:core-float 9s ease-in-out infinite}
+.orbit-core{animation:core-float 12s ease-in-out infinite}
 /* Continuous, gentle 3D double-lemniscate motion: crossed infinity paths. */
 .orbit-core{transform-style:preserve-3d;will-change:transform;animation:core-double-lemniscate 18s linear infinite}
 @keyframes core-double-lemniscate{
-  0%{transform:translate(-50%,-50%) translate3d(0,0,0) rotateX(0deg) rotateY(0deg) rotateZ(0deg)}
-  12.5%{transform:translate(-50%,-50%) translate3d(34px,26px,20px) rotateX(38deg) rotateY(42deg) rotateZ(28deg)}
-  25%{transform:translate(-50%,-50%) translate3d(0,0,0) rotateX(0deg) rotateY(55deg) rotateZ(0deg)}
-  37.5%{transform:translate(-50%,-50%) translate3d(-34px,-26px,-20px) rotateX(-38deg) rotateY(42deg) rotateZ(-28deg)}
-  50%{transform:translate(-50%,-50%) translate3d(0,0,0) rotateX(0deg) rotateY(0deg) rotateZ(0deg)}
-  62.5%{transform:translate(-50%,-50%) translate3d(34px,-26px,-20px) rotateX(-38deg) rotateY(-42deg) rotateZ(28deg)}
-  75%{transform:translate(-50%,-50%) translate3d(0,0,0) rotateX(0deg) rotateY(-55deg) rotateZ(0deg)}
-  87.5%{transform:translate(-50%,-50%) translate3d(-34px,26px,20px) rotateX(38deg) rotateY(-42deg) rotateZ(-28deg)}
-  100%{transform:translate(-50%,-50%) translate3d(0,0,0) rotateX(0deg) rotateY(0deg) rotateZ(0deg)}
+  0%,100%{transform:translate(-50%,-50%) translate3d(0,0,0) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1)}
+  25%{transform:translate(-50%,-50%) translate3d(0,-9px,3px) rotateX(3deg) rotateY(4deg) rotateZ(1deg) scale(1.015)}
+  50%{transform:translate(-50%,-50%) translate3d(0,-3px,0) rotateX(0deg) rotateY(-3deg) rotateZ(-1deg) scale(1.01)}
+  75%{transform:translate(-50%,-50%) translate3d(0,7px,-2px) rotateX(-2deg) rotateY(2deg) rotateZ(1deg) scale(1.005)}
 }
 @media(prefers-reduced-motion:reduce){.orbit-core{animation:none!important}}
 .orbit-item{position:absolute;left:50%;top:51%;width:clamp(190px,22vw,300px);aspect-ratio:1/1;transform:translate3d(-50%,-50%,0);transform-origin:center;opacity:.95;transition:opacity .35s ease,filter .3s ease,width .45s ease;will-change:transform;z-index:2}
@@ -103,7 +98,7 @@ body.orbit-page{overflow-x:hidden;background-color:#000000;background-image:repe
   <p>THE WHITE-BOX SYSTEM approaches these situations through a structured system diagnosis — making relevant relationships, conflicts and dependencies visible.</p>
  </section>
  <section class="orbit-stage" id="orbitStage" aria-label="Interactive orbit of seven domains">
-  <div class="orbit-core" aria-hidden="true"><img src="file_000000009de081f49320555cfb515a66.png" alt=""></div>
+  <div class="orbit-core" aria-hidden="true"><img src="file_00000000e2dc8210bdefc7fe7b9ae5ff.png" alt=""></div>
   <div class="orbit-item" data-sector="finance" data-angle="0"><button type="button" aria-label="Explore Finance and Investment"><img src="file_00000000c77081f4916b07d8d5a9ddd0.png" alt="Finance and Investment glass cube"></button></div>
   <div class="orbit-item" data-sector="industry" data-angle="51.43"><button type="button" aria-label="Explore Industry and Manufacturing"><img src="file_000000007d8c82109ba440224afed03d.png" alt="Industry and Manufacturing glass cube"></button></div>
   <div class="orbit-item" data-sector="resources" data-angle="102.86"><button type="button" aria-label="Explore Resources and Project Development"><img src="file_00000000d95482108999cdd9eeac2470.png" alt="Resources and Project Development glass cube"></button></div>

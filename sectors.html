@@ -31,6 +31,25 @@ body.orbit-page{overflow-x:hidden;background-color:#000000;background-image:repe
 .orbit-item button:hover,.orbit-item button:focus-visible{filter:brightness(1.12) drop-shadow(0 0 18px rgba(80,190,255,.22));outline:none}
 .orbit-item button:hover{transform:translateY(-3px)}
 
+/* Shared cube sizing: Industry is the reference model for every domain cube. */
+.orbit-item[data-sector="industry"],
+.orbit-item[data-sector="resources"],
+.orbit-item[data-sector="technology"],
+.orbit-item[data-sector="energy"],
+.orbit-item[data-sector="logistics"]{
+ width:clamp(250px,27vw,360px);
+ aspect-ratio:1/1;
+}
+.orbit-item[data-sector="industry"] img,
+.orbit-item[data-sector="resources"] img,
+.orbit-item[data-sector="technology"] img,
+.orbit-item[data-sector="energy"] img,
+.orbit-item[data-sector="logistics"] img{
+ object-fit:contain;
+ filter:drop-shadow(0 0 5px rgba(85,160,210,.045));
+}
+.orbit-item[data-sector="resources"] .orbit-label{display:none!important}
+
 /* Finance sector: original glass cube geometry with the domain scene mounted inside its front pane */
 .orbit-item[data-sector="finance"]{
  width:clamp(320px,34vw,470px);
@@ -66,7 +85,12 @@ body.orbit-page{overflow-x:hidden;background-color:#000000;background-image:repe
  filter:brightness(1.06) drop-shadow(0 0 12px rgba(106,190,255,.18));
 }
 @media(max-width:760px){
- .orbit-item[data-sector="finance"]{width:clamp(260px,72vw,380px);aspect-ratio:400/347}
+ .orbit-item[data-sector="finance"]{width:clamp(210px,58vw,300px);aspect-ratio:400/347}
+ .orbit-item[data-sector="industry"],
+ .orbit-item[data-sector="resources"],
+ .orbit-item[data-sector="technology"],
+ .orbit-item[data-sector="energy"],
+ .orbit-item[data-sector="logistics"]{width:clamp(190px,48vw,270px);aspect-ratio:1/1}
  .orbit-item[data-sector="finance"] .orbit-label{font-size:.52rem}
 }
 .orbit-bottom{display:flex;justify-content:center;align-items:center;gap:.8rem;flex-wrap:wrap;margin-top:-.15rem;position:relative;z-index:8;transition:opacity .25s ease}
@@ -124,7 +148,7 @@ body.orbit-page{overflow-x:hidden;background-color:#000000;background-image:repe
   <div class="orbit-core" aria-hidden="true"><img src="file_000000009de081f49320555cfb515a66.png" alt=""></div>
   <div class="orbit-item" data-sector="finance" data-angle="0"><button type="button" aria-label="Explore Finance and Investment"><span class="cube-domain"><img src="file_00000000ec208210acbbfea40eabe6c2.png" alt="Finance and Investment in a transparent glass cube on a black background"></span></button></div>
   <div class="orbit-item" data-sector="industry" data-angle="60"><button type="button" aria-label="Explore Industry and Manufacturing"><img src="file_00000000c08881f4ad1a46d828e27df6.png" alt="Industry and Manufacturing in a transparent glass cube on a black background"></button></div>
-  <div class="orbit-item" data-sector="resources" data-angle="120"><button type="button" aria-label="Explore Resources and Project Development"><img src="Ressourcen-Kreislauf.png" alt=""><span class="orbit-label">Resources &amp; Project Development</span></button></div>
+  <div class="orbit-item" data-sector="resources" data-angle="120"><button type="button" aria-label="Explore Resources and Project Development"><img src="file_000000007db88210a9e2dc30d334c1bd.png" alt="Resources and Project Development in a transparent glass cube"></button></div>
   <div class="orbit-item" data-sector="technology" data-angle="180"><button type="button" aria-label="Explore Technology, Robotics and Aerospace"><img src="Technologie-Ökosystem.png" alt=""><span class="orbit-label">Technology, Robotics &amp; Aerospace</span></button></div>
   <div class="orbit-item" data-sector="energy" data-angle="240"><button type="button" aria-label="Explore Energy and Critical Infrastructure"><img src="Smart-Grid leuchtenden.png" alt=""><span class="orbit-label">Energy &amp; Critical Infrastructure</span></button></div>
   <div class="orbit-item" data-sector="logistics" data-angle="300"><button type="button" aria-label="Explore Logistics and Supply Chains"><img src="Globales Logistik-Ökosystem.png" alt=""><span class="orbit-label">Logistics &amp; Supply Chains</span></button></div>
@@ -164,7 +188,7 @@ Describe the situation you are facing and the question you need to resolve. I ex
   logistics: {name:'Logistics & Supply Chains', image:'Globales Logistik-Ökosystem.png', intro:"Transport networks, warehouses, suppliers, infrastructure and resource availability are interconnected.\n\nWhat happens when a disruption in one part of the chain affects operations elsewhere? Where are the dependencies that determine how far the consequences can spread?"},
   energy: {name:'Energy & Critical Infrastructure', image:'Smart-Grid leuchtenden.png', intro:"Power grids, energy storage, water systems and essential infrastructure depend on technical performance, environmental conditions and reliable operation.\n\nWhat happens when several influences interact and the condition of the overall system cannot be understood by examining its components separately?"},
   technology: {name:'Technology, Robotics & Aerospace', image:'Technologie-Ökosystem.png', intro:"Advanced engineering systems combine mechanical, electrical, material, control and environmental requirements.\n\nWhat happens when a design meets its individual specifications, yet the complete system develops unexpected behaviour under operating conditions?"},
-  resources: {name:'Resources & Project Development', image:'Ressourcen-Kreislauf.png', intro:"Exploration, raw materials and major development projects connect technical potential with investment, infrastructure, environmental conditions and implementation.\n\nWhat happens when the potential is visible, but the dependencies that determine whether a project can progress remain difficult to assess?"}
+  resources: {name:'Resources & Project Development', image:'file_000000007db88210a9e2dc30d334c1bd.png', intro:"Exploration, raw materials and major development projects connect technical potential with investment, infrastructure, environmental conditions and implementation.\n\nWhat happens when the potential is visible, but the dependencies that determine whether a project can progress remain difficult to assess?"}
  };
  let rotation = -Math.PI / 2, last = 0, paused = reducedMotion, selected = null, raf = 0;
  const isMobile = () => window.matchMedia('(max-width:760px)').matches;

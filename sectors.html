@@ -42,7 +42,7 @@ body.orbit-page{overflow-x:hidden;background-color:#000000;background-image:repe
 @media(prefers-reduced-motion:reduce){.orbit-core{animation:none!important}}
 @media(prefers-reduced-motion:reduce){.energy-links .energy-gold,.energy-links .energy-pulse{animation:none!important;opacity:.24}.cube-discharge path{animation:none!important;opacity:0!important}}
 .orbit-item{position:absolute;left:50%;top:51%;width:clamp(190px,22vw,300px);aspect-ratio:1/1;transform:translate3d(-50%,-50%,0);transform-origin:center;opacity:.95;transition:opacity .35s ease,filter .3s ease,width .45s ease;will-change:transform;z-index:2}
-.orbit-item button{appearance:none;display:block;width:100%;height:100%;padding:0;border:0;border-radius:0;overflow:visible;background:transparent;cursor:pointer;box-shadow:none;position:relative;transition:filter .25s ease,transform .25s ease}
+.orbit-item button{touch-action:none;appearance:none;display:block;width:100%;height:100%;padding:0;border:0;border-radius:0;overflow:visible;background:transparent;cursor:pointer;box-shadow:none;position:relative;transition:filter .25s ease,transform .25s ease}
 .cube-discharge{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:3}
 .cube-discharge path{fill:none;stroke:#7bdcff;stroke-width:.42;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1 18;opacity:0;filter:drop-shadow(0 0 2px rgba(82,190,255,.95))}
 .cube-discharge path:nth-child(2n){stroke:#f2bd83;stroke-width:.36;filter:drop-shadow(0 0 2px rgba(255,181,112,.85))}

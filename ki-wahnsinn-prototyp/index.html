@@ -23,7 +23,8 @@ h1{font:clamp(36px,5vw,64px)/1.05 Georgia,serif;letter-spacing:.015em;margin:9px
 .cover-frame.angle{transform:perspective(900px) rotateX(8deg) rotateZ(-3deg) scale(.98)}
 .book-wrap{min-width:0;position:relative;filter:drop-shadow(0 20px 35px #000b)}
 .spread{position:relative;width:100%;aspect-ratio:2/1;overflow:hidden;border-radius:12px;background:#03101d;box-shadow:0 0 0 1px #7bdfff44,0 0 28px #1ca8dc26}
-.spread>img{display:block;width:100%;height:100%;object-fit:fill}
+.spread>img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center;filter:saturate(.72)}
+.spread:after{content:"";position:absolute;inset:0 0 0 50%;pointer-events:none;background:linear-gradient(90deg,rgba(0,38,86,.12),rgba(0,28,72,.38));mix-blend-mode:color}
 .page-overlay{position:absolute;top:14%;bottom:13%;width:40%;pointer-events:none}
 .page-overlay.left{left:8%}.page-overlay.right{right:8%}
 .page-overlay:focus-within{pointer-events:auto}
@@ -42,6 +43,8 @@ button:disabled{opacity:.35;cursor:default}
  .topline{height:40px;font-size:8px;padding:0 12px}
  header{padding:22px 18px 6px}
  .stage{grid-template-columns:1fr;gap:8px;width:min(680px,96vw);margin-top:12px}
+ .cover-wrap{display:none}
+ .stage.show-cover .cover-wrap{display:flex}
  .cover-frame{width:min(54vw,260px)}
  .book-wrap{width:100%}
  .spread{aspect-ratio:2/1;border-radius:7px}
@@ -110,7 +113,7 @@ button:disabled{opacity:.35;cursor:default}
  document.getElementById('openBtn').addEventListener('click',()=>go(1));
  prev.addEventListener('click',()=>go(page-1));
  next.addEventListener('click',()=>go(page===0?1:Math.min(total,page+2)));
- document.getElementById('coverBtn').addEventListener('click',()=>cover.classList.toggle('angle'));
+ document.getElementById('coverBtn').addEventListener('click',()=>{const stage=document.querySelector('.stage');stage.classList.toggle('show-cover');cover.classList.toggle('angle');const shown=stage.classList.contains('show-cover');document.getElementById('coverBtn').textContent=shown?'Buchansicht':'Cover-Ansicht';});
  entries.forEach(b=>b.addEventListener('click',()=>go(Number(b.dataset.page))));
  let startX=null;
  const spread=document.getElementById('spread');

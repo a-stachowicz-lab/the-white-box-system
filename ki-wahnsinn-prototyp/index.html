@@ -180,7 +180,7 @@
   <section class="book-composition" aria-label="Buchcover links und interaktive Doppelseite rechts">
     <div class="book-cover-column">
       <figure class="book-cover-frame">
-        <img src="../Neon-Glasbuchcover%20%E2%80%9EKI-Wahnsinn%E2%80%9C.png"
+        <img src="assets/cover-standing.webp"
              alt="Das Cover des Arbeitsbuchs KI-Wahnsinn"
              fetchpriority="high">
       </figure>
@@ -188,13 +188,13 @@
 
     <div class="book-spread" id="bookSpread" aria-label="Interaktive leere Buchseiten">
       <figure class="book-page book-page-left">
-        <img src="../Leuchtende%20linke%20Buchseite.png" alt="" aria-hidden="true">
+        <img src="assets/page-left.webp" alt="" aria-hidden="true">
         <div class="book-writing" id="leftWriting" contenteditable="true" spellcheck="false"
              role="textbox" aria-multiline="true" aria-label="Linke Buchseite – eigener Text"></div>
         <span class="page-number" id="leftNumber">01 / 24</span>
       </figure>
       <figure class="book-page book-page-right">
-        <img src="../Neon-Sci-Fi-Buchseite%20mit%20Goldakzenten.png" alt="" aria-hidden="true">
+        <img src="assets/page-right.webp" alt="" aria-hidden="true">
         <div class="book-writing" id="rightWriting" contenteditable="true" spellcheck="false"
              role="textbox" aria-multiline="true" aria-label="Rechte Buchseite – eigener Text"></div>
         <span class="page-number" id="rightNumber">02 / 24</span>
@@ -246,8 +246,8 @@
 
   function saveCurrentPages() {
     try {
-      localStorage.setItem(storageKey(firstPage), leftWriting.textContent);
-      localStorage.setItem(storageKey(firstPage + 1), rightWriting.textContent);
+      localStorage.setItem(storageKey(firstPage), leftWriting.innerText);
+      localStorage.setItem(storageKey(firstPage + 1), rightWriting.innerText);
     } catch (_) {}
   }
 

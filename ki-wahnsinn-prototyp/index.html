@@ -16,14 +16,14 @@ header{text-align:center;padding:27px 16px 12px}
 .eyebrow{font-size:10px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase}
 h1{font:clamp(36px,5vw,64px)/1.05 Georgia,serif;letter-spacing:.015em;margin:9px 0 8px;color:#d9a477;background:linear-gradient(108deg,#6e351f 0%,#bd8054 17%,#f2d0a5 31%,#a95f38 46%,#f4d1b3 60%,#c8794b 76%,#6e351f 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none;filter:drop-shadow(0 1px 1px rgba(255,222,184,.23)) drop-shadow(0 0 9px rgba(201,121,75,.22))}
 .subtitle{color:#b7cbd9;font-size:clamp(13px,1.5vw,17px);line-height:1.6;margin:0}
-.stage{width:min(680px,94vw);margin:18px auto 0;display:grid;grid-template-columns:minmax(82px,120px) minmax(0,460px);gap:clamp(6px,1vw,12px);align-items:center;justify-content:center;padding:8px .5vw 0;background:#000}
+.stage{width:min(900px,94vw);margin:18px auto 0;display:grid;grid-template-columns:minmax(90px,150px) minmax(0,620px);gap:clamp(10px,1.4vw,22px);align-items:center;justify-content:center;padding:8px .5vw 0;background:#000}
 .cover-wrap{display:flex;justify-content:center;align-items:center;min-width:0}
 .cover-frame{width:min(100%,170px);position:relative;filter:drop-shadow(0 18px 26px #000b);transition:transform .35s ease}
 .cover-frame img{display:block;width:100%;height:auto;object-fit:contain}
 .cover-frame.angle{transform:perspective(900px) rotateX(8deg) rotateZ(-3deg) scale(.98)}
-.spread-wrap{position:relative;width:min(100%,460px);justify-self:center;display:grid;grid-template-columns:1fr 1fr;align-items:stretch;perspective:1600px;isolation:isolate;background:#000}
+.spread-wrap{position:relative;width:min(100%,620px);justify-self:center;display:grid;grid-template-columns:1fr 1fr;align-items:stretch;perspective:1600px;isolation:isolate;background:#000;aspect-ratio:2/1;overflow:hidden}
 .page-panel{min-width:0;display:flex;justify-content:center;align-items:center;background:#000;overflow:hidden}
-.page-panel img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:contain;background:#000}
+.page-panel img{display:block;width:100%;height:100%;object-fit:cover;background:#000}
 .page-turn{display:none;position:absolute;z-index:4;top:0;left:50%;width:50%;height:100%;transform-style:preserve-3d;transform-origin:left center;pointer-events:none;will-change:transform;filter:drop-shadow(0 0 15px rgba(0,0,0,.8))}
 .page-turn.active{display:block}
 .page-turn.active.next{animation:flip-next .78s cubic-bezier(.35,.02,.25,1) forwards}
@@ -53,15 +53,22 @@ button:disabled{opacity:.35;cursor:default}
  header{padding:22px 18px 6px}
  .stage{grid-template-columns:1fr;grid-template-rows:auto auto;gap:10px;width:96vw;margin-top:12px;padding:0 2px}
  .cover-wrap{grid-column:1;display:flex;justify-content:center}
- .cover-frame{width:min(27vw,125px)}
- .spread-wrap{width:min(100%,380px)}
+ .cover-frame{width:min(24vw,118px)}
+ .spread-wrap{width:min(100%,620px);aspect-ratio:2/1}
  .page-panel{width:100%}
- .page-panel img{width:100%;height:auto}
+ .page-panel img{width:100%;height:100%;object-fit:cover}
  .controls{padding-top:13px;gap:7px}
  button{padding:11px 12px;font-size:9px}
  .register{margin-top:18px}
 }
 @media(prefers-reduced-motion:reduce){.cover-frame{transition:none!important}.page-turn.active.next,.page-turn.active.previous{animation-duration:.78s!important}}
+
+/* Buchzustände: Cover separat, offene Doppelseite vollständig sichtbar */
+.stage.cover-only{grid-template-columns:minmax(100px,150px) minmax(0,620px)}
+.stage.cover-only .spread-wrap{display:none!important}
+.stage.book-open{grid-template-columns:minmax(0,1fr);}
+.stage.book-open .cover-wrap{display:none!important}
+@media(max-width:760px){.stage.cover-only{grid-template-columns:1fr}.stage.book-open{grid-template-columns:1fr}.spread-wrap{max-width:calc(100vw - 24px)}}
 </style>
 </head>
 <body>
@@ -72,7 +79,7 @@ button:disabled{opacity:.35;cursor:default}
  <p class="subtitle">Gedanken. Diagnosen. Erfahrungen. Beobachtungen.<br>Ein Buch mit einem Anfang – aber ohne vorgeschriebenen Denkweg.</p>
 </header>
 <main>
- <section class="stage" aria-label="Geschlossenes Cover und geöffnetes Glasbuch">
+ <section class="stage" id="bookStage" aria-label="Geschlossenes Cover und geöffnetes Glasbuch">
   <div class="cover-wrap">
    <div class="cover-frame" id="coverFrame"><img src="assets/cover-standing.webp" alt="Geschlossenes Cover des Arbeitsbuchs KI-Wahnsinn"></div>
   </div>
@@ -115,18 +122,29 @@ button:disabled{opacity:.35;cursor:default}
  const prev=document.getElementById('prevBtn');
  const next=document.getElementById('nextBtn');
  const cover=document.getElementById('coverFrame');
+ const stage=document.getElementById('bookStage');
+ const spread=document.getElementById('spreadWrap');
  const entries=[...document.querySelectorAll('[data-page]')];
+ const leftImg=document.querySelector('.left-page img');
+ const rightImg=document.querySelector('.right-page img');
  function render(){
-  count.textContent=page===0?'COVER':String(page).padStart(2,'0')+' / '+total;
-  prev.disabled=page===0; next.disabled=page===total;
+  const open=page>0;
+  count.textContent=open?String(page).padStart(2,'0')+' / '+total:'COVER';
+  prev.disabled=!open;
+  next.disabled=page>=total;
+  document.getElementById('openBtn').disabled=open;
+  stage.classList.toggle('book-open',open);
+  stage.classList.toggle('cover-only',!open);
+  cover.style.display=open?'none':'flex';
+  spread.style.display=open?'grid':'none';
   entries.forEach(b=>b.classList.toggle('active',Number(b.dataset.page)===page));
-  document.querySelectorAll('.page-panel img').forEach(img=>img.style.opacity=page===0?'.92':'1');
  }
  function go(n){page=Math.max(0,Math.min(total,n));render()}
  function flip(direction,target){
   if(turning)return;
   const nextPage=Math.max(0,Math.min(total,target));
   if(nextPage===page)return;
+  if(page===0){page=nextPage;render();return}
   turning=true;
   turnFront.src=direction==='next'?'assets/page-right.webp':'assets/page-left.webp';
   turnBack.src=direction==='next'?'assets/page-left.webp':'assets/page-right.webp';
@@ -141,15 +159,19 @@ button:disabled{opacity:.35;cursor:default}
   pageTurn.addEventListener('animationend',finish,{once:true});
   setTimeout(finish,900);
  }
- document.getElementById('openBtn').addEventListener('click',()=>flip('next',1));
- prev.addEventListener('click',()=>flip('previous',page-1));
- next.addEventListener('click',()=>flip('next',page===0?1:Math.min(total,page+2)));
- document.getElementById('coverBtn').addEventListener('click',()=>{const stage=document.querySelector('.stage');stage.classList.toggle('show-cover');cover.classList.toggle('angle');const shown=stage.classList.contains('show-cover');document.getElementById('coverBtn').textContent=shown?'Buchansicht':'Cover-Ansicht';});
- entries.forEach(b=>b.addEventListener('click',()=>{const target=Number(b.dataset.page);if(target>page&&page>0)flip('next',target);else if(target<page&&page>0)flip('previous',target);else go(target)}));
+ document.getElementById('openBtn').addEventListener('click',()=>{if(page===0){page=1;render()}});
+ prev.addEventListener('click',()=>flip('previous',Math.max(1,page-2)));
+ next.addEventListener('click',()=>flip('next',Math.min(total,page+2)));
+ document.getElementById('coverBtn').addEventListener('click',()=>{
+  if(page===0){cover.classList.toggle('angle');return}
+  page=0;pageTurn.className='page-turn';turning=false;render();
+ });
+ entries.forEach(b=>b.addEventListener('click',()=>{const target=Number(b.dataset.page);if(page===0){page=target;render()}else flip(target>page?'next':'previous',target)}));
  let startX=null;
- document.getElementById('spreadWrap').addEventListener('touchstart',e=>{startX=e.changedTouches[0].clientX},{passive:true});
- document.getElementById('spreadWrap').addEventListener('touchend',e=>{if(startX===null)return;const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>40)flip(dx<0?'next':'previous',page+(dx<0?2:-2));startX=null},{passive:true});
- document.querySelectorAll('.page-panel').forEach(panel=>panel.addEventListener('click',()=>flip('next',page+2)));
+ spread.addEventListener('touchstart',e=>{startX=e.changedTouches[0].clientX},{passive:true});
+ spread.addEventListener('touchend',e=>{if(startX===null)return;const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>40)flip(dx<0?'next':'previous',page+(dx<0?2:-2));startX=null},{passive:true});
+ spread.addEventListener('click',e=>{const rect=spread.getBoundingClientRect();const isRight=e.clientX>rect.left+rect.width/2;flip(isRight?'next':'previous',page+(isRight?2:-2))});
+ document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')flip('next',Math.min(total,page+2));if(e.key==='ArrowLeft')flip('previous',Math.max(1,page-2));});
  render();
 })();
 </script>

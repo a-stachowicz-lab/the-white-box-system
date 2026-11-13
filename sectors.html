@@ -59,6 +59,8 @@ body.orbit-page{overflow-x:hidden;background-color:#000000;background-image:repe
 .orbit-item button:before{content:none!important}
 .orbit-item img{display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:screen;filter:drop-shadow(0 0 16px rgba(55,157,230,.12))}
 .orbit-item button:hover,.orbit-item button:focus-visible{filter:brightness(1.12) drop-shadow(0 0 18px rgba(80,190,255,.22));outline:none}
+.orbit-item button:hover::before,.orbit-item button:focus-visible::before,.orbit-item button.is-touched::before{content:"";position:absolute;inset:5%;z-index:0;pointer-events:none;border-radius:50%;background:radial-gradient(ellipse at 50% 48%,rgba(13,43,91,.38) 0%,rgba(10,34,76,.24) 38%,rgba(5,18,48,.12) 58%,transparent 76%);filter:blur(16px);opacity:1;mix-blend-mode:screen}
+.orbit-item button:hover,.orbit-item button:focus-visible,.orbit-item button.is-touched{filter:brightness(1.08) drop-shadow(0 0 20px rgba(20,65,135,.42)) drop-shadow(0 0 38px rgba(8,31,78,.28));outline:none}
 .orbit-item button:hover{transform:translateY(-3px)}
 
 /* Unified dimensions for all seven domain cubes. */

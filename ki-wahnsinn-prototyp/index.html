@@ -3,176 +3,138 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#030a13">
-<title>KI-Wahnsinn – Das offene Arbeitsbuch</title>
+<meta name="theme-color" content="#000000">
+<meta name="description" content="KI-Wahnsinn – Das offene Arbeitsbuch.">
+<title>KI-Wahnsinn · Das offene Arbeitsbuch</title>
 <style>
-:root{--bg:#030912;--gold:#e9b86b;--cyan:#63dfff;--silver:#c9e9f5;--muted:#9bb2c5}
-*{box-sizing:border-box}
-html{background:#000;color:#edf5fa;font-family:Inter,Arial,sans-serif}
-body{margin:0;min-height:100vh;background:#000;overflow-x:hidden}
-.topline{height:48px;padding:0 3vw;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #31506a88;color:#b9d2e3;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
-.brand{color:#e7c58e}.brand span{color:#70dfff}
-header{text-align:center;padding:27px 16px 12px}
-.eyebrow{font-size:10px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase}
-h1{font:clamp(36px,5vw,64px)/1.05 Georgia,serif;letter-spacing:.015em;margin:9px 0 8px;color:#d9a477;background:linear-gradient(108deg,#6e351f 0%,#bd8054 17%,#f2d0a5 31%,#a95f38 46%,#f4d1b3 60%,#c8794b 76%,#6e351f 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none;filter:drop-shadow(0 1px 1px rgba(255,222,184,.23)) drop-shadow(0 0 9px rgba(201,121,75,.22))}
-.subtitle{color:#b7cbd9;font-size:clamp(13px,1.5vw,17px);line-height:1.6;margin:0}
-.stage{width:min(900px,94vw);margin:18px auto 0;display:grid;grid-template-columns:minmax(90px,150px) minmax(0,620px);gap:clamp(10px,1.4vw,22px);align-items:center;justify-content:center;padding:8px .5vw 0;background:#000}
-.cover-wrap{display:flex;justify-content:center;align-items:center;min-width:0}
-.cover-frame{width:min(100%,170px);position:relative;filter:drop-shadow(0 18px 26px #000b);transition:transform .35s ease}
-.cover-frame img{display:block;width:100%;height:auto;object-fit:contain}
-.cover-frame.angle{transform:perspective(900px) rotateX(8deg) rotateZ(-3deg) scale(.98)}
-.spread-wrap{position:relative;width:min(100%,620px);justify-self:center;display:grid;grid-template-columns:1fr 1fr;align-items:stretch;perspective:1600px;isolation:isolate;background:#000;aspect-ratio:2/1;overflow:hidden}
-.page-panel{min-width:0;display:flex;justify-content:center;align-items:center;background:#000;overflow:hidden}
-.page-panel img{display:block;width:100%;height:100%;object-fit:cover;background:#000}
-.page-turn{display:none;position:absolute;z-index:4;top:0;left:50%;width:50%;height:100%;transform-style:preserve-3d;transform-origin:left center;pointer-events:none;will-change:transform;filter:drop-shadow(0 0 15px rgba(0,0,0,.8))}
-.page-turn.active{display:block}
-.page-turn.active.next{animation:flip-next .78s cubic-bezier(.35,.02,.25,1) forwards}
-.page-turn.active.previous{left:0;transform-origin:right center;animation:flip-previous .78s cubic-bezier(.35,.02,.25,1) forwards}
-.turn-face{position:absolute;inset:0;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 0 22px rgba(76,198,240,.16)}
-.turn-face:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.52),transparent 16%,transparent 82%,rgba(232,184,107,.26));pointer-events:none}
-.page-turn.active{display:block;z-index:8;perspective:1400px}
-.page-turn.active:before{content:"";position:absolute;top:0;bottom:0;left:0;width:2px;background:linear-gradient(180deg,#5edfff,#f6c16d,#5edfff);box-shadow:0 0 16px #5edfff99}
-.turn-face.front{background:#061526}
-.turn-face.back{transform:rotateY(180deg);background:#061526}
-.turn-face img{display:block;width:100%;height:100%;object-fit:cover}
-@keyframes flip-next{0%{transform:rotateY(0deg);filter:brightness(1)}18%{filter:brightness(.64)}45%{filter:brightness(.4);box-shadow:18px 0 35px rgba(0,0,0,.9)}78%{filter:brightness(.7)}100%{transform:rotateY(-180deg);filter:brightness(.9)}}
-@keyframes flip-previous{0%{transform:rotateY(0deg);filter:brightness(1)}18%{filter:brightness(.64)}45%{filter:brightness(.4);box-shadow:-18px 0 35px rgba(0,0,0,.9)}78%{filter:brightness(.7)}100%{transform:rotateY(180deg);filter:brightness(.9)}}
-.controls{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;padding:20px 10px 0}
-button{font:600 11px Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#d9edf7;background:linear-gradient(180deg,#0c2436,#071522);border:1px solid #68c8ec88;border-radius:5px;padding:12px 18px;cursor:pointer;box-shadow:inset 0 0 14px #4fc8ef12,0 0 12px #41bde622}
-button:hover{border-color:var(--gold);color:#ffe1ad;box-shadow:0 0 18px #e7b76b33}
-button:disabled{opacity:.35;cursor:default}
-.page-count{min-width:105px;text-align:center;color:#c4d8e5;font-size:11px;letter-spacing:.16em}
-.register{width:min(1200px,92vw);margin:27px auto 0;border-top:1px solid #7a9bb533;padding:18px 0 25px}
-.register-title{font-size:10px;letter-spacing:.2em;color:var(--gold);margin-bottom:12px}
-.entries{display:flex;gap:8px;flex-wrap:wrap}
-.entries button{padding:9px 12px;font-size:10px;color:#9fb9cb;border-color:#54728b66;box-shadow:none}
-.entries button.active{border-color:var(--gold);color:#f5d39a}
-.foot{text-align:center;padding:10px 15px 28px;color:#607b91;font-size:9px;letter-spacing:.2em;text-transform:uppercase}
-@media(max-width:760px){
- .topline{height:40px;font-size:8px;padding:0 12px}
- header{padding:22px 18px 6px}
- .stage{grid-template-columns:1fr;grid-template-rows:auto auto;gap:10px;width:96vw;margin-top:12px;padding:0 2px}
- .cover-wrap{grid-column:1;display:flex;justify-content:center}
- .cover-frame{width:min(24vw,118px)}
- .spread-wrap{width:min(100%,620px);aspect-ratio:2/1}
- .page-panel{width:100%}
- .page-panel img{width:100%;height:100%;object-fit:cover}
- .controls{padding-top:13px;gap:7px}
- button{padding:11px 12px;font-size:9px}
- .register{margin-top:18px}
+:root{
+  color-scheme:dark;
+  --gold:#e9b86b;
+  --cyan:#63dfff;
+  --text:#eaf2f7;
+  --muted:#9bb2c5;
 }
-@media(prefers-reduced-motion:reduce){.cover-frame{transition:none!important}.page-turn.active.next,.page-turn.active.previous{animation-duration:.78s!important}}
-
-/* Buchzustände: Cover separat, offene Doppelseite vollständig sichtbar */
-.stage.cover-only{grid-template-columns:minmax(100px,150px) minmax(0,620px)}
-.stage.cover-only .spread-wrap{display:none!important}
-.stage.book-open{grid-template-columns:minmax(0,1fr);}
-.stage.book-open .cover-wrap{display:none!important}
-@media(max-width:760px){.stage.cover-only{grid-template-columns:1fr}.stage.book-open{grid-template-columns:1fr}.spread-wrap{max-width:calc(100vw - 24px)}}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#000;color:var(--text)}
+body{
+  min-height:100vh;
+  min-height:100svh;
+  font-family:Inter,Arial,sans-serif;
+  overflow-x:hidden;
+  background:#000;
+}
+.topline{
+  min-height:44px;
+  padding:0 clamp(16px,3vw,50px);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  border-bottom:1px solid rgba(99,223,255,.18);
+  color:#a9c2d2;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.19em;
+  text-transform:uppercase;
+}
+.brand{color:#e7c58e}
+.brand span{color:var(--cyan)}
+.prototype{white-space:nowrap;color:#8ba8bc}
+main{
+  width:min(1180px,100%);
+  margin:0 auto;
+  padding:clamp(28px,5vh,58px) 20px 48px;
+}
+.intro{text-align:center;margin:0 auto 22px}
+.eyebrow{
+  margin:0 0 10px;
+  color:var(--gold);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+}
+h1{
+  margin:0;
+  font:clamp(42px,6vw,68px)/1.05 Georgia,serif;
+  letter-spacing:.01em;
+  color:#d9a477;
+  background:linear-gradient(108deg,#8c4b2e 0%,#f2d0a5 28%,#b96f48 50%,#f4d1b3 70%,#8c4b2e 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 9px rgba(201,121,75,.18));
+}
+.subtitle{
+  margin:12px auto 0;
+  max-width:650px;
+  color:#b7cbd9;
+  font-size:clamp(13px,1.5vw,16px);
+  line-height:1.65;
+}
+.book-stage{
+  min-height:clamp(440px,68vh,760px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 0 24px;
+  background:#000;
+}
+.book-cover{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:min(78vw,460px);
+  max-height:68vh;
+  margin:0;
+  filter:drop-shadow(0 24px 35px rgba(0,0,0,.85));
+}
+.book-cover img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:68vh;
+  object-fit:contain;
+}
+.foot{
+  padding:12px 16px 26px;
+  color:#58748a;
+  text-align:center;
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+}
+@media(max-width:640px){
+  .topline{min-height:40px;padding:0 12px;font-size:8px;letter-spacing:.12em}
+  main{padding:30px 14px 28px}
+  .intro{margin-bottom:8px}
+  .book-stage{min-height:58vh;min-height:58svh;padding:8px 0 20px}
+  .book-cover{width:min(84vw,390px);max-height:60svh}
+  .book-cover img{max-height:60svh}
+}
+@media(prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important}
+}
 </style>
 </head>
 <body>
-<div class="topline"><div class="brand">THE WHITE-BOX SYSTEM <span>· PARALLEL SPACE</span></div><div>OFFLINE-PROTOTYP · GLASSBOOK</div></div>
-<header>
- <div class="eyebrow">Ein offenes Arbeitsbuch</div>
- <h1>KI-Wahnsinn</h1>
- <p class="subtitle">Gedanken. Diagnosen. Erfahrungen. Beobachtungen.<br>Ein Buch mit einem Anfang – aber ohne vorgeschriebenen Denkweg.</p>
-</header>
+<div class="topline">
+  <div class="brand">THE WHITE-BOX SYSTEM <span>· PARALLEL SPACE</span></div>
+  <div class="prototype">OFFLINE-PROTOTYP · GLASSBOOK</div>
+</div>
 <main>
- <section class="stage" id="bookStage" aria-label="Geschlossenes Cover und geöffnetes Glasbuch">
-  <div class="cover-wrap">
-   <div class="cover-frame" id="coverFrame"><img src="assets/cover-standing.webp" alt="Geschlossenes Cover des Arbeitsbuchs KI-Wahnsinn"></div>
-  </div>
-  <div class="spread-wrap" id="spreadWrap" aria-label="Geöffnete leere Buchdoppelseite">
-   <div class="page-panel left-page"><img src="assets/page-left.webp" alt="Leere linke Glasbuchseite"></div>
-   <div class="page-panel right-page"><img src="assets/page-right.webp" alt="Leere rechte Glasbuchseite"></div>
-   <div class="page-turn" id="pageTurn" aria-hidden="true">
-    <div class="turn-face front"><img src="assets/page-right.webp" alt=""></div>
-    <div class="turn-face back"><img src="assets/page-left.webp" alt=""></div>
-   </div>
-  </div>
- </section>
- <nav class="controls" aria-label="Buchnavigation">
-  <button id="openBtn" type="button">Buch öffnen</button>
-  <button id="prevBtn" type="button" disabled>← Zurück</button>
-  <span class="page-count" id="pageCount">COVER</span>
-  <button id="nextBtn" type="button">Weiter →</button>
-  <button id="coverBtn" type="button">Cover-Ansicht</button>
- </nav>
- <section class="register">
-  <div class="register-title">DIREKT ZU EINEM EINTRAG SPRINGEN</div>
-  <div class="entries" id="entries">
-   <button data-page="1" class="active">01 · VORWORT</button>
-   <button data-page="3">03 · LABORNOTIZ</button>
-   <button data-page="5">05 · GEDANKENSPRUNG</button>
-   <button data-page="7">07 · DIAGNOSE</button>
-   <button data-page="9">09 · RÜCKBLICK</button>
-   <button data-page="11">11 · KORREKTUR</button>
-  </div>
- </section>
+  <header class="intro">
+    <p class="eyebrow">Ein offenes Arbeitsbuch</p>
+    <h1>KI-Wahnsinn</h1>
+    <p class="subtitle">Gedanken. Diagnosen. Erfahrungen. Beobachtungen.</p>
+  </header>
+  <section class="book-stage" aria-label="Buchcover">
+    <figure class="book-cover">
+      <img src="assets/cover-standing.webp" alt="Das aufrecht stehende Glasbuch-Cover: KI-Wahnsinn – Das offene Arbeitsbuch" fetchpriority="high">
+    </figure>
+  </section>
 </main>
-<footer class="foot">VISUELLER MASTER · INHALTE FOLGEN SPÄTER · PROTOTYP</footer>
-<script>
-(()=>{
- let page=0; const total=24; let turning=false;
- const pageTurn=document.getElementById('pageTurn');
- const turnFront=pageTurn.querySelector('.turn-face.front img');
- const turnBack=pageTurn.querySelector('.turn-face.back img');
- const count=document.getElementById('pageCount');
- const prev=document.getElementById('prevBtn');
- const next=document.getElementById('nextBtn');
- const cover=document.getElementById('coverFrame');
- const stage=document.getElementById('bookStage');
- const spread=document.getElementById('spreadWrap');
- const entries=[...document.querySelectorAll('[data-page]')];
- const leftImg=document.querySelector('.left-page img');
- const rightImg=document.querySelector('.right-page img');
- function render(){
-  const open=page>0;
-  count.textContent=open?String(page).padStart(2,'0')+' / '+total:'COVER';
-  prev.disabled=!open;
-  next.disabled=page>=total;
-  document.getElementById('openBtn').disabled=open;
-  stage.classList.toggle('book-open',open);
-  stage.classList.toggle('cover-only',!open);
-  cover.style.display=open?'none':'flex';
-  spread.style.display=open?'grid':'none';
-  entries.forEach(b=>b.classList.toggle('active',Number(b.dataset.page)===page));
- }
- function go(n){page=Math.max(0,Math.min(total,n));render()}
- function flip(direction,target){
-  if(turning)return;
-  const nextPage=Math.max(0,Math.min(total,target));
-  if(nextPage===page)return;
-  if(page===0){page=nextPage;render();return}
-  turning=true;
-  turnFront.src=direction==='next'?'assets/page-right.webp':'assets/page-left.webp';
-  turnBack.src=direction==='next'?'assets/page-left.webp':'assets/page-right.webp';
-  pageTurn.className='page-turn';
-  pageTurn.style.left=direction==='next'?'50%':'0';
-  pageTurn.style.transformOrigin=direction==='next'?'left center':'right center';
-  void pageTurn.offsetWidth;
-  pageTurn.classList.add('active',direction);
-  page=nextPage;render();
-  let finished=false;
-  const finish=()=>{if(finished)return;finished=true;pageTurn.className='page-turn';turning=false;};
-  pageTurn.addEventListener('animationend',finish,{once:true});
-  setTimeout(finish,900);
- }
- document.getElementById('openBtn').addEventListener('click',()=>{if(page===0){page=1;render()}});
- prev.addEventListener('click',()=>flip('previous',Math.max(1,page-2)));
- next.addEventListener('click',()=>flip('next',Math.min(total,page+2)));
- document.getElementById('coverBtn').addEventListener('click',()=>{
-  if(page===0){cover.classList.toggle('angle');return}
-  page=0;pageTurn.className='page-turn';turning=false;render();
- });
- entries.forEach(b=>b.addEventListener('click',()=>{const target=Number(b.dataset.page);if(page===0){page=target;render()}else flip(target>page?'next':'previous',target)}));
- let startX=null;
- spread.addEventListener('touchstart',e=>{startX=e.changedTouches[0].clientX},{passive:true});
- spread.addEventListener('touchend',e=>{if(startX===null)return;const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>40)flip(dx<0?'next':'previous',page+(dx<0?2:-2));startX=null},{passive:true});
- spread.addEventListener('click',e=>{const rect=spread.getBoundingClientRect();const isRight=e.clientX>rect.left+rect.width/2;flip(isRight?'next':'previous',page+(isRight?2:-2))});
- document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')flip('next',Math.min(total,page+2));if(e.key==='ArrowLeft')flip('previous',Math.max(1,page-2));});
- render();
-})();
-</script>
-</body></html>
+<footer class="foot">VISUELLER MASTER · SEITEN WERDEN EINZELN ERGÄNZT</footer>
+</body>
+</html>

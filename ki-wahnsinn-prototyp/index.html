@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#030a13">
+<title>KI-Wahnsinn – Das offene Arbeitsbuch</title>
+<style>
+:root{--bg:#030912;--gold:#e9b86b;--cyan:#63dfff;--silver:#c9e9f5;--muted:#9bb2c5}
+*{box-sizing:border-box}
+html{background:var(--bg);color:#edf5fa;font-family:Inter,Arial,sans-serif}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 54% 38%,#0b2740 0,#061421 37%,#02070e 78%);overflow-x:hidden}
+.topline{height:48px;padding:0 3vw;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #31506a88;color:#b9d2e3;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.brand{color:#e7c58e}.brand span{color:#70dfff}
+header{text-align:center;padding:27px 16px 12px}
+.eyebrow{font-size:10px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase}
+h1{font:clamp(36px,5vw,64px)/1.05 Georgia,serif;letter-spacing:.015em;margin:9px 0 8px;color:#f4e9d6;text-shadow:0 0 22px #e6b86a55}
+.subtitle{color:#b7cbd9;font-size:clamp(13px,1.5vw,17px);line-height:1.6;margin:0}
+.stage{width:min(1500px,96vw);margin:22px auto 0;display:grid;grid-template-columns:minmax(220px, .72fr) minmax(0,1.8fr);gap:clamp(14px,2.4vw,38px);align-items:center;padding:10px 1.2vw 0}
+.cover-wrap{display:flex;justify-content:center;align-items:center;min-width:0}
+.cover-frame{width:min(100%,390px);position:relative;filter:drop-shadow(0 20px 32px #000b);transition:transform .35s ease}
+.cover-frame img{display:block;width:100%;height:auto;object-fit:contain}
+.cover-frame.angle{transform:perspective(900px) rotateX(8deg) rotateZ(-3deg) scale(.98)}
+.book-wrap{min-width:0;position:relative;filter:drop-shadow(0 20px 35px #000b)}
+.spread{position:relative;width:100%;aspect-ratio:2/1;overflow:hidden;border-radius:12px;background:#03101d;box-shadow:0 0 0 1px #7bdfff44,0 0 28px #1ca8dc26}
+.spread>img{display:block;width:100%;height:100%;object-fit:fill}
+.page-overlay{position:absolute;top:14%;bottom:13%;width:40%;pointer-events:none}
+.page-overlay.left{left:8%}.page-overlay.right{right:8%}
+.page-overlay:focus-within{pointer-events:auto}
+.controls{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;padding:20px 10px 0}
+button{font:600 11px Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#d9edf7;background:linear-gradient(180deg,#0c2436,#071522);border:1px solid #68c8ec88;border-radius:5px;padding:12px 18px;cursor:pointer;box-shadow:inset 0 0 14px #4fc8ef12,0 0 12px #41bde622}
+button:hover{border-color:var(--gold);color:#ffe1ad;box-shadow:0 0 18px #e7b76b33}
+button:disabled{opacity:.35;cursor:default}
+.page-count{min-width:105px;text-align:center;color:#c4d8e5;font-size:11px;letter-spacing:.16em}
+.register{width:min(1200px,92vw);margin:27px auto 0;border-top:1px solid #7a9bb533;padding:18px 0 25px}
+.register-title{font-size:10px;letter-spacing:.2em;color:var(--gold);margin-bottom:12px}
+.entries{display:flex;gap:8px;flex-wrap:wrap}
+.entries button{padding:9px 12px;font-size:10px;color:#9fb9cb;border-color:#54728b66;box-shadow:none}
+.entries button.active{border-color:var(--gold);color:#f5d39a}
+.foot{text-align:center;padding:10px 15px 28px;color:#607b91;font-size:9px;letter-spacing:.2em;text-transform:uppercase}
+@media(max-width:760px){
+ .topline{height:40px;font-size:8px;padding:0 12px}
+ header{padding:22px 18px 6px}
+ .stage{grid-template-columns:1fr;gap:8px;width:min(680px,96vw);margin-top:12px}
+ .cover-frame{width:min(54vw,260px)}
+ .book-wrap{width:100%}
+ .spread{aspect-ratio:2/1;border-radius:7px}
+ .controls{padding-top:13px;gap:7px}
+ button{padding:11px 12px;font-size:9px}
+ .register{margin-top:18px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="topline"><div class="brand">THE WHITE-BOX SYSTEM <span>· PARALLEL SPACE</span></div><div>OFFLINE-PROTOTYP · GLASSBOOK</div></div>
+<header>
+ <div class="eyebrow">Ein offenes Arbeitsbuch</div>
+ <h1>KI-Wahnsinn</h1>
+ <p class="subtitle">Gedanken. Diagnosen. Erfahrungen. Beobachtungen.<br>Ein Buch mit einem Anfang – aber ohne vorgeschriebenen Denkweg.</p>
+</header>
+<main>
+ <section class="stage" aria-label="Geschlossenes Cover und geöffnetes Glasbuch">
+  <div class="cover-wrap">
+   <div class="cover-frame" id="coverFrame"><img src="assets/cover-standing.webp" alt="Stehendes geschlossenes Glasbuch-Cover KI-Wahnsinn"></div>
+  </div>
+  <div class="book-wrap">
+   <div class="spread" id="spread" aria-label="Geöffnete leere Glasbuch-Doppelseite">
+    <img src="assets/open-spread.webp" alt="Zwei gleich große leere Glasbuchseiten mit transparenten Glaslagen, Chromkanten und blau-goldener Beleuchtung">
+    <div class="page-overlay left" aria-label="Leere linke Inhaltsfläche"></div>
+    <div class="page-overlay right" aria-label="Leere rechte Inhaltsfläche"></div>
+   </div>
+  </div>
+ </section>
+ <nav class="controls" aria-label="Buchnavigation">
+  <button id="openBtn" type="button">Buch öffnen</button>
+  <button id="prevBtn" type="button" disabled>← Zurück</button>
+  <span class="page-count" id="pageCount">COVER</span>
+  <button id="nextBtn" type="button">Weiter →</button>
+  <button id="coverBtn" type="button">Cover-Ansicht</button>
+ </nav>
+ <section class="register">
+  <div class="register-title">DIREKT ZU EINEM EINTRAG SPRINGEN</div>
+  <div class="entries" id="entries">
+   <button data-page="1" class="active">01 · VORWORT</button>
+   <button data-page="3">03 · LABORNOTIZ</button>
+   <button data-page="5">05 · GEDANKENSPRUNG</button>
+   <button data-page="7">07 · DIAGNOSE</button>
+   <button data-page="9">09 · RÜCKBLICK</button>
+   <button data-page="11">11 · KORREKTUR</button>
+  </div>
+ </section>
+</main>
+<footer class="foot">VISUELLER MASTER · INHALTE FOLGEN SPÄTER · PROTOTYP</footer>
+<script>
+(()=>{
+ let page=0; const total=24;
+ const count=document.getElementById('pageCount');
+ const prev=document.getElementById('prevBtn');
+ const next=document.getElementById('nextBtn');
+ const cover=document.getElementById('coverFrame');
+ const entries=[...document.querySelectorAll('[data-page]')];
+ function render(){
+  count.textContent=page===0?'COVER':String(page).padStart(2,'0')+' / '+total;
+  prev.disabled=page===0; next.disabled=page===total;
+  entries.forEach(b=>b.classList.toggle('active',Number(b.dataset.page)===page));
+  document.getElementById('spread').style.opacity=page===0?'.78':'1';
+ }
+ function go(n){page=Math.max(0,Math.min(total,n));render()}
+ document.getElementById('openBtn').addEventListener('click',()=>go(1));
+ prev.addEventListener('click',()=>go(page-1));
+ next.addEventListener('click',()=>go(page===0?1:Math.min(total,page+2)));
+ document.getElementById('coverBtn').addEventListener('click',()=>cover.classList.toggle('angle'));
+ entries.forEach(b=>b.addEventListener('click',()=>go(Number(b.dataset.page))));
+ let startX=null;
+ const spread=document.getElementById('spread');
+ spread.addEventListener('touchstart',e=>{startX=e.changedTouches[0].clientX},{passive:true});
+ spread.addEventListener('touchend',e=>{if(startX===null)return;const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>40)go(page+(dx<0?2:-2));startX=null},{passive:true});
+ spread.addEventListener('click',e=>{const r=spread.getBoundingClientRect();go(page+(e.clientX>r.left+r.width/2?2:-2))});
+ render();
+})();
+</script>
+</body></html>

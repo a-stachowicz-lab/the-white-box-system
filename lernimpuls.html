@@ -9,8 +9,9 @@
 <link rel="stylesheet" href="style.css">
 <style>
 .poster-page{max-width:1100px;margin:0 auto;padding:clamp(1rem,3vw,2.5rem) 1rem 4rem}
-.poster-backbar{position:fixed!important;top:calc(env(safe-area-inset-top,0px) + 1rem)!important;left:clamp(1rem,3vw,2rem)!important;z-index:2147483000!important;display:flex;justify-content:flex-start;padding:0;margin:0;pointer-events:none;transform:none!important}.poster-backbar .button{position:relative;pointer-events:auto;box-shadow:0 4px 18px rgba(0,0,0,.45);font-weight:700}
-.poster-backbar .button{box-shadow:0 4px 18px rgba(0,0,0,.45);font-weight:700}
+.poster-actions{display:flex;justify-content:center;align-items:center;gap:.65rem;flex-wrap:wrap;margin:1.25rem 0}
+.poster-actions .button{min-height:44px;padding:.65rem .9rem;font-size:.82rem}
+@media(max-width:600px){.poster-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem}.poster-actions .button{width:100%;padding:.65rem .45rem;font-size:.78rem}.poster-actions .button:last-child{grid-column:1/-1;justify-self:center;width:auto;min-width:65%}}
 .poster-actions{display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap;margin:1.25rem 0}
 .poster-frame{margin:1.5rem auto;max-width:760px;text-align:center}
 .poster-frame img{display:block;width:100%;height:auto;object-fit:contain;border:1px solid var(--line);background:#fff;box-shadow:0 12px 36px rgba(0,0,0,.4)}
@@ -23,9 +24,7 @@
 <a href="index.html">Start</a><a href="system.html">System</a><a href="diagnosis.html">Diagnose</a><a href="pruefung.html">Prüfung</a><a href="workshop.html">Workshop</a><a href="sectors.html">Anwendungsbereiche</a><a href="ki-wahnsinn.html">KI-Wahnsinn</a><a href="collaborate.html">Zusammenarbeit</a><a href="contact.html">Kontakt</a>
 </nav>
 </header>
-<div class="poster-backbar">
-<a class="button button-primary" href="schule.html" aria-label="Zurück zum Schulangebot">← Zurück zum Schulangebot</a>
-</div>
+
 <main class="poster-page">
 
 <p class="eyebrow">THE WHITE-BOX SYSTEM · SCHULANGEBOT</p>
@@ -34,6 +33,7 @@
 <div class="poster-actions">
 <a class="button button-secondary" href="index.html">Zur Startseite</a>
 <a class="button button-primary" href="file_00000000a9d081f488295a6f1baa287e.png" download="THE-WHITE-BOX-SYSTEM-Lernimpuls-KI-Ressourcencheck.png">Poster herunterladen</a>
+<a class="button button-secondary" href="schule.html">← Zurück zum Schulangebot</a>
 </div>
 <figure class="poster-frame">
 <img src="file_00000000a9d081f488295a6f1baa287e.png" alt="Unterrichtsplakat: Was steckt eigentlich hinter einer KI-Antwort? Ressourcencheck zu Energie, Stromversorgung, Rechenzentren, Wasser und Rohstoffen.">

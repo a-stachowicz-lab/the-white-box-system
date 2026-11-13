@@ -26,11 +26,11 @@
 }
 .book-hero .lead{max-width:760px;margin:0 auto}
 .book-composition{
-  width:min(780px,96vw);
+  width:min(600px,96vw);
   margin:.5rem auto 0;
   padding:0 .5rem .35rem;
   display:grid;
-  grid-template-columns:minmax(0,180px) minmax(0,340px);
+  grid-template-columns:minmax(0,180px) minmax(0,360px);
   align-items:center;
   justify-content:center;
   gap:clamp(8px,1.2vw,16px);
@@ -47,7 +47,8 @@
   position:relative;
   min-width:0;
   width:100%;
-  max-width:340px;
+  max-width:360px;
+  aspect-ratio:2/1;
   display:grid;
   grid-template-columns:minmax(0,1fr) minmax(0,1fr);
   align-items:stretch;
@@ -66,10 +67,13 @@
   position:absolute;
   inset:0;
   display:block;
-  width:100%;
+  width:200%;
+  max-width:none;
   height:100%;
-  object-fit:contain;
+  object-fit:fill;
 }
+.book-page-left img{left:0}
+.book-page-right img{left:-100%}
 .book-writing{
   position:absolute;
   inset:13.5% 15% 15% 15%;
@@ -143,7 +147,7 @@
     padding:0 .2rem .25rem;
   }
   .book-cover-frame{width:min(34vw,170px);max-width:170px}
-  .book-spread{width:100%;max-width:340px;margin:0 auto}
+  .book-spread{width:100%;max-width:360px;margin:0 auto}
   .book-writing{font-size:clamp(8px,1.7vw,11px)}
   .book-controls{margin:.3rem auto .8rem}
 }
@@ -190,12 +194,12 @@
 
     <div class="book-spread" id="bookSpread" aria-label="Zwei leere Buchseiten">
       <figure class="book-page book-page-left">
-        <img src="assets/page-left.webp" alt="" aria-hidden="true">
+        <img src="assets/open-spread.webp" alt="" aria-hidden="true">
         <div class="book-writing" id="leftWriting" contenteditable="true" spellcheck="false"
              role="textbox" aria-multiline="true" aria-label="Leere linke Buchseite"></div>
       </figure>
       <figure class="book-page book-page-right">
-        <img src="assets/page-right.webp" alt="" aria-hidden="true">
+        <img src="assets/open-spread.webp" alt="" aria-hidden="true">
         <div class="book-writing" id="rightWriting" contenteditable="true" spellcheck="false"
              role="textbox" aria-multiline="true" aria-label="Leere rechte Buchseite"></div>
       </figure>

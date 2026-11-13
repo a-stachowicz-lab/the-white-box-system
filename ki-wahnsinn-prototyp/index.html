@@ -33,13 +33,13 @@
   margin:0 auto;
 }
 .book-composition{
-  width:min(1160px,96vw);
+  width:min(940px,96vw);
   margin:clamp(1rem,2.5vw,2rem) auto 0;
   padding:0 1rem 2.2rem;
   display:grid;
-  grid-template-columns:minmax(260px,.78fr) minmax(0,1.72fr);
+  grid-template-columns:minmax(260px,390px) minmax(0,480px);
   align-items:center;
-  gap:clamp(14px,2.3vw,34px);
+  gap:clamp(14px,2.3vw,28px);
 }
 .book-cover-column{
   min-width:0;
@@ -108,7 +108,7 @@
   }
   .book-cover-frame{width:min(74vw,330px);max-width:330px}
   .book-cover-frame img{max-height:54vh}
-  .book-spread{width:100%;max-width:660px;margin:0 auto}
+  .book-spread{width:min(100%,480px);max-width:480px;margin:0 auto}
   .book-page img{width:100%;height:auto}
 }
 @media(max-width:420px){

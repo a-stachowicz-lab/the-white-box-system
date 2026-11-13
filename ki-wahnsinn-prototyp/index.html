@@ -8,15 +8,14 @@
 <title>KI-Wahnsinn · Das offene Arbeitsbuch | THE WHITE-BOX SYSTEM</title>
 <link rel="stylesheet" href="../style.css">
 <style>
-/* Eigenständiger Offline-Prototyp – visuelle Sprache der Sektorenseite */
 .book-hero{
   max-width:var(--max);
   margin:auto;
-  padding:clamp(1.8rem,3.2vw,2.8rem) 1.5rem .5rem;
+  padding:clamp(1.5rem,2.5vw,2.2rem) 1.5rem .35rem;
   text-align:center;
 }
-.book-hero .eyebrow{margin-bottom:.55rem}
-.book-hero h1{margin:0 auto .55rem}
+.book-hero .eyebrow{margin-bottom:.45rem}
+.book-hero h1{margin:0 auto .4rem}
 .book-hero h1 span{
   color:var(--copper-light);
   background:linear-gradient(105deg,#a95f38 0%,#f2c09a 24%,#c8794b 48%,#f4d1b3 68%,#a95f38 100%);
@@ -27,34 +26,65 @@
 }
 .book-hero .lead{max-width:760px;margin:0 auto}
 .book-composition{
-  width:min(1320px,98vw);
-  margin:clamp(.5rem,1.5vw,1.2rem) auto 0;
-  padding:0 clamp(.35rem,1.2vw,1rem) 1.2rem;
+  width:min(780px,96vw);
+  margin:.5rem auto 0;
+  padding:0 .5rem .35rem;
   display:grid;
-  grid-template-columns:minmax(260px,390px) minmax(0,780px);
+  grid-template-columns:minmax(0,210px) minmax(0,520px);
   align-items:center;
-  gap:clamp(8px,1.5vw,22px);
+  justify-content:center;
+  gap:clamp(8px,1.2vw,16px);
 }
 .book-cover-column{min-width:0;display:flex;align-items:center;justify-content:center}
 .book-cover-frame{
   width:100%;
-  max-width:390px;
+  max-width:210px;
   margin:0;
-  position:relative;
-  filter:drop-shadow(0 14px 24px rgba(0,0,0,.42));
+  filter:drop-shadow(0 12px 20px rgba(0,0,0,.4));
 }
 .book-cover-frame img{display:block;width:100%;height:auto;object-fit:contain}
 .book-spread{
   position:relative;
   min-width:0;
   width:100%;
+  max-width:520px;
   display:grid;
   grid-template-columns:minmax(0,1fr) minmax(0,1fr);
   align-items:stretch;
   gap:0;
-  perspective:1500px;
+  perspective:1400px;
   transform-style:preserve-3d;
 }
+.book-page{
+  position:relative;
+  min-width:0;
+  margin:0;
+  aspect-ratio:1/1;
+  overflow:hidden;
+}
+.book-page img{
+  position:absolute;
+  inset:0;
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+.book-writing{
+  position:absolute;
+  inset:13.5% 15% 15% 15%;
+  z-index:2;
+  overflow:auto;
+  color:#e5edf7;
+  font:clamp(8px,.72vw,11px)/1.5 Arial,Helvetica,sans-serif;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  outline:none;
+  caret-color:#f2c09a;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(84,229,243,.45) transparent;
+}
+.book-writing:focus-visible{outline:1px solid rgba(84,229,243,.35);outline-offset:3px}
 .page-flip-layer{
   position:absolute;
   top:0;
@@ -65,107 +95,65 @@
   transform-style:preserve-3d;
   backface-visibility:hidden;
   transition:transform .58s cubic-bezier(.2,.72,.18,1),filter .58s ease;
-  box-shadow:0 0 24px rgba(0,0,0,.38);
+  box-shadow:0 0 24px rgba(0,0,0,.32);
 }
 .page-flip-layer.next{right:0;transform-origin:left center}
 .page-flip-layer.prev{left:0;transform-origin:right center}
 .page-flip-layer.next.turning{transform:rotateY(-180deg);filter:brightness(.72)}
 .page-flip-layer.prev.turning{transform:rotateY(180deg);filter:brightness(.72)}
-@media(prefers-reduced-motion:reduce){.page-flip-layer{transition:none}}
-.book-page{position:relative;min-width:0;margin:0;aspect-ratio:1/1;overflow:hidden}
-.book-page img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain}
-.book-writing{
-  position:absolute;
-  inset:13.5% 15% 15% 15%;
-  z-index:2;
-  overflow:auto;
-  color:#e5edf7;
-  font:clamp(9px,.8vw,12px)/1.5 Arial,Helvetica,sans-serif;
-  white-space:pre-wrap;
-  overflow-wrap:anywhere;
-  outline:none;
-  caret-color:#f2c09a;
-  scrollbar-width:thin;
-  scrollbar-color:rgba(84,229,243,.45) transparent;
-}
-.book-writing:focus-visible{outline:1px solid rgba(84,229,243,.35);outline-offset:4px}
-.page-number{
-  position:absolute;
-  z-index:3;
-  right:15.5%;
-  bottom:8.5%;
-  color:rgba(205,220,237,.62);
-  font-size:clamp(7px,.62vw,10px);
-  letter-spacing:.12em;
-  pointer-events:none;
-}
 .book-controls{
-  width:min(920px,94vw);
-  margin:.1rem auto 1.2rem;
+  width:min(520px,92vw);
+  margin:.25rem auto 1rem;
   display:flex;
   justify-content:center;
   align-items:center;
-  flex-wrap:wrap;
-  gap:.55rem;
+  gap:1rem;
 }
-.book-controls .button{cursor:pointer;font:inherit}
-.book-controls .button:disabled{opacity:.35;cursor:not-allowed;transform:none}
-.book-status{
-  min-width:88px;
-  text-align:center;
-  color:var(--muted);
-  font-size:.76rem;
-  letter-spacing:.13em;
-  font-variant-numeric:tabular-nums;
+.book-controls button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:42px;
+  height:42px;
+  border:1px solid rgba(201,121,75,.55);
+  border-radius:50%;
+  color:var(--text);
+  background:rgba(255,255,255,.025);
+  font-size:1.25rem;
+  cursor:pointer;
 }
-.jump-area{max-width:1000px;margin:0 auto;padding:0 1rem 1.8rem;text-align:center}
-.jump-label{
-  margin:0 0 .8rem;
-  color:var(--muted);
-  font-size:.72rem;
-  letter-spacing:.17em;
-  text-transform:uppercase;
-}
-.jump-list{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem}
-.jump-list .button{min-height:38px;padding:.55rem .8rem;font-size:.72rem;letter-spacing:.07em}
+.book-controls button:hover{background:rgba(201,121,75,.14)}
+.book-controls button:disabled{opacity:.3;cursor:not-allowed}
 .book-foot{
   max-width:var(--max);
   margin:0 auto;
-  padding:0 1.5rem 1.6rem;
+  padding:0 1.5rem 1.2rem;
   text-align:center;
   color:var(--muted);
-  font-size:.68rem;
-  letter-spacing:.14em;
+  font-size:.65rem;
+  letter-spacing:.12em;
   text-transform:uppercase;
 }
-.book-spread[hidden]{display:none}
-@media(max-width:1080px){
-  .book-composition{width:min(900px,96vw);grid-template-columns:minmax(220px,300px) minmax(0,600px);gap:10px}
-}
 @media(max-width:760px){
-  .book-hero{padding:1.8rem 1rem .5rem}
+  .book-hero{padding:1.5rem 1rem .35rem}
   .book-composition{
-    width:min(680px,98vw);
+    width:min(540px,96vw);
     grid-template-columns:minmax(0,1fr);
-    gap:.5rem;
-    padding:0 .35rem .6rem;
+    gap:.4rem;
+    padding:0 .2rem .25rem;
   }
-  .book-cover-frame{width:min(58vw,300px);max-width:300px}
-  .book-spread{width:min(100%,680px);max-width:680px;margin:0 auto}
-  .book-writing{font-size:clamp(8px,1.8vw,12px)}
-  .page-number{font-size:8px}
-  .book-controls{margin:.35rem auto 1rem}
+  .book-cover-frame{width:min(34vw,170px);max-width:170px}
+  .book-spread{width:100%;max-width:520px;margin:0 auto}
+  .book-writing{font-size:clamp(8px,1.7vw,11px)}
+  .book-controls{margin:.3rem auto .8rem}
 }
 @media(max-width:420px){
   .book-composition{width:100%;padding-left:0;padding-right:0}
+  .book-cover-frame{width:min(38vw,145px)}
   .book-spread{width:100%}
-  .book-cover-frame{width:min(64vw,270px)}
-  .book-controls{gap:.4rem}
-  .book-controls .button{min-height:40px;padding:.55rem .7rem;font-size:.76rem}
+  .book-controls button{width:38px;height:38px}
 }
-@media(prefers-reduced-motion:reduce){
-  .book-spread.turn-next .book-page-right,.book-spread.turn-prev .book-page-left{animation:none}
-}
+@media(prefers-reduced-motion:reduce){.page-flip-layer{transition:none}}
 </style>
 </head>
 <body>
@@ -191,7 +179,7 @@
       Ein Buch mit einem Anfang – aber ohne vorgeschriebenen Denkweg.</p>
   </section>
 
-  <section class="book-composition" aria-label="Buchcover links und interaktive Doppelseite rechts">
+  <section class="book-composition" aria-label="Buchcover links und vollständig sichtbare leere Doppelseite rechts">
     <div class="book-cover-column">
       <figure class="book-cover-frame">
         <img src="assets/cover-standing.webp"
@@ -200,45 +188,28 @@
       </figure>
     </div>
 
-    <div class="book-spread" id="bookSpread" aria-label="Interaktive leere Buchseiten">
+    <div class="book-spread" id="bookSpread" aria-label="Zwei leere Buchseiten">
       <figure class="book-page book-page-left">
         <img src="assets/page-left.webp" alt="" aria-hidden="true">
         <div class="book-writing" id="leftWriting" contenteditable="true" spellcheck="false"
-             role="textbox" aria-multiline="true" aria-label="Linke Buchseite – eigener Text"></div>
-        <span class="page-number" id="leftNumber">01 / 24</span>
+             role="textbox" aria-multiline="true" aria-label="Leere linke Buchseite"></div>
       </figure>
       <figure class="book-page book-page-right">
         <img src="assets/page-right.webp" alt="" aria-hidden="true">
         <div class="book-writing" id="rightWriting" contenteditable="true" spellcheck="false"
-             role="textbox" aria-multiline="true" aria-label="Rechte Buchseite – eigener Text"></div>
-        <span class="page-number" id="rightNumber">02 / 24</span>
+             role="textbox" aria-multiline="true" aria-label="Leere rechte Buchseite"></div>
       </figure>
     </div>
   </section>
 
   <div class="book-controls" aria-label="Buchnavigation">
-    <button class="button button-secondary" id="previousButton" type="button">← Zurück</button>
-    <button class="button button-primary" id="coverButton" type="button">Cover</button>
-    <span class="book-status" id="bookStatus" aria-live="polite">01–02 / 24</span>
-    <button class="button button-secondary" id="nextButton" type="button">Weiter →</button>
-    <button class="button button-secondary" id="toggleBookButton" type="button">Buch schließen</button>
+    <button id="previousButton" type="button" aria-label="Vorherige Doppelseite" title="Zurück">‹</button>
+    <button id="nextButton" type="button" aria-label="Nächste Doppelseite" title="Weiter">›</button>
   </div>
-
-  <section class="jump-area" aria-label="Direkt zu einem Eintrag springen">
-    <p class="jump-label">Direkt zu einem Eintrag springen</p>
-    <div class="jump-list">
-      <button class="button button-secondary" type="button" data-jump="1">01 · Vorwort</button>
-      <button class="button button-secondary" type="button" data-jump="3">02 · Rückblick · persönliche Erfahrung</button>
-      <button class="button button-secondary" type="button" data-jump="5">03 · Labornotiz · Arbeitsweise</button>
-      <button class="button button-secondary" type="button" data-jump="7">04 · Diagnose · Beispiel</button>
-      <button class="button button-secondary" type="button" data-jump="9">05 · Gedankensprung · offene Frage</button>
-      <button class="button button-secondary" type="button" data-jump="11">06 · Korrektur · Lernprotokoll</button>
-    </div>
-  </section>
 </main>
 
 <footer class="book-foot">
-  Lokaler Prototyp · Texteingaben werden in diesem Browser gespeichert · keine Verbindung zu externen Diensten
+  THE WHITE-BOX SYSTEM
 </footer>
 
 <script>
@@ -247,20 +218,11 @@
   const spread = document.getElementById('bookSpread');
   const leftWriting = document.getElementById('leftWriting');
   const rightWriting = document.getElementById('rightWriting');
-  const leftNumber = document.getElementById('leftNumber');
-  const rightNumber = document.getElementById('rightNumber');
-  const status = document.getElementById('bookStatus');
   const previousButton = document.getElementById('previousButton');
   const nextButton = document.getElementById('nextButton');
-  const toggleButton = document.getElementById('toggleBookButton');
   let firstPage = 1;
-  let isOpen = true;
 
   const storageKey = page => 'whitebox-ki-wahnsinn-page-' + page;
-  const initialPages = {
-    1: '01 · VORWORT\\n\\nWarum dieses Buch?\\n\\nWeil echte Erkenntnisse selten geradlinig entstehen. Dieses Buch ist ein Arbeitsraum: für Diagnosen, Beobachtungen, Erfahrungen, Korrekturen – und für Gedanken, die noch nicht zu Ende gedacht sind.\\n\\nS = (G, F, L, M, P, C, U, R)\\n→ Systemstruktur',
-    2: 'ARBEITSWEISE · PRÜFUNG · EINORDNUNG\\n\\nVom Eindruck zur prüfbaren Aussage\\n\\nBEOBACHTEN  →  PRÜFEN  →  EINORDNEN\\nWas sehe ich?  →  Was ist belegt?  →  Was folgt?\\n\\nDie Reihenfolge schützt davor, eine Vermutung unbemerkt in eine Tatsache zu verwandeln.\\n\\nBeobachtung → Prüfung → Einordnung'
-  };
 
   function saveCurrentPages() {
     try {
@@ -271,19 +233,17 @@
 
   function loadPage(element, page) {
     try {
-      const saved = localStorage.getItem(storageKey(page));
-      element.textContent = saved !== null ? saved : (initialPages[page] || '');
+      element.textContent = localStorage.getItem(storageKey(page)) || '';
     } catch (_) {
-      element.textContent = initialPages[page] || '';
+      element.textContent = '';
     }
-    element.setAttribute('aria-label', (page % 2 ? 'Linke' : 'Rechte') + ' Buchseite ' + page + ' – eigener Text');
+    element.setAttribute('aria-label', page % 2 ? 'Leere linke Buchseite' : 'Leere rechte Buchseite');
   }
 
   function createFlipLayer(direction) {
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     spread.querySelectorAll('.page-flip-layer').forEach(layer => layer.remove());
-    const selector = direction === 'next' ? '.book-page-right' : '.book-page-left';
-    const source = spread.querySelector(selector);
+    const source = spread.querySelector(direction === 'next' ? '.book-page-right' : '.book-page-left');
     if (!source) return;
     const layer = source.cloneNode(true);
     layer.classList.add('page-flip-layer', direction);
@@ -303,9 +263,6 @@
     if (direction) createFlipLayer(direction);
     loadPage(leftWriting, firstPage);
     loadPage(rightWriting, firstPage + 1);
-    leftNumber.textContent = String(firstPage).padStart(2, '0') + ' / ' + totalPages;
-    rightNumber.textContent = String(firstPage + 1).padStart(2, '0') + ' / ' + totalPages;
-    status.textContent = String(firstPage).padStart(2, '0') + '–' + String(firstPage + 1).padStart(2, '0') + ' / ' + totalPages;
     previousButton.disabled = firstPage <= 1;
     nextButton.disabled = firstPage >= totalPages - 1;
   }
@@ -327,41 +284,8 @@
     renderSpread('next');
   });
 
-  document.getElementById('coverButton').addEventListener('click', () => {
-    saveCurrentPages();
-    firstPage = 1;
-    if (!isOpen) setBookOpen(true);
-    renderSpread();
-  });
-
-  function setBookOpen(open) {
-    if (!open) saveCurrentPages();
-    isOpen = open;
-    spread.hidden = !open;
-    previousButton.disabled = !open || firstPage <= 1;
-    nextButton.disabled = !open || firstPage >= totalPages - 1;
-    toggleButton.textContent = open ? 'Buch schließen' : 'Buch öffnen';
-    status.textContent = open
-      ? String(firstPage).padStart(2, '0') + '–' + String(firstPage + 1).padStart(2, '0') + ' / ' + totalPages
-      : 'Cover';
-  }
-
-  toggleButton.addEventListener('click', () => setBookOpen(!isOpen));
-
-  document.querySelectorAll('[data-jump]').forEach(button => {
-    button.addEventListener('click', () => {
-      const requestedPage = Math.max(1, Math.min(totalPages - 1, Number(button.dataset.jump)));
-      saveCurrentPages();
-      firstPage = requestedPage % 2 === 0 ? requestedPage - 1 : requestedPage;
-      if (!isOpen) setBookOpen(true);
-      renderSpread();
-      spread.scrollIntoView({behavior:'smooth', block:'center'});
-    });
-  });
-
   document.addEventListener('keydown', event => {
     if (event.target && event.target.isContentEditable) return;
-    if (!isOpen) return;
     if (event.key === 'ArrowRight') nextButton.click();
     if (event.key === 'ArrowLeft') previousButton.click();
   });

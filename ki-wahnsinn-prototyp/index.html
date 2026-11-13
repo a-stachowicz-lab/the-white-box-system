@@ -3,138 +3,165 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#000000">
-<meta name="description" content="KI-Wahnsinn – Das offene Arbeitsbuch.">
-<title>KI-Wahnsinn · Das offene Arbeitsbuch</title>
+<meta name="theme-color" content="#010204">
+<meta name="description" content="KI-Wahnsinn – Das offene Arbeitsbuch von THE WHITE-BOX SYSTEM.">
+<title>KI-Wahnsinn · Das offene Arbeitsbuch | THE WHITE-BOX SYSTEM</title>
+<link rel="stylesheet" href="../style.css">
 <style>
-:root{
-  color-scheme:dark;
-  --gold:#e9b86b;
-  --cyan:#63dfff;
-  --text:#eaf2f7;
-  --muted:#9bb2c5;
+/* Glasbuch: Gestaltung und Typografie aus dem globalen WHITE-BOX-Stylesheet */
+.book-hero{
+  max-width:var(--max);
+  margin:auto;
+  padding:clamp(2rem,4vw,3.5rem) 1.5rem 1rem;
+  text-align:center;
 }
-*{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:#000;color:var(--text)}
-body{
-  min-height:100vh;
-  min-height:100svh;
-  font-family:Inter,Arial,sans-serif;
-  overflow-x:hidden;
-  background:#000;
+.book-hero .eyebrow{margin-bottom:.7rem}
+.book-hero h1{
+  max-width:900px;
+  margin:0 auto .65rem;
 }
-.topline{
-  min-height:44px;
-  padding:0 clamp(16px,3vw,50px);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
-  border-bottom:1px solid rgba(99,223,255,.18);
-  color:#a9c2d2;
-  font-size:10px;
-  font-weight:700;
-  letter-spacing:.19em;
-  text-transform:uppercase;
-}
-.brand{color:#e7c58e}
-.brand span{color:var(--cyan)}
-.prototype{white-space:nowrap;color:#8ba8bc}
-main{
-  width:min(1180px,100%);
-  margin:0 auto;
-  padding:clamp(28px,5vh,58px) 20px 48px;
-}
-.intro{text-align:center;margin:0 auto 22px}
-.eyebrow{
-  margin:0 0 10px;
-  color:var(--gold);
-  font-size:10px;
-  font-weight:700;
-  letter-spacing:.28em;
-  text-transform:uppercase;
-}
-h1{
-  margin:0;
-  font:clamp(42px,6vw,68px)/1.05 Georgia,serif;
-  letter-spacing:.01em;
-  color:#d9a477;
-  background:linear-gradient(108deg,#8c4b2e 0%,#f2d0a5 28%,#b96f48 50%,#f4d1b3 70%,#8c4b2e 100%);
-  -webkit-background-clip:text;
+.book-hero h1 span{
+  color:var(--copper-light);
+  background:linear-gradient(105deg,#a95f38 0%,#f2c09a 24%,#c8794b 48%,#f4d1b3 68%,#a95f38 100%);
   background-clip:text;
+  -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  filter:drop-shadow(0 0 9px rgba(201,121,75,.18));
+  filter:drop-shadow(0 0 8px rgba(201,121,75,.18));
 }
-.subtitle{
-  margin:12px auto 0;
-  max-width:650px;
-  color:#b7cbd9;
-  font-size:clamp(13px,1.5vw,16px);
-  line-height:1.65;
+.book-hero .lead{
+  max-width:760px;
+  margin:0 auto;
 }
-.book-stage{
-  min-height:clamp(440px,68vh,760px);
+.book-composition{
+  width:min(1160px,96vw);
+  margin:clamp(1rem,2.5vw,2rem) auto 0;
+  padding:0 1rem 2.2rem;
+  display:grid;
+  grid-template-columns:minmax(260px,.78fr) minmax(0,1.72fr);
+  align-items:center;
+  gap:clamp(14px,2.3vw,34px);
+}
+.book-cover-column{
+  min-width:0;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:12px 0 24px;
-  background:#000;
 }
-.book-cover{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  width:min(78vw,460px);
-  max-height:68vh;
+.book-cover-frame{
+  width:100%;
+  max-width:390px;
   margin:0;
-  filter:drop-shadow(0 24px 35px rgba(0,0,0,.85));
+  position:relative;
+  filter:drop-shadow(0 20px 34px rgba(0,0,0,.68));
 }
-.book-cover img{
+.book-cover-frame img{
   display:block;
   width:100%;
   height:auto;
-  max-height:68vh;
+  max-height: min(72vh,720px);
   object-fit:contain;
 }
-.foot{
-  padding:12px 16px 26px;
-  color:#58748a;
+.book-spread{
+  min-width:0;
+  width:100%;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  align-items:stretch;
+  gap:0;
+  perspective:1600px;
+}
+.book-page{
+  min-width:0;
+  margin:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:transparent;
+}
+.book-page img{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:1/1;
+  object-fit:contain;
+}
+.book-page-left{transform-origin:right center}
+.book-page-right{transform-origin:left center}
+.book-foot{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:0 1.5rem 2rem;
   text-align:center;
-  font-size:9px;
-  font-weight:600;
-  letter-spacing:.2em;
+  color:var(--muted);
+  font-size:.72rem;
+  letter-spacing:.16em;
   text-transform:uppercase;
 }
-@media(max-width:640px){
-  .topline{min-height:40px;padding:0 12px;font-size:8px;letter-spacing:.12em}
-  main{padding:30px 14px 28px}
-  .intro{margin-bottom:8px}
-  .book-stage{min-height:58vh;min-height:58svh;padding:8px 0 20px}
-  .book-cover{width:min(84vw,390px);max-height:60svh}
-  .book-cover img{max-height:60svh}
+@media(max-width:760px){
+  .book-hero{padding:2rem 1rem .5rem}
+  .book-composition{
+    width:min(680px,98vw);
+    grid-template-columns:minmax(0,1fr);
+    gap:1rem;
+    padding:0 .5rem 1.7rem;
+  }
+  .book-cover-frame{width:min(74vw,330px);max-width:330px}
+  .book-cover-frame img{max-height:54vh}
+  .book-spread{width:100%;max-width:660px;margin:0 auto}
+  .book-page img{width:100%;height:auto}
 }
-@media(prefers-reduced-motion:reduce){
-  *{scroll-behavior:auto!important}
+@media(max-width:420px){
+  .book-composition{width:100%;padding-left:0;padding-right:0}
+  .book-spread{width:100%}
 }
 </style>
 </head>
 <body>
-<div class="topline">
-  <div class="brand">THE WHITE-BOX SYSTEM <span>· PARALLEL SPACE</span></div>
-  <div class="prototype">OFFLINE-PROTOTYP · GLASSBOOK</div>
-</div>
+<header class="site-header">
+  <nav class="site-nav" aria-label="Hauptnavigation">
+    <a href="../index.html">Start</a>
+    <a href="../system.html">System</a>
+    <a href="../diagnosis.html">Diagnose</a>
+    <a href="../pruefung.html">Prüfung</a>
+    <a href="../workshop.html">Workshop</a>
+    <a href="../sectors.html">Anwendungsbereiche</a>
+    <a href="../ki-wahnsinn.html" class="active">KI-Wahnsinn</a>
+    <a href="../collaborate.html">Zusammenarbeit</a>
+    <a href="../contact.html">Kontakt</a>
+  </nav>
+</header>
+
 <main>
-  <header class="intro">
+  <section class="book-hero">
     <p class="eyebrow">Ein offenes Arbeitsbuch</p>
     <h1>KI-Wahnsinn</h1>
-    <p class="subtitle">Gedanken. Diagnosen. Erfahrungen. Beobachtungen.</p>
-  </header>
-  <section class="book-stage" aria-label="Buchcover">
-    <figure class="book-cover">
-      <img src="assets/cover-standing.webp" alt="Das aufrecht stehende Glasbuch-Cover: KI-Wahnsinn – Das offene Arbeitsbuch" fetchpriority="high">
-    </figure>
+    <p class="lead">Gedanken. Diagnosen. Erfahrungen. Beobachtungen.<br>
+      Ein Buch mit einem Anfang – aber ohne vorgeschriebenen Denkweg.</p>
+  </section>
+
+  <section class="book-composition" aria-label="Buchcover links und offene leere Doppelseite rechts">
+    <div class="book-cover-column">
+      <figure class="book-cover-frame">
+        <img src="assets/cover-standing.webp"
+             alt="Das aufrecht stehende Cover des Arbeitsbuchs KI-Wahnsinn"
+             fetchpriority="high">
+      </figure>
+    </div>
+
+    <div class="book-spread" aria-label="Leere linke und rechte Buchseite">
+      <figure class="book-page book-page-left">
+        <img src="assets/page-left.webp" alt="Leere linke Buchseite">
+      </figure>
+      <figure class="book-page book-page-right">
+        <img src="assets/page-right.webp" alt="Leere rechte Buchseite">
+      </figure>
+    </div>
   </section>
 </main>
-<footer class="foot">VISUELLER MASTER · SEITEN WERDEN EINZELN ERGÄNZT</footer>
+
+<footer class="book-foot">
+  Visueller Master · Seiten werden einzeln ergänzt
+</footer>
 </body>
 </html>

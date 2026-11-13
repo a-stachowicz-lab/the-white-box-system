@@ -261,7 +261,6 @@
   }
 
   function renderSpread(direction) {
-    saveCurrentPages();
     if (direction) {
       spread.classList.remove('turn-next', 'turn-prev');
       void spread.offsetWidth;
@@ -281,17 +280,20 @@
 
   previousButton.addEventListener('click', () => {
     if (firstPage <= 1) return;
+    saveCurrentPages();
     firstPage -= 2;
     renderSpread('prev');
   });
 
   nextButton.addEventListener('click', () => {
     if (firstPage >= totalPages - 1) return;
+    saveCurrentPages();
     firstPage += 2;
     renderSpread('next');
   });
 
   document.getElementById('coverButton').addEventListener('click', () => {
+    saveCurrentPages();
     firstPage = 1;
     if (!isOpen) setBookOpen(true);
     renderSpread();
@@ -313,6 +315,7 @@
   document.querySelectorAll('[data-jump]').forEach(button => {
     button.addEventListener('click', () => {
       const requestedPage = Math.max(1, Math.min(totalPages - 1, Number(button.dataset.jump)));
+      saveCurrentPages();
       firstPage = requestedPage % 2 === 0 ? requestedPage - 1 : requestedPage;
       if (!isOpen) setBookOpen(true);
       renderSpread();

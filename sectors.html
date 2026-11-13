@@ -276,8 +276,8 @@ Describe the situation you are facing and the question you need to resolve. I ex
    const dt = Math.min((now-last)/1000, .05); last=now;
    if (!paused && !selected) rotation += dt * .095;
    const mobile = isMobile();
-   const rx = Math.min(stage.clientWidth * (mobile ? .48 : .48), mobile ? 330 : 700);
-   const ry = Math.min(stage.clientHeight * (mobile ? .40 : .38), mobile ? 285 : 340);
+   const rx = Math.min(stage.clientWidth * (mobile ? .48 : .43), mobile ? 330 : 600);
+   const ry = Math.min(stage.clientHeight * (mobile ? .40 : .31), mobile ? 285 : 280);
    const depth = mobile ? 72 : 190;
    const points=[];
    items.forEach(item => {

@@ -26,45 +26,49 @@
 }
 .book-hero .lead{max-width:760px;margin:0 auto}
 .book-composition{
-  width:min(600px,96vw);
-  margin:.5rem auto 0;
-  padding:0 .5rem .35rem;
+  width:min(860px,96vw);
+  margin:.8rem auto 0;
+  padding:0 .5rem .45rem;
   display:grid;
-  grid-template-columns:minmax(0,180px) minmax(0,360px);
+  grid-template-columns:minmax(0,240px) minmax(0,520px);
   align-items:center;
   justify-content:center;
-  gap:clamp(8px,1.2vw,16px);
+  gap:clamp(14px,2vw,26px);
 }
 .book-cover-column{min-width:0;display:flex;align-items:center;justify-content:center}
 .book-cover-frame{
   width:100%;
-  max-width:210px;
+  max-width:240px;
   margin:0;
-  filter:drop-shadow(0 12px 20px rgba(0,0,0,.4));
+  filter:drop-shadow(0 14px 24px rgba(0,0,0,.5));
 }
 .book-cover-frame img{display:block;width:100%;height:auto;object-fit:contain}
 .book-spread{
   position:relative;
   min-width:0;
   width:100%;
-  max-width:360px;
+  max-width:520px;
   aspect-ratio:2/1;
   overflow:visible;
-  perspective:1400px;
+  perspective:1800px;
   transform-style:preserve-3d;
+  isolation:isolate;
 }
 .book-spread-art{
   position:absolute;
   inset:0;
+  z-index:0;
   display:block;
   width:100%;
   height:100%;
   object-fit:contain;
+  pointer-events:none;
 }
 .book-page{
   position:absolute;
   top:0;
   bottom:0;
+  z-index:1;
   width:50%;
   min-width:0;
   margin:0;
@@ -74,11 +78,11 @@
 .book-page-right{right:0}
 .book-writing{
   position:absolute;
-  inset:13.5% 15% 15% 15%;
+  inset:14% 13% 14% 13%;
   z-index:2;
   overflow:auto;
   color:#e5edf7;
-  font:clamp(8px,.72vw,11px)/1.5 Arial,Helvetica,sans-serif;
+  font:clamp(9px,.82vw,13px)/1.55 Arial,Helvetica,sans-serif;
   white-space:pre-wrap;
   overflow-wrap:anywhere;
   outline:none;
@@ -91,39 +95,61 @@
   position:absolute;
   top:0;
   bottom:0;
-  z-index:8;
+  z-index:10;
   width:50%;
   pointer-events:none;
   transform-style:preserve-3d;
   backface-visibility:hidden;
-  transition:transform .58s cubic-bezier(.2,.72,.18,1),filter .58s ease;
-  box-shadow:0 0 24px rgba(0,0,0,.32);
+  -webkit-backface-visibility:hidden;
+  transition:transform .88s cubic-bezier(.22,.72,.16,1),filter .88s ease;
+  filter:drop-shadow(0 3px 7px rgba(0,0,0,.55));
+  will-change:transform;
 }
-.page-flip-layer.next{
-  right:0;
-  transform-origin:left center;
+.page-flip-layer.next{right:0;transform-origin:left center;transform:rotateY(0deg)}
+.page-flip-layer.prev{left:0;transform-origin:right center;transform:rotateY(0deg)}
+.page-flip-layer.next.turning{transform:rotateY(-180deg);filter:brightness(.78) drop-shadow(-9px 2px 12px rgba(0,0,0,.55))}
+.page-flip-layer.prev.turning{transform:rotateY(180deg);filter:brightness(.78) drop-shadow(9px 2px 12px rgba(0,0,0,.55))}
+.page-flip-face{
+  position:absolute;
+  inset:0;
+  display:block;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
   background-image:url("assets/open-spread-clean.webp");
   background-repeat:no-repeat;
   background-size:200% 100%;
-  background-position:right center;
+  box-shadow:inset 0 0 16px rgba(0,0,0,.14);
 }
-.page-flip-layer.prev{
-  left:0;
-  transform-origin:right center;
-  background-image:url("assets/open-spread-clean.webp");
-  background-repeat:no-repeat;
-  background-size:200% 100%;
-  background-position:left center;
+.page-flip-face.front{transform:rotateY(0deg)}
+.page-flip-face.back{transform:rotateY(180deg);filter:brightness(.86)}
+.page-flip-layer.next .front{background-position:right center}
+.page-flip-layer.next .back{background-position:left center}
+.page-flip-layer.prev .front{background-position:left center}
+.page-flip-layer.prev .back{background-position:right center}
+.page-flip-layer:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(90deg,rgba(255,255,255,.14),transparent 18%,transparent 84%,rgba(0,0,0,.28));
+  opacity:.8;
 }
-.page-flip-layer.next.turning{transform:rotateY(-180deg);filter:brightness(.72)}
-.page-flip-layer.prev.turning{transform:rotateY(180deg);filter:brightness(.72)}
 .book-controls{
   width:min(520px,92vw);
-  margin:.25rem auto 1rem;
+  margin:.5rem auto 1rem;
   display:flex;
   justify-content:center;
   align-items:center;
   gap:1rem;
+}
+.page-counter{
+  min-width:94px;
+  text-align:center;
+  color:var(--muted);
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.15em;
+  font-variant-numeric:tabular-nums;
 }
 .book-controls button{
   display:inline-flex;
@@ -153,20 +179,21 @@
 @media(max-width:760px){
   .book-hero{padding:1.5rem 1rem .35rem}
   .book-composition{
-    width:min(400px,96vw);
+    width:min(560px,96vw);
     grid-template-columns:minmax(0,1fr);
-    gap:.4rem;
-    padding:0 .2rem .25rem;
+    gap:.65rem;
+    padding:0 .2rem .35rem;
   }
-  .book-cover-frame{width:min(34vw,170px);max-width:170px}
-  .book-spread{width:100%;max-width:360px;margin:0 auto}
-  .book-writing{font-size:clamp(8px,1.7vw,11px)}
-  .book-controls{margin:.3rem auto .8rem}
+  .book-cover-frame{width:min(48vw,210px);max-width:210px}
+  .book-spread{width:100%;max-width:520px;margin:0 auto}
+  .book-writing{font-size:clamp(10px,2vw,13px)}
+  .book-controls{margin:.35rem auto .8rem}
 }
 @media(max-width:420px){
   .book-composition{width:100%;padding-left:0;padding-right:0}
-  .book-cover-frame{width:min(38vw,145px)}
+  .book-cover-frame{width:min(48vw,190px)}
   .book-spread{width:100%}
+  .book-controls{gap:.65rem}
   .book-controls button{width:38px;height:38px}
 }
 @media(prefers-reduced-motion:reduce){.page-flip-layer{transition:none}}
@@ -220,6 +247,7 @@
 
   <div class="book-controls" aria-label="Buchnavigation">
     <button id="previousButton" type="button" aria-label="Vorherige Doppelseite" title="Zurück">‹</button>
+    <span id="pageCounter" class="page-counter" aria-live="polite">01–02 / 24</span>
     <button id="nextButton" type="button" aria-label="Nächste Doppelseite" title="Weiter">›</button>
   </div>
 </main>
@@ -236,7 +264,9 @@
   const rightWriting = document.getElementById('rightWriting');
   const previousButton = document.getElementById('previousButton');
   const nextButton = document.getElementById('nextButton');
+  const pageCounter = document.getElementById('pageCounter');
   let firstPage = 1;
+  let turning = false;
 
   const storageKey = page => 'whitebox-ki-wahnsinn-page-' + page;
 
@@ -253,49 +283,81 @@
     } catch (_) {
       element.textContent = '';
     }
-    element.setAttribute('aria-label', page % 2 ? 'Leere linke Buchseite' : 'Leere rechte Buchseite');
+    element.setAttribute('aria-label', page % 2 ? 'Buchseite ' + page : 'Buchseite ' + page);
   }
 
   function createFlipLayer(direction) {
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return null;
+
     spread.querySelectorAll('.page-flip-layer').forEach(layer => layer.remove());
-    const source = spread.querySelector(direction === 'next' ? '.book-page-right' : '.book-page-left');
-    if (!source) return;
-    const layer = source.cloneNode(true);
-    layer.classList.add('page-flip-layer', direction);
+
+    const layer = document.createElement('div');
+    layer.className = 'page-flip-layer ' + direction;
     layer.setAttribute('aria-hidden', 'true');
-    layer.querySelectorAll('[id]').forEach(node => node.removeAttribute('id'));
-    layer.querySelectorAll('[contenteditable]').forEach(node => node.removeAttribute('contenteditable'));
+
+    const front = document.createElement('div');
+    front.className = 'page-flip-face front';
+    const back = document.createElement('div');
+    back.className = 'page-flip-face back';
+
+    layer.append(front, back);
     spread.appendChild(layer);
-    requestAnimationFrame(() => layer.classList.add('turning'));
-    const cleanup = () => layer.remove();
-    layer.addEventListener('transitionend', event => {
-      if (event.propertyName === 'transform') cleanup();
+
+    // Zwei Frames stellen sicher, dass der Startzustand gezeichnet wird,
+    // bevor die Seite sichtbar um die Buchfalz rotiert.
+    void layer.offsetWidth;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => layer.classList.add('turning'));
     });
-    window.setTimeout(cleanup, 800);
+
+    return layer;
   }
 
   function renderSpread(direction) {
-    if (direction) createFlipLayer(direction);
+    const layer = direction ? createFlipLayer(direction) : null;
+
     loadPage(leftWriting, firstPage);
     loadPage(rightWriting, firstPage + 1);
+
     previousButton.disabled = firstPage <= 1;
     nextButton.disabled = firstPage >= totalPages - 1;
+    pageCounter.textContent =
+      String(firstPage).padStart(2, '0') + '–' +
+      String(firstPage + 1).padStart(2, '0') + ' / ' + totalPages;
+
+    if (layer) {
+      let finished = false;
+      const finish = () => {
+        if (finished) return;
+        finished = true;
+        layer.remove();
+        turning = false;
+      };
+      layer.addEventListener('transitionend', event => {
+        if (event.propertyName === 'transform') finish();
+      });
+      window.setTimeout(finish, 1100);
+    } else {
+      turning = false;
+    }
   }
 
   leftWriting.addEventListener('input', saveCurrentPages);
   rightWriting.addEventListener('input', saveCurrentPages);
 
   previousButton.addEventListener('click', () => {
-    if (firstPage <= 1) return;
+    if (turning || firstPage <= 1) return;
     saveCurrentPages();
+    turning = true;
     firstPage -= 2;
     renderSpread('prev');
   });
 
   nextButton.addEventListener('click', () => {
-    if (firstPage >= totalPages - 1) return;
+    if (turning || firstPage >= totalPages - 1) return;
     saveCurrentPages();
+    turning = true;
     firstPage += 2;
     renderSpread('next');
   });

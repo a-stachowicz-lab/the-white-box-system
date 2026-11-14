@@ -101,7 +101,7 @@
   transform-style:preserve-3d;
   backface-visibility:hidden;
   -webkit-backface-visibility:hidden;
-  transition:transform 1.9s cubic-bezier(.42,.04,.28,1),filter 1.9s ease;
+  transition:transform 3.4s cubic-bezier(.38,.02,.22,1),filter 3.4s ease;
   filter:drop-shadow(0 5px 10px rgba(0,0,0,.62));
   will-change:transform;
 }
@@ -355,7 +355,7 @@
       layer.addEventListener('transitionend', event => {
         if (event.propertyName === 'transform') finish();
       });
-      window.setTimeout(finish, 2150);
+      window.setTimeout(finish, 3650);
     } else {
       turning = false;
     }

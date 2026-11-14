@@ -49,31 +49,29 @@
   width:100%;
   max-width:360px;
   aspect-ratio:2/1;
-  display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  align-items:stretch;
-  gap:0;
+  overflow:visible;
   perspective:1400px;
   transform-style:preserve-3d;
 }
-.book-page{
-  position:relative;
-  min-width:0;
-  margin:0;
-  aspect-ratio:1/1;
-  overflow:hidden;
-}
-.book-page img{
+.book-spread-art{
   position:absolute;
   inset:0;
   display:block;
-  width:200%;
-  max-width:none;
+  width:100%;
   height:100%;
-  object-fit:fill;
+  object-fit:contain;
 }
-.book-page-left img{left:0}
-.book-page-right img{left:-100%}
+.book-page{
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:50%;
+  min-width:0;
+  margin:0;
+  overflow:hidden;
+}
+.book-page-left{left:0}
+.book-page-right{right:0}
 .book-writing{
   position:absolute;
   inset:13.5% 15% 15% 15%;
@@ -101,8 +99,22 @@
   transition:transform .58s cubic-bezier(.2,.72,.18,1),filter .58s ease;
   box-shadow:0 0 24px rgba(0,0,0,.32);
 }
-.page-flip-layer.next{right:0;transform-origin:left center}
-.page-flip-layer.prev{left:0;transform-origin:right center}
+.page-flip-layer.next{
+  right:0;
+  transform-origin:left center;
+  background-image:url("assets/open-spread-clean.webp");
+  background-repeat:no-repeat;
+  background-size:200% 100%;
+  background-position:right center;
+}
+.page-flip-layer.prev{
+  left:0;
+  transform-origin:right center;
+  background-image:url("assets/open-spread-clean.webp");
+  background-repeat:no-repeat;
+  background-size:200% 100%;
+  background-position:left center;
+}
 .page-flip-layer.next.turning{transform:rotateY(-180deg);filter:brightness(.72)}
 .page-flip-layer.prev.turning{transform:rotateY(180deg);filter:brightness(.72)}
 .book-controls{
@@ -192,17 +204,17 @@
       </figure>
     </div>
 
-    <div class="book-spread" id="bookSpread" aria-label="Zwei leere Buchseiten">
-      <figure class="book-page book-page-left">
-        <img src="assets/open-spread.webp" alt="" aria-hidden="true">
+    <div class="book-spread" id="bookSpread" aria-label="Leere offene Doppelseite">
+      <img class="book-spread-art" src="assets/open-spread-clean.webp"
+           alt="Leere offene Glasbuch-Doppelseite mit blauen und kupferfarbenen Leuchträndern">
+      <div class="book-page book-page-left">
         <div class="book-writing" id="leftWriting" contenteditable="true" spellcheck="false"
              role="textbox" aria-multiline="true" aria-label="Leere linke Buchseite"></div>
-      </figure>
-      <figure class="book-page book-page-right">
-        <img src="assets/open-spread.webp" alt="" aria-hidden="true">
+      </div>
+      <div class="book-page book-page-right">
         <div class="book-writing" id="rightWriting" contenteditable="true" spellcheck="false"
              role="textbox" aria-multiline="true" aria-label="Leere rechte Buchseite"></div>
-      </figure>
+      </div>
     </div>
   </section>
 
